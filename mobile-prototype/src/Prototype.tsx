@@ -36,7 +36,7 @@ import {
 
 type Role = "bureau" | "school";
 type Section = "home" | "manage";
-type ManageTab = "发文管理" | "收文管理" | "签报管理" | "局校发文管理" | "教育局来文";
+type ManageTab = "发文管理" | "收文管理" | "签报管理" | "局校协同发文管理" | "教育局来文";
 type ReminderRecord = { count: number; lastTime: string };
 
 type CollabDoc = {
@@ -300,12 +300,12 @@ function Empty({ text }: { text: string }) {
 }
 
 function ManagePage({ role, docs, signedIds, flow, onSign, onRemind }: { role: Role; docs: CollabDoc[]; signedIds: Set<string>; flow: FlowControls; onSign: (id: string) => void; onRemind: (docId: string, schoolNames: string[], time: string) => void }) {
-  const tabs: ManageTab[] = role === "bureau" ? ["发文管理", "收文管理", "签报管理", "局校发文管理"] : ["发文管理", "收文管理", "签报管理", "教育局来文"];
+  const tabs: ManageTab[] = role === "bureau" ? ["发文管理", "收文管理", "签报管理", "局校协同发文管理"] : ["发文管理", "收文管理", "签报管理", "教育局来文"];
   const [tab, setTab] = useState<ManageTab>(tabs[0]);
   const [query, setQuery] = useState("");
   const [filterOpen, setFilterOpen] = useState(false);
   const [statusFilter, setStatusFilter] = useState("全部");
-  const isCollab = tab === "局校发文管理" || tab === "教育局来文";
+  const isCollab = tab === "局校协同发文管理" || tab === "教育局来文";
   return <div className="manage-page">
     <div className="manage-tabs" role="tablist" aria-label="公文管理分类"><div className="manage-tabs-track">
       {tabs.map((item) => <button key={item} className={tab === item ? "active" : ""} onClick={() => { setTab(item); setQuery(""); setStatusFilter("全部"); }} onPointerUp={() => { setTab(item); setQuery(""); setStatusFilter("全部"); }}>{item}</button>)}
@@ -369,7 +369,7 @@ function ComposeScreen({ flow, templateName, onPublished }: { flow: FlowControls
   const changeStep = (nextStep: number) => { (document.activeElement as HTMLElement | null)?.blur(); keyboard.hide(); setStep(nextStep); };
   const next = () => { if (step === 0 && (!title.trim() || !no.trim())) { setToast("请先填写公文标题和发文字号"); return; } setToast(""); changeStep(Math.min(3, step + 1)); };
   const publish = () => { if (!valid) { setToast(selectedSchools.length ? "请完整填写公文标题和发文字号" : "请至少选择一所接收学校"); return; } const doc: CollabDoc = { id: `jx-${Date.now()}`, title, no, type, author: "李老师", secret: "普通", urgent, status: "已发布", created: "2026-08-15 11:20", dispatchTime: "2026-08-15 11:20", issuer: "新乡市教育局", targetCount: selectedSchools.length, signedCount: 0, body: "", bodyFile, attachment: attachment || "暂无附件" }; onPublished(doc); setPublished(true); };
-  if (published) return <div className="success-page"><CheckCircledIcon /><h2>发布成功</h2><p>公文已发送至 {selectedSchools.length} 所学校，签收进度将在局校发文管理中实时更新。</p><button className="primary-button" onClick={flow.pop}>完成</button></div>;
+  if (published) return <div className="success-page"><CheckCircledIcon /><h2>发布成功</h2><p>公文已发送至 {selectedSchools.length} 所学校，签收进度将在局校协同发文管理中实时更新。</p><button className="primary-button" onClick={flow.pop}>完成</button></div>;
   return <div className="compose-layout"><Carousel ariaLabel="发文步骤" className="step-rail" contentClassName="step-track" draggingEnabled={false}>{steps.map((s, i) => <button className={i === step ? "active" : i < step ? "done" : ""} key={s} onClick={() => i <= step && changeStep(i)} onPointerUp={() => i <= step && changeStep(i)}><span>{i < step ? "✓" : i + 1}</span>{s}</button>)}</Carousel><MobileScroll className="compose-scroll"><main className="compose-content">
     {step === 0 ? <section className="form-card"><div className="template-note"><FileTextIcon /><span><small>当前模板</small><strong>{templateName}</strong></span></div><label>公文标题 <b>*</b><KeyboardInput value={title} onChange={(e) => setTitle(e.target.value)} placeholder="请输入公文标题" /></label><label>发文字号 <b>*</b><KeyboardInput value={no} onChange={(e) => setNo(e.target.value)} placeholder="例：新教办〔2026〕18号" /></label><label>公文类型<select value={type} onChange={(e) => setType(e.target.value)}><option>工作通知</option><option>会议通知</option><option>材料报送</option></select></label><label>紧急程度<select value={urgent} onChange={(e) => setUrgent(e.target.value)}><option>平件</option><option>急件</option><option>特急</option></select></label></section> : null}
     {step === 1 ? <section className="form-card upload-card"><span className="upload-icon"><UploadIcon /></span><h3>上传正文（选填）</h3><p>支持 DOC、DOCX、PDF，单个文件不超过 20MB</p>{bodyFile ? <div className="file-row"><FileIcon /><span>{bodyFile}</span><button aria-label="删除正文" onClick={() => setBodyFile("")}><Cross2Icon /></button></div> : <button className="outline-button" onClick={() => setBodyFile("关于开展校园安全专项检查的通知正文.docx")}>选择正文文件</button>}<p className="field-help">正文不是必填项，未上传也可继续发文。</p></section> : null}
@@ -380,7 +380,7 @@ function ComposeScreen({ flow, templateName, onPublished }: { flow: FlowControls
 }
 
 function makeDetailScreen(doc: CollabDoc, role: Role, signed: boolean, onSign: (id: string) => void, onRemind: (docId: string, schoolNames: string[], time: string) => void): FlowScreen {
-  return { id: `detail-${doc.id}`, headerHeight: 50, header: (flow) => <ScreenHeader flow={flow} title={role === "bureau" ? "局校发文详情" : "教育局来文详情"} />, render: (flow) => <DetailPage flow={flow} doc={doc} role={role} initialSigned={signed} onSign={onSign} onRemind={onRemind} /> };
+  return { id: `detail-${doc.id}`, headerHeight: 50, header: (flow) => <ScreenHeader flow={flow} title={role === "bureau" ? "局校协同发文详情" : "教育局来文详情"} />, render: (flow) => <DetailPage flow={flow} doc={doc} role={role} initialSigned={signed} onSign={onSign} onRemind={onRemind} /> };
 }
 
 function DetailPage({ flow, doc, role, initialSigned, onSign, onRemind }: { flow: FlowControls; doc: CollabDoc; role: Role; initialSigned: boolean; onSign: (id: string) => void; onRemind: (docId: string, schoolNames: string[], time: string) => void }) {

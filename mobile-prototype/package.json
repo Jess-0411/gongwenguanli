@@ -12,7 +12,7 @@
     "dev": "vite",
     "prebuild": "npm run check:runtime",
     "build": "tsc && vite build && node scripts/prepare-sites-build.mjs",
-    "build:pages": "npm run check:runtime && tsc && vite build --base /gongwenguanli/mobile/ --outDir ../mobile --emptyOutDir"
+    "build:pages": "npm run check:runtime && tsc && vite build --config vite.pages.config.ts --base ./ && node scripts/prepare-pages-build.mjs"
   },
   "dependencies": {
     "@fontsource/roboto": "5.2.10",

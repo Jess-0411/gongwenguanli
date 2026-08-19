@@ -54,6 +54,9 @@
     .school-home-icon{width:56px;height:56px;min-width:56px;border-radius:9px;display:grid;place-items:center;font-size:25px;font-style:normal;font-weight:700;box-shadow:inset 0 0 0 1px #e6edf5}
     .school-home-icon.outgoing{background:#fff3e3;color:#ff963f}.school-home-icon.incoming{background:#e7fbf1;color:#18b889}.school-home-icon.report{background:#eaf5ff;color:#3878f2}.school-home-icon.bureau{background:#f1ecff;color:#7c5ce5}
     .school-home-stat strong{display:block;font-size:28px;line-height:1.15;font-weight:500;color:#30343b}.school-home-stat span{display:block;margin-top:7px;color:#7a8290;white-space:nowrap}
+    .school-dashboard-tabs{display:flex;gap:8px;flex-wrap:wrap;margin:-2px 0 12px}.school-dashboard-tabs button{border:1px solid #dfe6f0;border-radius:6px;background:#fff;color:#475467;padding:7px 15px}.school-dashboard-tabs button:hover{border-color:var(--blue);color:var(--blue)}.school-dashboard-tabs button.active{border-color:var(--blue);background:var(--blue);color:#fff;font-weight:600}
+    .school-line-chart{width:100%;height:250px;display:block}.school-line-chart .grid-line{stroke:#dfe7f1;stroke-width:1}.school-line-chart .axis-line{stroke:#aebaca;stroke-width:1}.school-line-chart .axis-label{fill:#667085;font-size:12px}.school-line-chart .series-area{opacity:.12}.school-line-chart .series-line{fill:none;stroke-width:2.5;stroke-linecap:round;stroke-linejoin:round}.school-line-chart .series-point{stroke-width:2;cursor:help}
+    .chart-legend{display:flex;flex-wrap:wrap;justify-content:flex-end;gap:12px;color:#667085;font-size:12px;font-weight:500}.chart-legend span{display:inline-flex;align-items:center;gap:5px}.chart-legend i{width:18px;height:3px;border-radius:999px;display:inline-block;position:relative}.chart-legend i:after{content:"";position:absolute;left:7px;top:-3px;width:7px;height:7px;border:2px solid currentColor;border-radius:50%;background:#fff}.latest-title{border:0;background:transparent;color:var(--blue);padding:0;text-align:left;font:inherit;cursor:pointer}.latest-title:hover{text-decoration:underline}
     @media(max-width:1350px){.school-home-top{grid-template-columns:1fr}.school-home-panel{min-height:120px}}
     @media(max-width:760px){.school-home-actions,.school-home-stats{grid-template-columns:repeat(2,minmax(0,1fr))}.school-home-panel{padding:8px}.school-home-action,.school-home-stat{padding:14px 10px}.school-home-stat{min-height:96px}.school-home-action b{font-size:16px}.school-home-icon{width:48px;height:48px;min-width:48px;line-height:1}}
     .chart{height:250px;display:flex;align-items:flex-end;gap:20px;padding:20px 25px 30px;border-left:1px solid #dce4ee;border-bottom:1px solid #dce4ee;position:relative}.bar-group{flex:1;display:flex;align-items:flex-end;justify-content:center;gap:5px;height:100%;position:relative}.bar{width:20px;border-radius:3px 3px 0 0;background:var(--blue)}.bar.alt{background:#69aaf1}.bar.warn{background:#f0a33a}.bar-label{position:absolute;bottom:-23px;color:#667085;font-size:12px;white-space:nowrap}
@@ -275,17 +278,21 @@
     .timeline-item:before{background:var(--blue);box-shadow:0 0 0 5px #eaf2ff}
     .step b{box-shadow:0 0 0 4px #eef4ff}
     .chart{border-radius:12px;background:linear-gradient(180deg,#fbfdff,#f7faff)}
-    .dashboard-chart{height:286px;gap:16px;padding:34px 18px 32px}
-    .dashboard-chart .bar-group{gap:4px}
-    .dashboard-chart .bar{width:13px;min-height:0;position:relative}
-    .dashboard-chart .bar.incoming{background:#2563eb}
-    .dashboard-chart .bar.outgoing{background:#10b981}
-    .dashboard-chart .bar.report{background:#f59e0b}
-    .dashboard-chart .bar.collab{background:#8b5cf6}
-    .dashboard-chart .bar-value{position:absolute;top:-20px;left:50%;transform:translateX(-50%);font-size:11px;color:#667085;font-weight:700}
+    .dashboard-line-chart{width:100%;height:286px;display:block;overflow:visible}
+    .dashboard-line-chart .grid-line{stroke:#dfe7f1;stroke-width:1}
+    .dashboard-line-chart .axis-line{stroke:#aebaca;stroke-width:1}
+    .dashboard-line-chart .axis-label{fill:#667085;font-size:12px}
+    .dashboard-line-chart .series-line{fill:none;stroke-width:2.5;stroke-linecap:round;stroke-linejoin:round}
+    .dashboard-line-chart .series-point{stroke-width:2;cursor:help}
     .chart-legend{display:flex;flex-wrap:wrap;justify-content:flex-end;gap:12px;color:#667085;font-size:12px;font-weight:500}
     .chart-legend span{display:inline-flex;align-items:center;gap:5px}
-    .chart-legend i{width:9px;height:9px;border-radius:3px;display:inline-block}
+    .chart-legend i{width:18px;height:3px;border-radius:999px;display:inline-block;position:relative}
+    .chart-legend i:after{content:"";position:absolute;left:7px;top:-3px;width:7px;height:7px;border:2px solid currentColor;border-radius:50%;background:#fff}
+    .dashboard-latest-tabs{display:flex;gap:0;border-bottom:1px solid #edf0f4;margin:-2px 0 10px;overflow-x:auto}
+    .dashboard-latest-tabs button{border:1px solid #e7ecf4;border-bottom:0;background:#fff;color:#475467;padding:10px 16px;white-space:nowrap;margin-right:-1px;border-radius:8px 8px 0 0}
+    .dashboard-latest-tabs button:hover{color:var(--blue);background:#f8fbff}
+    .dashboard-latest-tabs button.active{color:var(--blue);background:#f8fbff;font-weight:700;position:relative;z-index:1}
+    .dashboard-latest-tabs button.active:after{content:"";position:absolute;left:0;right:0;bottom:-1px;height:2px;background:var(--blue)}
     .distribution{display:grid;gap:14px;padding:8px 2px 2px}
     .distribution-row{display:grid;grid-template-columns:62px minmax(0,1fr) 34px;align-items:center;gap:12px;color:#536078;font-size:13px}
     .distribution-track{height:10px;border-radius:999px;background:#edf2f8;overflow:hidden}
@@ -298,7 +305,7 @@
     .latest-title{border:0;background:transparent;color:#2563eb;padding:0;text-align:left;font:inherit;cursor:pointer}
     .latest-title:hover{text-decoration:underline;color:#1d4ed8}
     .dashboard-error{min-height:220px;display:grid;place-items:center;text-align:center}
-    @media(max-width:1050px){.dashboard-chart .bar{width:10px}.dashboard-chart{gap:8px;padding-left:10px;padding-right:10px}}
+    @media(max-width:1050px){.dashboard-line-chart{height:260px}.dashboard-latest-tabs button{padding:9px 12px}}
     .empty{border-radius:13px;background:#fbfcfe;color:#8a94a6}
     .modal-backdrop{background:rgba(20,33,61,.42);backdrop-filter:blur(4px)}
     .modal{border-radius:18px;box-shadow:0 28px 80px rgba(15,36,71,.24);overflow:hidden;border:1px solid #eef1f5}
@@ -399,7 +406,6 @@
 (() => {
   "use strict";
   const KEY="edu-document-prototype-v1";
-  const COLLAB_DRAFT_DELETE_PROMPT="确认要删除么？删除后无法恢复！";
   const COLLAB_FIELDS={title:"标题",no:"发文字号",unit:"发文单位",date:"拟文日期",type:"文件类型",secret:"密级",urgent:"紧急程度",summary:"内容摘要",customText:"文本框"};
   const COLLAB_SYSTEM_FIELDS=["title","urgent","secret","no","date","unit","type","summary"],COLLAB_CUSTOM_FIELDS=["customText"];
   const DEFAULT_COLLAB_LAYOUT=[{field:"date",span:1},{field:"no",span:1},{field:"unit",span:1},{field:"type",span:1},{field:"title",span:2},{field:"summary",span:2}];
@@ -417,7 +423,7 @@
   const uid=p=>p+"-"+Date.now().toString(36)+"-"+Math.random().toString(36).slice(2,6);
   const esc=s=>String(s??"").replace(/[&<>"']/g,m=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[m]));
   const seed={
-    version:9,portal:"bureau",logged:false,schoolId:"s1",userRole:"管理员",
+    version:12,portal:"bureau",logged:false,schoolId:"s1",userRole:"管理员",
     schools:[
       {id:"s1",name:"新乡市第一中学",type:"初级中学",area:"红旗区"},
       {id:"s2",name:"新乡市实验小学",type:"小学",area:"牧野区"},
@@ -453,8 +459,7 @@
       {id:"c6",title:"关于做好义务教育阶段学生资助信息核验工作的通知",no:"新教资助〔2026〕19号",summary:"核验受助学生身份、学籍及家庭经济情况信息。",mode:"直接发文",status:"已分发",targets:["s1","s2","s3","s4","s5"],templateId:"t6",templateSnapshot:{name:"市教育局标准发文稿纸",layout:deep(DEFAULT_COLLAB_LAYOUT)},dispatchTime:"2026-07-22 10:15:00",created:"2026-07-22 10:15:00",author:"王静",bodyFile:{name:"学生资助信息核验通知.docx",size:"224 KB"},attachments:[{name:"资助信息核验清单.xlsx",size:"108 KB"}],receipts:{s1:{signed:true,signer:"侯老师",signTime:"2026-07-22 15:40:00",remindCount:0,lastRemindTime:""},s2:{signed:true,signer:"陈老师",signTime:"2026-07-22 16:10:00",remindCount:0,lastRemindTime:""},s3:{signed:true,signer:"孙老师",signTime:"2026-07-23 09:02:00",remindCount:0,lastRemindTime:""},s4:{signed:true,signer:"刘老师",signTime:"2026-07-23 09:18:00",remindCount:0,lastRemindTime:""},s5:{signed:true,signer:"赵老师",signTime:"2026-07-23 10:25:00",remindCount:0,lastRemindTime:""}},logs:["2026-07-22 10:15 王静直接发文至5所学校"]},
       {id:"c7",title:"关于征集基础教育教学成果典型案例的通知",no:"新教研〔2026〕35号",summary:"面向全市中小学征集课程改革和课堂教学典型案例。",mode:"直接发文",status:"已分发",targets:["s1","s2","s3","s6","s8"],templateId:"t6",templateSnapshot:{name:"市教育局标准发文稿纸",layout:deep(DEFAULT_COLLAB_LAYOUT)},dispatchTime:"2026-08-01 10:00:00",created:"2026-08-01 10:00:00",author:"张伟",bodyFile:{name:"教学成果典型案例征集通知.docx",size:"205 KB"},attachments:[{name:"典型案例申报书.docx",size:"118 KB"}],receipts:{s1:{signed:false,remindCount:1,lastRemindTime:"2026-08-04 09:30:00"},s2:{signed:true,signer:"陈老师",signTime:"2026-08-01 14:22:00",remindCount:0,lastRemindTime:""},s3:{signed:false,remindCount:0,lastRemindTime:""},s6:{signed:true,signer:"郑老师",signTime:"2026-08-01 16:40:00",remindCount:0,lastRemindTime:""},s8:{signed:false,remindCount:0,lastRemindTime:""}},logs:["2026-08-01 10:00 张伟直接发文至5所学校"]},
       {id:"c8",title:"关于调整2026年秋季开学督导检查安排的通知",no:"新教督〔2026〕22号",summary:"调整秋季开学督导检查分组、时间及重点检查事项。",mode:"直接发文",status:"已分发",targets:["s1","s4","s5","s7"],templateId:"t6",templateSnapshot:{name:"市教育局标准发文稿纸",layout:deep(DEFAULT_COLLAB_LAYOUT)},dispatchTime:"2026-08-03 15:20:00",created:"2026-08-03 15:20:00",author:"李明",bodyFile:{name:"秋季开学督导检查安排通知.docx",size:"231 KB"},attachments:[{name:"督导检查分组安排.xlsx",size:"102 KB"}],receipts:{s1:{signed:true,signer:"侯老师",signTime:"2026-08-03 16:18:00",remindCount:0,lastRemindTime:""},s4:{signed:false,remindCount:0,lastRemindTime:""},s5:{signed:true,signer:"赵老师",signTime:"2026-08-04 08:50:00",remindCount:0,lastRemindTime:""},s7:{signed:false,remindCount:0,lastRemindTime:""}},logs:["2026-08-03 15:20 李明直接发文至4所学校","2026-08-03 16:18 新乡市第一中学完成签收"]},
-      {id:"c9",title:"关于做好新学期开学第一周安全教育工作的通知",no:"新教安〔2026〕79号",summary:"请各学校组织开展开学安全教育并按要求落实相关工作。",mode:"直接发文",status:"已分发",targets:["s1","s2","s4"],templateId:"t6",templateSnapshot:{name:"市教育局标准发文稿纸",layout:deep(DEFAULT_COLLAB_LAYOUT)},dispatchTime:"2026-08-10 08:30:00",created:"2026-08-10 08:30:00",author:"李明",issuer:"新乡市教育局安全科",docType:"工作通知",requireSign:true,bodyFile:{name:"开学第一周安全教育通知.docx",size:"216 KB"},attachments:[{name:"安全教育工作清单.xlsx",size:"88 KB"}],receipts:{s1:{signed:false,remindCount:0,lastRemindTime:""},s2:{signed:false,remindCount:0,lastRemindTime:""},s4:{signed:false,remindCount:0,lastRemindTime:""}},logs:["2026-08-10 08:30 李明直接发文至3所学校"]},
-      {id:"c4",title:"暑期值班工作安排",no:"",summary:"",mode:"直接发文",status:"草稿",targets:[],templateId:"t6",dispatchTime:"",created:"2026-07-27 17:20:00",author:"李明",bodyFile:null,attachments:[],receipts:{},logs:["2026-07-27 17:20 保存草稿"]}
+      {id:"c9",title:"关于做好新学期开学第一周安全教育工作的通知",no:"新教安〔2026〕79号",summary:"请各学校组织开展开学安全教育并按要求落实相关工作。",mode:"直接发文",status:"已分发",targets:["s1","s2","s4"],templateId:"t6",templateSnapshot:{name:"市教育局标准发文稿纸",layout:deep(DEFAULT_COLLAB_LAYOUT)},dispatchTime:"2026-08-10 08:30:00",created:"2026-08-10 08:30:00",author:"李明",issuer:"新乡市教育局安全科",docType:"工作通知",requireSign:true,bodyFile:{name:"开学第一周安全教育通知.docx",size:"216 KB"},attachments:[{name:"安全教育工作清单.xlsx",size:"88 KB"}],receipts:{s1:{signed:false,remindCount:0,lastRemindTime:""},s2:{signed:false,remindCount:0,lastRemindTime:""},s4:{signed:false,remindCount:0,lastRemindTime:""}},logs:["2026-08-10 08:30 李明直接发文至3所学校"]}
     ],
     receipts:[],logs:[
       {time:"2026-07-25 10:20:00",user:"李明",action:"分发公文",object:"关于做好2026年秋季开学准备工作的通知"},
@@ -483,18 +488,18 @@
       ]
     }
   };
-  let db=load(),ui={tab:"未办理",draftTab:"稿纸信息",selectedSchools:[],filters:{},incomingFilters:{},page:1,templateDraft:null,templateEditorTab:"基本信息",openMenu:"templates",collabFilesKey:null,collabEditTab:"稿纸信息",collabDetailTab:"稿纸",collabDraft:null,collabBodyFile:null,collabAttachments:[],dashboardViewTracked:false};
+  let db=load(),ui={tab:"未办理",draftTab:"稿纸信息",selectedSchools:[],filters:{},incomingFilters:{},page:1,templateDraft:null,templateEditorTab:"基本信息",openMenu:"templates",collabFilesKey:null,collabEditTab:"稿纸信息",collabDetailTab:"稿纸",collabDraft:null,collabBodyFile:null,collabAttachments:[],dashboardViewTracked:false,dashboardLatestType:"发文",schoolLatestType:"发文"};
   function migrate(d){
-    if(!d)d=deep(seed);const oldVersion=d.version||0;d.version=11;delete d.transfers;d.templates=d.templates||[];
+    if(!d)d=deep(seed);const oldVersion=d.version||0;d.version=12;delete d.transfers;d.templates=d.templates||[];
     d.collab=d.collab||[];
     if(oldVersion<6)seed.collab.filter(x=>x.id!=="c4"&&!d.collab.some(y=>y.id===x.id)).forEach(x=>d.collab.push(deep(x)));
     d.templates=d.templates.filter(t=>t.kind!=="局校"||t.name==="市教育局标准发文稿纸");
     if(!d.templates.some(t=>t.kind==="局校"&&t.name==="市教育局标准发文稿纸"))d.templates.push(deep(seed.templates.find(t=>t.kind==="局校"&&t.name==="市教育局标准发文稿纸")));
     d.templates.filter(t=>t.kind==="局校").forEach(t=>{if(t.status==="禁用")t.status="停用";if(t.description==="局校协同发文默认稿纸")t.description="局校协同发文标准稿纸";if((t.layout||[]).length===8&&t.layout.some(x=>x.field==="secret")&&t.layout.some(x=>x.field==="urgent"))t.layout=deep(DEFAULT_COLLAB_LAYOUT);delete t.isDefault});
     const def=d.templates.find(t=>t.kind==="局校"&&t.name==="市教育局标准发文稿纸");
-    const obsolete=new Set((d.collab||[]).filter(x=>["内部流程中","待分发"].includes(x.status)).map(x=>x.title));
-    d.collab=(d.collab||[]).filter(x=>!["内部流程中","待分发"].includes(x.status)).map(x=>{if(["已转内部办理","已办结","已归档"].includes(x.status))x.status="已分发";x.logs=(x.logs||[]).filter(log=>!String(log).includes("公文已归档"));x.mode="直接发文";x.templateId=def?.id||"";x.bodyFile=x.bodyFile||null;x.attachments=x.attachments||[];if(x.status!=="草稿"){if(!x.templateSnapshot)x.templateSnapshot={name:def?.name||"市教育局标准发文稿纸",layout:deep(def?.layout||DEFAULT_COLLAB_LAYOUT)};else if(oldVersion<10)x.templateSnapshot.name=def?.name||x.templateSnapshot.name}x.dispatchTime=x.dispatchTime||(["已分发","已撤回"].includes(x.status)?x.created:"");x.receipts=x.receipts||{};Object.values(x.receipts).forEach(r=>{r.signer=r.signer||r.by||"";r.signTime=r.signTime||r.time||"";r.remindCount=r.remindCount||0;r.lastRemindTime=r.lastRemindTime||"";delete r.by;delete r.time});return x});
-    d.logs=(d.logs||[]).filter(x=>!obsolete.has(x.object));
+    const obsolete=new Set((d.collab||[]).filter(x=>["内部流程中","待分发","草稿"].includes(x.status)).map(x=>x.title));
+    d.collab=(d.collab||[]).filter(x=>!["内部流程中","待分发","草稿"].includes(x.status)).map(x=>{if(["已转内部办理","已办结","已归档"].includes(x.status))x.status="已分发";x.logs=(x.logs||[]).filter(log=>!String(log).includes("公文已归档")&&!String(log).includes("保存草稿"));x.mode="直接发文";x.templateId=def?.id||"";x.bodyFile=x.bodyFile||null;x.attachments=x.attachments||[];if(!x.templateSnapshot)x.templateSnapshot={name:def?.name||"市教育局标准发文稿纸",layout:deep(def?.layout||DEFAULT_COLLAB_LAYOUT)};else if(oldVersion<10)x.templateSnapshot.name=def?.name||x.templateSnapshot.name;x.dispatchTime=x.dispatchTime||(["已分发","已撤回"].includes(x.status)?x.created:"");x.receipts=x.receipts||{};Object.values(x.receipts).forEach(r=>{r.signer=r.signer||r.by||"";r.signTime=r.signTime||r.time||"";r.remindCount=r.remindCount||0;r.lastRemindTime=r.lastRemindTime||"";delete r.by;delete r.time});return x});
+    d.logs=(d.logs||[]).filter(x=>!obsolete.has(x.object)&&x.action!=="保存草稿");
     d.settings=d.settings||deep(seed.settings);
     if(oldVersion<7||!Array.isArray(d.settings.categories)||d.settings.categories.some(x=>typeof x==="string"))d.settings.categories=deep(seed.settings.categories);
     if(oldVersion<8)seed.settings.categories.filter(x=>x.source==="局校协同发文").forEach(x=>{if(!d.settings.categories.some(y=>y.id===x.id||y.name===x.name&&y.source===x.source))d.settings.categories.push(deep(x))});
@@ -509,8 +514,7 @@
   function go(p){location.hash=p}
   function terminalView(){return new URLSearchParams(location.search).get("view")==="mobile"?"mobile":"pc"}
   function mobilePreviewUrl(){
-    const localHost=location.hostname==="localhost"||location.hostname==="127.0.0.1";
-    const base=location.protocol==="file:"?"http://127.0.0.1:4174/":localHost?`${location.protocol}//${location.hostname}:4174/`:new URL("./mobile/",location.href).href;
+    const mobileEntry=location.protocol==="file:"?"./mobile/index.html":"./mobile/",base=new URL(mobileEntry,location.href).href;
     const url=new URL(base);url.searchParams.set("role",db.portal);return url.href
   }
   function syncPortalFromUrl(){const role=new URLSearchParams(location.search).get("role");if((role==="bureau"||role==="school")&&db.portal!==role){db.portal=role;save()}}
@@ -522,8 +526,10 @@
     document.querySelector("#app").innerHTML=`<div class="mobile-preview-shell"><header class="mobile-preview-head"><div class="mobile-preview-brand">教育公文管理 <small>${roleLabel}·移动端评审</small></div><div class="mobile-preview-actions"><div class="terminal-switch" aria-label="终端切换"><button data-terminal="pc">PC端</button><button data-terminal="mobile" class="active">移动端</button></div><div class="portal-switch" aria-label="组织端切换"><button data-portal="bureau" class="${db.portal==="bureau"?"active":""}">教育局端</button><button data-portal="school" class="${db.portal==="school"?"active":""}">学校端</button></div></div></header><div class="mobile-preview-stage"><iframe class="mobile-preview-frame" title="移动端公文管理原型" aria-label="移动端公文管理原型"></iframe><div class="mobile-preview-status" id="mobile-preview-status"><div class="card"><h2>正在加载移动端</h2><p>正在连接当前移动端原型…</p></div></div></div></div>`;
     const frame=document.querySelector(".mobile-preview-frame"),status=document.querySelector("#mobile-preview-status");
     const fail=()=>{status.classList.remove("hidden");status.innerHTML=`<div class="card"><h2>移动端加载失败</h2><p>请确认移动端原型已启动，然后重新加载。</p><div style="display:flex;justify-content:center;gap:10px"><button class="btn" data-terminal="pc">返回 PC 端</button><button class="btn primary" data-action="mobile-preview-retry">重新加载</button></div></div>`};
+    const frameTimer=setTimeout(fail,8000);frame.addEventListener("load",()=>{clearTimeout(frameTimer);status.classList.add("hidden")},{once:true});
+    if(location.protocol==="file:"){frame.src=src;return}
     const controller=new AbortController(),requestTimer=setTimeout(()=>controller.abort(),6000);
-    fetch(src,{mode:"no-cors",cache:"no-store",signal:controller.signal}).then(()=>{clearTimeout(requestTimer);const frameTimer=setTimeout(fail,8000);frame.addEventListener("load",()=>{clearTimeout(frameTimer);status.classList.add("hidden")},{once:true});frame.src=src}).catch(()=>{clearTimeout(requestTimer);fail()})
+    fetch(src,{mode:"no-cors",cache:"no-store",signal:controller.signal}).then(()=>{clearTimeout(requestTimer);frame.src=src}).catch(()=>{clearTimeout(requestTimer);clearTimeout(frameTimer);fail()})
   }
   function portalName(){return db.portal==="bureau"?"教育局端":"学校端"}
   function currentOrg(){return db.portal==="bureau"?"新乡市教育局":db.schools.find(x=>x.id===db.schoolId)?.name}
@@ -562,8 +568,8 @@
   const menuB=[
     ["首页","/dashboard","⌂"],["内部发文","/draft/发文","▤"],["内部收文","/draft/收文","▣"],["签报拟稿","/draft/签报","▧"],
     ["局校协同发文","/collab/edit","◎"],
-    ["公文管理","/manage/发文","▦"],["发文管理","/manage/发文","",1],["收文管理","/manage/收文","",1],["签报管理","/manage/签报","",1],["局校发文管理","/collab","",1],
-    ["公文库","/library/发文","▥"],["发文库","/library/发文","",1],["收文库","/library/收文","",1],["归档库","/archive","",1],["局校发文库","/library/局校发文","",1],
+    ["公文管理","/manage/发文","▦"],["发文管理","/manage/发文","",1],["收文管理","/manage/收文","",1],["签报管理","/manage/签报","",1],["局校协同发文管理","/collab","",1],
+    ["公文库","/library/发文","▥"],["发文库","/library/发文","",1],["收文库","/library/收文","",1],["归档库","/archive","",1],["局校协同发文库","/library/局校发文","",1],
     ["模板管理","/templates/发文","▦"],["印章管理","/settings/seal","♙"],["套红管理","/settings/redhead","▱"],["文件分类","/settings/category","▥"]
   ];
   const menuS=[
@@ -578,17 +584,17 @@
     const p=decodeURIComponent(route()),kind=decodeURIComponent(p.split("/")[2]||"");
     const base={name:"当前页面",goal:"为教育局用户提供当前业务的规范化操作界面，保证业务数据可查询、操作结果可追溯。",scene:"教育局管理员或公文管理员进入页面完成当前业务处理。",core:"展示当前页面业务数据，并提供与用户权限和数据状态匹配的操作。",flow:"用户进入页面，系统加载权限范围内的数据；用户完成查询或业务操作后，系统刷新页面状态并反馈处理结果。",edge:"数据为空时展示空状态；页面参数无效时展示页面不存在；权限不足时展示无权访问。",data:"页面数据按当前教育局及用户权限范围统计，列表记录以业务主键去重。",dependency:"依赖当前用户权限、业务数据状态及本地持久化数据。",acceptance:"页面内容、操作入口、状态反馈与当前路由对应，异常状态具备明确反馈。"};
     let x={...base};
-    if(p==="/dashboard")x={...x,name:"首页",goal:"集中展示教育局收文、发文、签报和局校协同发文数据，为常用拟稿操作提供统一入口。",scene:"教育局用户登录后查看公文概览、趋势、分类分布和最新公文，并发起常用拟稿任务。",core:"展示四类公文指标、统计图表、最新公文及快捷新建入口。",flow:"进入首页后加载四类公文数据并生成统计结果；点击指标、最新公文或快捷入口进入对应页面。",data:"公文数量按公文 ID 去重；时间趋势按创建时间归集；状态分布按当前状态归集。",acceptance:"四类公文指标与数据源一致，快捷入口和最新公文跳转准确，加载失败时展示重试入口。"};
+    if(p==="/dashboard")x={...x,name:"首页",goal:"集中展示教育局收文、发文、签报和局校协同发文数据，为常用拟稿操作提供统一入口。",scene:"教育局用户登录后查看公文概览、趋势、分类分布和最新公文，并发起常用拟稿任务。",core:"展示四类公文指标、统计图表、最新公文及快捷新建入口。",flow:"进入首页后加载四类公文数据并生成统计结果；点击指标、最新公文或快捷入口进入对应页面。",data:"公文数量按公文 ID 去重；时间趋势按创建时间归集；局校协同发文存在未签收学校时显示已发布，全部接收学校完成签收后显示已完成。",acceptance:"四类公文指标与数据源一致；首页局校协同发文状态与管理页一致；快捷入口和最新公文跳转准确；加载失败时展示重试入口。"};
     else if(p.startsWith("/draft/"))x={...x,name:kind==="收文"?"收文登记":`${kind}拟稿`,goal:`支持教育局用户创建${kind}公文并提交办理。`,scene:`教育局拟稿人员填写${kind}稿纸、上传正文和附件后提交。`,core:`维护${kind}稿纸信息、正文和附件，并执行提交操作。`,flow:"填写必填稿纸字段，上传正文和附件，点击提交；校验通过后生成公文记录并进入办理状态。",edge:"必填字段为空时阻止提交并定位对应标签；上传文件不符合限制时拒绝保存。",data:"以公文 ID 标识唯一记录；标题、文号、类型、拟稿人、状态和创建时间按提交结果保存。",dependency:"依赖公文模板、文件上传能力和办理流程配置。",acceptance:"稿纸、正文、附件可正常切换，校验提示明确，提交后生成唯一公文并进入正确状态。"};
     else if(p.startsWith("/manage/"))x={...x,name:`${kind}管理`,goal:`集中查询和管理教育局${kind}公文。`,scene:`教育局用户按关键字检索${kind}公文，并进入详情查看或继续办理。`,core:`展示${kind}公文列表、筛选条件、状态和详情入口。`,flow:"进入页面加载权限范围内的公文；设置条件后查询；点击记录进入详情。",data:"列表按公文 ID 去重，创建时间和状态取当前记录值，分页基于筛选后的结果集。",acceptance:"筛选、重置、分页和详情跳转准确，列表字段与公文记录一致。"};
     else if(p==="/internal/detail")x={...x,name:"内部公文详情",goal:"集中展示内部公文稿纸、正文、附件及办理日志。",scene:"教育局用户从管理列表或首页进入公文详情，查看内容并执行当前节点操作。",core:"按标签展示稿纸、正文、附件、日志，并提供回退、转交或同意操作。",flow:"进入详情加载公文数据；切换标签查看材料；选择办理操作并提交处理结果。",edge:"公文 ID 无效时展示页面不存在；无可用附件时展示空状态。",data:"详情数据以公文 ID 查询；日志按操作发生顺序展示。",dependency:"依赖公文记录、附件数据和当前办理节点权限。",acceptance:"四类详情内容完整，办理按钮与节点权限一致，操作后反馈成功结果。"};
-    else if(p==="/collab")x={...x,name:"局校发文管理",goal:"统一查询教育局发起的局校公文及其学校签收进度。",scene:"教育局用户按文件标题或发文时间检索局校公文，管理草稿，并进入详情、签收进度或学校回执页面。",core:"展示局校发文列表、接收学校数量、已签收学校数量、当前状态及业务入口；筛选区不展示拟稿人；草稿支持编辑和删除。",flow:"进入列表加载全部局校发文；可按文件标题或发文时间查询；草稿可点击删除并二次确认，弹窗提示“确认要删除么？删除后无法恢复！”；确认后永久删除草稿并刷新列表；已发布公文按状态进入详情或签收相关页面。",edge:"仅草稿展示删除入口；删除后不支持恢复；确认删除时记录不存在或状态已变化为非草稿，则拒绝删除并提示仅草稿支持删除。",data:"列表以协同公文 ID 去重；已签收学校数仅统计接收学校中 signed 为 true 的学校；当前状态为草稿、已发布或已完成；删除不生成操作日志。",acceptance:"筛选区仅展示文件标题和发文时间，不展示拟稿人；列表字段显示当前状态；草稿行展示删除入口，确认弹窗展示不可恢复提示，确认后永久移除；非草稿不展示删除；取消删除不改变数据；删除过程不新增日志记录。"};
-    else if(p==="/collab/edit")x={...x,name:queryParam("id")?"编辑局校协同发文":queryParam("template")?"新增局校协同发文":"选择局校协同模板",goal:"支持教育局用户选择模板后创建或编辑局校协同发文。",scene:"教育局拟稿人员选择启用模板，维护稿纸、正文、附件和接收学校后保存草稿或发文。",core:"选择局校模板，维护公文内容和接收学校，执行保存草稿或直接发文。",flow:"选择模板，填写必填字段，选择至少一所学校，上传正文和附件，保存草稿或确认发文。",edge:"无启用模板时引导进入模板管理；发文必填项缺失时阻止提交；未上传正文时二次确认。",data:"公文以协同公文 ID 标识；模板在发文时保存快照；接收学校按学校 ID 保存。",dependency:"依赖启用的局校协同模板、学校组织数据及文件上传能力。",acceptance:"模板选择、字段校验、学校选择、草稿保存和发文确认均按规则执行。"};
+    else if(p==="/collab")x={...x,name:"局校协同发文管理",goal:"统一查询教育局发起的局校公文及其学校签收进度。",scene:"教育局用户按文件标题、发文时间或状态检索已发局校公文，并进入详情、签收进度或学校回执页面。",core:"展示局校发文列表、接收学校数量、已签收学校数量、当前状态及业务入口；状态仅包括已发布和已完成。",flow:"进入列表默认加载全部状态的局校发文；可按文件标题、发文时间和状态查询；进入详情或签收相关页面。",edge:"历史草稿在升级时清除；已发布及已完成公文均不支持编辑或删除；已撤回记录沿用现有撤回处理。",data:"列表以协同公文 ID 去重；已签收学校数仅统计接收学校中 signed 为 true 的学校；已签收学校数小于接收学校数时为已发布；接收学校数大于 0 且全部完成签收时为已完成。",acceptance:"筛选区展示文件标题、发文时间和状态；状态仅包含全部状态、已发布、已完成，默认全部状态；筛选结果与列表当前状态一致；页面不展示草稿及其编辑、删除操作。"};
+    else if(p==="/collab/edit")x={...x,name:queryParam("template")?"新增局校协同发文":"选择局校协同模板",goal:"支持教育局用户选择模板后直接创建并发布局校协同发文。",scene:"教育局拟稿人员选择启用模板，维护稿纸、正文、附件和接收学校后直接发文。",core:"选择局校模板，维护公文内容和接收学校，执行直接发文。",flow:"选择模板，填写必填字段，选择至少一所学校，上传正文和附件，确认后发文。",edge:"无启用模板时引导进入模板管理；发文必填项缺失时阻止提交；未上传正文时二次确认；取消操作不保存已填写内容。",data:"公文在发文成功后生成唯一 ID；模板在发文时保存快照；接收学校按学校 ID 保存。",dependency:"依赖启用的局校协同模板、学校组织数据及文件上传能力。",acceptance:"模板选择、字段校验、学校选择和发文确认均按规则执行；页面仅展示取消和发文操作。"};
     else if(p==="/collab/detail")x={...x,name:"局校协同发文详情",goal:"只读展示局校协同公文的稿纸、正文和附件。",scene:"教育局用户从协同发文管理列表进入详情，查看公文内容及学校签收相关信息。",core:"提供稿纸、正文、附件标签，并提供返回、签收进度和学校回执入口。",flow:"进入详情默认展示稿纸；切换标签查看内容；点击签收入口进入对应明细页面。",edge:"正文或附件为空时展示对应空状态；公文 ID 无效时展示页面不存在。",data:"详情以协同公文 ID 查询；接收学校和回执按学校 ID 关联。",dependency:"依赖协同公文、模板快照、学校组织及签收数据。",acceptance:"三个标签内容与当前公文一致，页面不展示日志标签，正文直接展示内容，签收入口跳转准确。"};
     else if(p==="/progress")x={...x,name:"签收进度",goal:"展示局校协同公文的学校签收进度并支持催办及统计导出。",scene:"教育局用户查看各接收学校的签收状态，对未签收学校执行单个或批量催办，并导出当前公文的学校签收率报表。",core:"展示签收汇总、学校明细、状态筛选、催办和签收率报表导出操作。",flow:"加载目标学校和回执；点击状态标签筛选；选择未签收学校执行催办；刷新催办次数和时间；按需导出全部接收学校的签收率报表。",edge:"已签收学校或已撤回公文禁止催办；无未签收学校时提示无需催办；无签收记录时签收率按0%导出。",data:"签收率等于已签收学校数除以接收学校数；催办次数累计成功催办记录；报表范围不受页面标签筛选和分页影响。",dependency:"依赖协同公文状态、目标学校、学校回执数据和Excel导出能力。",acceptance:"顶部统计卡仅展示汇总数据，状态标签筛选结果与明细一致，催办范围准确，导出的XLSX统计及学校明细与当前公文一致。"};
     else if(p==="/receipts")x={...x,name:"学校回执",goal:"集中展示当前局校协同公文已生成的学校签收回执。",scene:"教育局用户查看、导出或打开学校签收回执。",core:"展示已签收学校、签收人、签收时间及回执查看入口。",flow:"根据公文 ID 加载已签收回执；查看单条回执或导出全部回执。",edge:"无已签收学校时展示空状态；公文状态不支持查看时展示无权访问。",data:"仅统计 signed 为 true 的学校回执；一所学校对应一条当前公文回执。",dependency:"依赖协同公文、学校组织和签收回执数据。",acceptance:"回执列表仅包含已签收学校，查看和导出结果与列表一致。"};
-    else if(p==="/library/局校发文")x={...x,name:"局校发文库",goal:"集中查询教育局已发布的局校发文，并查看公文内容及签收情况。",scene:"教育局用户查看局校发文的接收学校、已签收学校和当前状态，并进入详情、签收进度或学校回执页面。",core:"列表字段与局校发文管理保持一致，提供查看、签收进度和学校回执操作，不提供编辑。",flow:"进入页面加载已发布局校发文；查看签收数量及当前状态；按需进入公文详情、签收进度或学校回执。",data:"已签收学校及当前状态沿用局校发文管理口径；公文库不展示草稿。",acceptance:"列表八个字段与局校发文管理一致，操作入口跳转准确，页面不提供编辑能力。"};
-    else if(p==="/library/局校发文/detail")x={...x,name:"局校发文库详情",goal:"只读展示局校发文库中当前公文的稿纸、正文和附件。",scene:"教育局用户从局校发文库进入详情，核对历史公文及接收范围。",core:"按稿纸、正文、附件三个标签展示公文内容，不展示日志标签。",flow:"根据公文 ID 加载详情；用户切换三个标签查看公文材料后返回局校发文库。",edge:"公文 ID 无效或状态不属于已分发、已撤回时展示页面不存在。",data:"详情以协同公文 ID 查询，展示发文时保存的模板快照和文件记录。",dependency:"依赖局校协同公文、模板快照和文件数据。",acceptance:"详情内容与所选公文一致，只展示稿纸、正文、附件三个标签，历史模板样式不受当前模板修改影响。"};
+    else if(p==="/library/局校发文")x={...x,name:"局校协同发文库",goal:"集中查询教育局已发布的局校发文，并查看公文内容及签收情况。",scene:"教育局用户查看局校发文的接收学校、已签收学校和当前状态，并进入详情、签收进度或学校回执页面。",core:"列表字段与局校协同发文管理保持一致，提供查看、签收进度和学校回执操作，不提供编辑。",flow:"进入页面加载已发布或已完成的局校发文；查看签收数量及当前状态；按需进入公文详情、签收进度或学校回执。",data:"已签收学校及当前状态沿用局校协同发文管理口径；存在未签收学校时为已发布，全部接收学校签收后为已完成。",acceptance:"列表八个字段与局校协同发文管理一致，状态口径一致，操作入口跳转准确，页面不提供编辑能力。"};
+    else if(p==="/library/局校发文/detail")x={...x,name:"局校协同发文库详情",goal:"只读展示局校协同发文库中当前公文的稿纸、正文和附件。",scene:"教育局用户从局校协同发文库进入详情，核对历史公文及接收范围。",core:"按稿纸、正文、附件三个标签展示公文内容，不展示日志标签。",flow:"根据公文 ID 加载详情；用户切换三个标签查看公文材料后返回局校协同发文库。",edge:"公文 ID 无效或状态不属于已分发、已撤回时展示页面不存在。",data:"详情以协同公文 ID 查询，展示发文时保存的模板快照和文件记录。",dependency:"依赖局校协同公文、模板快照和文件数据。",acceptance:"详情内容与所选公文一致，只展示稿纸、正文、附件三个标签，历史模板样式不受当前模板修改影响。"};
     else if(p.startsWith("/library/")){const libraryKind=kind;x={...x,name:`${libraryKind}库`,goal:`集中查询教育局权限范围内的${libraryKind}历史公文。`,scene:`教育局用户检索${libraryKind}记录并查看详情。`,core:`展示${libraryKind}列表、筛选、导出及详情入口。`,flow:"进入公文库加载记录；设置条件查询；点击查看详情或导出当前业务数据。",data:"公文库记录按公文 ID 去重，时间取发文时间或创建时间。",acceptance:"数据范围、筛选结果、详情跳转和导出字段准确。"};}
     else if(p==="/archive")x={...x,name:"归档库",goal:"统一查询教育局已归档的内部公文。",scene:"教育局用户检索已完成归档的内部公文。",core:"展示内部已归档公文列表、筛选条件和详情入口。",flow:"进入页面加载状态为已归档的内部公文；筛选后进入详情查看历史内容。",data:"仅纳入当前教育局权限范围内状态为已归档的内部公文，按公文 ID 去重。",acceptance:"列表不包含局校协同发文及未归档记录，筛选和详情跳转准确。"};
     else if(p.startsWith("/templates/")){const templateName=kind==="局校"?"局校协同模板":`${kind}模板`;x={...x,name:p.endsWith("/edit")?"局校协同模板编辑":templateName,goal:`维护教育局${templateName}及其启用状态。`,scene:`教育局管理员新增、编辑、启停或删除${templateName}。`,core:p.endsWith("/edit")?"维护模板基本信息和稿纸字段布局并发布。":"展示模板列表，并提供新增、编辑、启停和删除操作。",flow:p.endsWith("/edit")?"填写模板名称和说明，配置稿纸字段及顺序，校验通过后发布。":"查询模板列表；选择新增或编辑；确认启停、删除操作后刷新列表。",edge:"模板名称为空或稿纸字段为空时阻止发布；被业务引用的模板快照不随模板修改而变化。",data:"模板以模板 ID 标识；状态取启用、停用或禁用；已发公文使用模板快照。",dependency:"依赖模板配置、稿纸字段定义和公文引用关系。",acceptance:"模板查询、编辑、状态切换、删除和发布结果准确，已发公文快照不受影响。"};}
@@ -696,12 +702,20 @@
   function trackDashboardEvent(action,details){db.logs.unshift({time:now(),user:db.userRole,action,object:JSON.stringify(details||{})});save()}
   function createdDate(value){const d=new Date(String(value||"").replace(" ","T"));return Number.isNaN(d.getTime())?null:d}
   function monthKey(d){return `${d.getFullYear()}-${String(d.getMonth()+1).padStart(2,"0")}`}
+  function uniqueDashboardRecords(records){const seen=new Set();return records.filter(record=>{const key=`${record.dashboardType}:${record.id}`;if(seen.has(key))return false;seen.add(key);return true})}
+  function bureauDashboardRecords(){const internal=db.internal.filter(d=>d.portal==="bureau").map(d=>({...d,dashboardType:d.kind}));const collab=db.collab.map(d=>({...d,dashboardType:"协同发文"}));return uniqueDashboardRecords(internal.concat(collab))}
+  function dashboardLatestRecords(type,records=bureauDashboardRecords()){return records.filter(d=>d.dashboardType===type).sort((a,b)=>(createdDate(b.created)?.getTime()||0)-(createdDate(a.created)?.getTime()||0)||String(b.id).localeCompare(String(a.id))).slice(0,6)}
+  function dashboardRecordStatus(d){return d.dashboardType==="协同发文"?collabListMeta(d).progress:(d.status||"-")}
   function dashboardChart(records){
     const current=new Date(),months=Array.from({length:6},(_,i)=>new Date(current.getFullYear(),current.getMonth()-5+i,1));
-    const types=[["收文","incoming"],["发文","outgoing"],["签报","report"],["协同发文","collab"]];
+    const types=[["发文","发文","#10b981"],["收文","收文","#2563eb"],["签报","签报","#f59e0b"],["协同发文","局校协同发文","#8b5cf6"]];
     const rows=months.map(m=>({date:m,counts:Object.fromEntries(types.map(([type])=>[type,records.filter(x=>x.dashboardType===type&&createdDate(x.created)&&monthKey(createdDate(x.created))===monthKey(m)).length]))}));
-    const max=Math.max(1,...rows.flatMap(x=>Object.values(x.counts)));
-    return `<div class="chart-legend">${types.map(([type,cls])=>`<span><i class="${cls}" style="background:${cls==="incoming"?"#2563eb":cls==="outgoing"?"#10b981":cls==="report"?"#f59e0b":"#8b5cf6"}"></i>${type}</span>`).join("")}</div><div class="chart dashboard-chart">${rows.map(row=>`<div class="bar-group" title="${monthKey(row.date)}">${types.map(([type,cls])=>`<div class="bar ${cls}" style="height:${row.counts[type]/max*82}%" title="${type}：${row.counts[type]}"><span class="bar-value">${row.counts[type]}</span></div>`).join("")}<span class="bar-label">${String(row.date.getFullYear()).slice(2)}/${String(row.date.getMonth()+1).padStart(2,"0")}</span></div>`).join("")}</div>`
+    const rawMax=Math.max(0,...rows.flatMap(x=>Object.values(x.counts))),max=Math.max(5,Math.ceil(rawMax/5)*5),width=640,height=286,left=44,right=14,top=14,bottom=34,plotWidth=width-left-right,plotHeight=height-top-bottom;
+    const x=i=>left+i*plotWidth/(months.length-1),y=value=>top+plotHeight-value/max*plotHeight;
+    const grid=Array.from({length:6},(_,i)=>{const value=max-i*max/5,py=top+i*plotHeight/5;return `<line class="grid-line" x1="${left}" y1="${py}" x2="${width-right}" y2="${py}"></line><text class="axis-label" x="${left-9}" y="${py+4}" text-anchor="end">${value}</text>`}).join("");
+    const labels=rows.map((row,i)=>`<text class="axis-label" x="${x(i)}" y="${height-10}" text-anchor="middle">${String(row.date.getFullYear()).slice(2)}/${String(row.date.getMonth()+1).padStart(2,"0")}</text>`).join("");
+    const series=types.map(([type,label,color])=>{const points=rows.map((row,i)=>`${x(i)},${y(row.counts[type])}`).join(" ");const nodes=rows.map((row,i)=>`<circle class="series-point" cx="${x(i)}" cy="${y(row.counts[type])}" r="4" fill="#fff" stroke="${color}"><title>${monthKey(row.date)} ${label}：${row.counts[type]}</title></circle>`).join("");return `<polyline class="series-line" points="${points}" stroke="${color}"></polyline>${nodes}`}).join("");
+    return `<div class="chart-legend">${types.map(([,label,color])=>`<span><i style="background:${color};color:${color}"></i>${label}</span>`).join("")}</div><svg class="dashboard-line-chart" viewBox="0 0 ${width} ${height}" role="img" aria-label="近6个月发文、收文、签报和局校协同发文数量折线图">${grid}<line class="axis-line" x1="${left}" y1="${top}" x2="${left}" y2="${height-bottom}"></line><line class="axis-line" x1="${left}" y1="${height-bottom}" x2="${width-right}" y2="${height-bottom}"></line>${labels}${series}</svg>`
   }
   function distributionBars(records,field,labels){
     const counts=Object.fromEntries(labels.map(x=>[x,0]));
@@ -712,16 +726,14 @@
   function bureauDashboard(){
     const quick=dashboardQuickHtml();
     try{
-      const internal=db.internal.filter(d=>d.portal==="bureau").map(d=>({...d,dashboardType:d.kind}));
-      const collab=db.collab.map(d=>({...d,dashboardType:"协同发文"}));
-      const records=internal.concat(collab);
+      const records=bureauDashboardRecords();
       const counts=Object.fromEntries(["收文","发文","签报","协同发文"].map(type=>[type,new Set(records.filter(x=>x.dashboardType===type).map(x=>x.id)).size]));
-      const latest=[...records].sort((a,b)=>(createdDate(b.created)?.getTime()||0)-(createdDate(a.created)?.getTime()||0)||String(b.id).localeCompare(String(a.id))).slice(0,6);
+      const latest=dashboardLatestRecords(ui.dashboardLatestType,records),latestTabs=[["发文","最新发文"],["收文","最新收文"],["签报","最新签报"],["协同发文","最新局校协同发文"]];
       if(!ui.dashboardViewTracked){trackDashboardEvent("bureau_dashboard_view",{user_role:db.userRole,document_counts:counts});ui.dashboardViewTracked=true}
-      return shell(`<div class="grid cols-4">${metric("▣",counts["收文"],"收文数量")}${metric("▤",counts["发文"],"发文数量")}${metric("▧",counts["签报"],"签报数量")}${metric("◎",counts["协同发文"],"协同发文数量")}</div>
+      return shell(`<div class="grid cols-4">${metric("▣",counts["收文"],"收文总数")}${metric("▤",counts["发文"],"发文总数")}${metric("▧",counts["签报"],"签报总数")}${metric("◎",counts["协同发文"],"局校协同发文总数")}</div>
         ${quick}
         <div class="grid cols-2"><div class="card"><div class="card-title"><span>公文数量统计</span><small style="color:#98a2b3">近 6 个月</small></div>${dashboardChart(records)}</div>
-        <div class="card"><div class="card-title">最新公文</div><div class="table-wrap"><table><thead><tr><th>标题</th><th>类型</th><th>状态</th><th>创建时间</th></tr></thead><tbody>${latest.length?latest.map(d=>`<tr><td><button class="latest-title" data-action="dashboard-latest" data-id="${d.id}" data-doc-type="${d.dashboardType}" data-status="${d.status||"-"}">${esc(d.title||"-")}</button></td><td>${d.dashboardType}</td><td><span class="tag ${statusClass(d.status)}">${d.status||"-"}</span></td><td>${d.created||"-"}</td></tr>`).join(""):`<tr><td colspan="4"><div class="empty">暂无公文数据</div></td></tr>`}</tbody></table></div></div></div>
+        <div class="card"><div class="card-title">最新公文</div><div class="dashboard-latest-tabs">${latestTabs.map(([type,label])=>`<button type="button" class="${ui.dashboardLatestType===type?"active":""}" data-action="dashboard-latest-tab" data-doc-type="${type}">${label}</button>`).join("")}</div><div class="table-wrap"><table><thead><tr><th>标题</th><th>拟稿人</th><th>状态</th><th>创建时间</th></tr></thead><tbody>${latest.length?latest.map(d=>{const displayStatus=dashboardRecordStatus(d);return `<tr><td><button class="latest-title" data-action="dashboard-latest" data-id="${d.id}" data-doc-type="${d.dashboardType}" data-status="${esc(displayStatus)}">${esc(d.title||"-")}</button></td><td>${esc(d.author||"-")}</td><td><span class="tag ${statusClass(displayStatus)}">${esc(displayStatus)}</span></td><td>${createdDate(d.created)?esc(d.created):"-"}</td></tr>`}).join(""):`<tr><td colspan="4"><div class="empty">暂无公文数据</div></td></tr>`}</tbody></table></div></div></div>
         <div class="grid cols-2"><div class="card"><div class="card-title">紧急程度统计</div>${distributionBars(records,"urgent",["平件","急件","特急","未设置"])}</div><div class="card"><div class="card-title">公文密级统计</div>${distributionBars(records,"secret",["普通","秘密","机密","绝密","未设置"])}</div></div>`,"首页","四类公文数据概览与快捷入口");
     }catch(error){
       return shell(`${quick}<div class="card dashboard-error"><div><div class="empty-icon">!</div><h3>首页统计加载失败</h3><p style="color:#8a94a6">快捷新建功能仍可正常使用</p><button class="btn primary" data-action="dashboard-retry">重新加载</button></div></div>`,"首页","四类公文数据概览与快捷入口");
@@ -733,12 +745,22 @@
     const counts={发文:docs.filter(d=>d.kind==="发文").length,收文:docs.filter(d=>d.kind==="收文").length,签报:docs.filter(d=>d.kind==="签报").length,教育局来文:schoolDocs.length};
     const quick=[["发文拟稿","/draft/发文","outgoing","▤→"],["收文登记","/draft/收文","incoming","▣←"],["签报拟稿","/draft/签报","report","▧"]];
     const stats=[["发文总数",counts.发文,"outgoing","总→"],["收文总数",counts.收文,"incoming","总←"],["签报总数",counts.签报,"report","总▧"],["教育局来文数",counts.教育局来文,"bureau","局"]];
-    const latest=docs.concat(schoolDocs).sort((a,b)=>String(b.created).localeCompare(String(a.created))).slice(0,6).map(d=>d.title?d:{...d,title:"-"});
+    const records=docs.map(d=>({...d,dashboardType:d.kind,dashboardDate:d.created,displayAuthor:d.author||"-",displayStatus:d.status||"-"})).concat(schoolDocs.map(d=>({...d,dashboardType:"教育局来文",dashboardDate:d.dispatchTime||d.created,displayAuthor:d.issuer||"新乡市教育局",displayStatus:incomingStatus(d)})));
+    const latest=records.filter(d=>d.dashboardType===ui.schoolLatestType).sort((a,b)=>(createdDate(b.dashboardDate)?.getTime()||0)-(createdDate(a.dashboardDate)?.getTime()||0)||String(b.id).localeCompare(String(a.id))).slice(0,6);
+    const typeTabs=["发文","收文","签报","教育局来文"];
     const top=`<div class="school-home-top"><div class="school-home-panel school-home-actions">${quick.map(x=>`<button type="button" class="school-home-action" data-go="${x[1]}"><i class="school-home-icon ${x[2]}">${x[3]}</i><b>${x[0]}</b></button>`).join("")}</div><div class="school-home-panel school-home-stats">${stats.map(x=>`<div class="school-home-stat"><i class="school-home-icon ${x[2]}">${x[3]}</i><div><strong>${x[1]}</strong><span>${x[0]}</span></div></div>`).join("")}</div></div>`;
     return shell(`${top}
-      <div class="grid cols-2"><div class="card"><div class="card-title">公文数量统计 <small style="color:#98a2b3">近6个月</small></div>${chart()}</div>
-      <div class="card"><div class="card-title">最新公文</div><div class="table-wrap"><table><thead><tr><th>标题</th><th>类型</th><th>状态</th><th>创建时间</th></tr></thead><tbody>${latest.map(d=>`<tr><td>${esc(d.title)}</td><td>${d.kind||"局校发文"}</td><td><span class="tag ${statusClass(d.status)}">${d.status}</span></td><td>${d.created}</td></tr>`).join("")}</tbody></table></div></div></div>
+      <div class="grid cols-2"><div class="card"><div class="card-title">公文数量统计 <small style="color:#98a2b3">近6个月</small></div>${schoolDashboardChart(records)}</div>
+      <div class="card"><div class="card-title">最新公文</div><div class="school-dashboard-tabs">${typeTabs.map(type=>`<button type="button" class="${ui.schoolLatestType===type?"active":""}" data-action="school-latest-type" data-doc-type="${type}">${type}</button>`).join("")}</div><div class="table-wrap"><table><thead><tr><th>标题</th><th>${ui.schoolLatestType==="教育局来文"?"来文单位":"拟稿人"}</th><th>状态</th><th>${ui.schoolLatestType==="教育局来文"?"接收时间":"创建时间"}</th></tr></thead><tbody>${latest.length?latest.map(d=>`<tr><td><button class="latest-title" data-action="school-latest" data-id="${d.id}" data-doc-type="${d.dashboardType}">${esc(d.title||"-")}</button></td><td>${esc(d.displayAuthor)}</td><td><span class="tag ${statusClass(d.displayStatus)}">${esc(d.displayStatus)}</span></td><td>${esc(d.dashboardDate||"-")}</td></tr>`).join(""):`<tr><td colspan="4"><div class="empty">暂无${ui.schoolLatestType}数据</div></td></tr>`}</tbody></table></div></div></div>
       <div class="grid cols-2"><div class="card"><div class="card-title">紧急程度统计</div>${bars(["平件","急件","特急"],[5,9,13])}</div><div class="card"><div class="card-title">公文密级统计</div>${bars(["普通","机密","秘密","绝密"],[15,8,5,2])}</div></div>`,"首页","公文数据概览与快捷入口");
+  }
+  function schoolDashboardChart(records){
+    const current=new Date(),months=Array.from({length:6},(_,i)=>new Date(current.getFullYear(),current.getMonth()-5+i,1)),types=[["发文","#10b981"],["收文","#2563eb"],["签报","#f59e0b"],["教育局来文","#8b5cf6"]];
+    const rows=months.map(m=>({date:m,counts:Object.fromEntries(types.map(([type])=>[type,records.filter(d=>d.dashboardType===type&&createdDate(d.dashboardDate)&&monthKey(createdDate(d.dashboardDate))===monthKey(m)).length]))}));
+    const rawMax=Math.max(0,...rows.flatMap(row=>Object.values(row.counts))),max=Math.max(5,Math.ceil(rawMax/5)*5),width=640,height=250,left=44,right=14,top=14,bottom=34,plotWidth=width-left-right,plotHeight=height-top-bottom;
+    const x=i=>left+i*plotWidth/(months.length-1),y=value=>top+plotHeight-value/max*plotHeight,grid=Array.from({length:6},(_,i)=>{const value=max-i*max/5,py=top+i*plotHeight/5;return `<line class="grid-line" x1="${left}" y1="${py}" x2="${width-right}" y2="${py}"></line><text class="axis-label" x="${left-9}" y="${py+4}" text-anchor="end">${value}</text>`}).join(""),labels=months.map((m,i)=>`<text class="axis-label" x="${x(i)}" y="${height-10}" text-anchor="middle">${String(m.getFullYear()).slice(2)}/${String(m.getMonth()+1).padStart(2,"0")}</text>`).join("");
+    const series=types.map(([type,color])=>{const points=rows.map((row,i)=>`${x(i)},${y(row.counts[type])}`).join(" "),nodes=rows.map((row,i)=>`<circle class="series-point" cx="${x(i)}" cy="${y(row.counts[type])}" r="4" fill="#fff" stroke="${color}"><title>${monthKey(row.date)} ${type}：${row.counts[type]}</title></circle>`).join("");return `<polyline class="series-line" points="${points}" stroke="${color}"></polyline>${nodes}`}).join("");
+    return `<div class="chart-legend">${types.map(([type,color])=>`<span><i style="background:${color};color:${color}"></i>${type}</span>`).join("")}</div><svg class="school-line-chart" viewBox="0 0 ${width} ${height}" role="img" aria-label="近6个月发文、收文、签报和教育局来文数量折线图"><line class="axis-line" x1="${left}" y1="${top}" x2="${left}" y2="${height-bottom}"></line>${grid}<line class="axis-line" x1="${left}" y1="${height-bottom}" x2="${width-right}" y2="${height-bottom}"></line>${labels}${series}</svg>`
   }
   function chart(){return `<div class="chart">${["02","03","04","05","06","07"].map((x,i)=>`<div class="bar-group"><div class="bar" style="height:${[24,78,48,38,65,45][i]}%"></div><div class="bar alt" style="height:${[18,55,35,25,42,32][i]}%"></div><span class="bar-label">${x}月</span></div>`).join("")}</div>`}
   function bars(labels,vals){const max=Math.max(...vals);return `<div class="chart">${labels.map((x,i)=>`<div class="bar-group"><div class="bar ${i%2?"alt":""}" style="height:${vals[i]/max*85}%"></div><span class="bar-label">${x}</span></div>`).join("")}</div>`}
@@ -756,13 +778,13 @@
   function filterBar(kind=""){
     return `<div class="card"><div class="toolbar"><div class="field"><label>文件标题</label><input class="input" id="filter-key" placeholder="请输入"></div><div class="field"><label>拟稿人</label><input class="input" placeholder="请输入"></div><div class="field"><label>机密程度</label><select class="select"><option>全部</option><option>普通</option><option>机密</option></select></div><div class="field"><label>紧急程度</label><select class="select"><option>全部</option><option>平件</option><option>急件</option><option>特急</option></select></div><button class="btn primary" data-action="filter">⌕ 查询</button><button class="btn" data-action="clear-filter">↻ 重置</button></div></div>`
   }
-  function collabFilterBar(){
+  function collabFilterBar(includeStatus=false){
     const f=ui.filters;
-    return `<div class="card"><div class="toolbar"><div class="field"><label>文件标题</label><input class="input" id="collab-filter-key" value="${esc(f.collabKey||"")}" placeholder="请输入"></div><div class="field"><label>发文时间</label><input class="input" id="collab-filter-start" type="date" value="${esc(f.collabStart||"")}"><span>至</span><input class="input" id="collab-filter-end" type="date" value="${esc(f.collabEnd||"")}"></div><button class="btn primary" data-action="collab-filter">⌕ 查询</button><button class="btn" data-action="collab-filter-reset">↻ 重置</button></div></div>`
+    return `<div class="card"><div class="toolbar"><div class="field"><label>文件标题</label><input class="input" id="collab-filter-key" value="${esc(f.collabKey||"")}" placeholder="请输入"></div><div class="field"><label>发文时间</label><input class="input" id="collab-filter-start" type="date" value="${esc(f.collabStart||"")}"><span>至</span><input class="input" id="collab-filter-end" type="date" value="${esc(f.collabEnd||"")}"></div>${includeStatus?`<div class="field"><label>状态</label><select class="select" id="collab-filter-status"><option value="">全部状态</option>${["已发布","已完成"].map(status=>`<option value="${status}" ${f.collabStatus===status?"selected":""}>${status}</option>`).join("")}</select></div>`:""}<button class="btn primary" data-action="collab-filter">⌕ 查询</button><button class="btn" data-action="collab-filter-reset">↻ 重置</button></div></div>`
   }
-  function applyCollabFilters(items){
-    const key=(ui.filters.collabKey||"").toLowerCase(),start=ui.filters.collabStart||"",end=ui.filters.collabEnd||"";
-    return items.filter(d=>{const day=(d.dispatchTime||"").slice(0,10);return(!key||String(d.title||"").toLowerCase().includes(key))&&(!start||day&&day>=start)&&(!end||day&&day<=end)}).map(d=>d.title?d:{...d,title:"-"});
+  function applyCollabFilters(items,includeStatus=false){
+    const key=(ui.filters.collabKey||"").toLowerCase(),start=ui.filters.collabStart||"",end=ui.filters.collabEnd||"",status=includeStatus?(ui.filters.collabStatus||""):"";
+    return items.filter(d=>{const day=(d.dispatchTime||"").slice(0,10);return(!key||String(d.title||"").toLowerCase().includes(key))&&(!start||day&&day>=start)&&(!end||day&&day<=end)&&(!status||collabListMeta(d).progress===status)}).map(d=>d.title?d:{...d,title:"-"});
   }
   const PAGE_SIZE=10;
   function pageData(items){const total=items.length,pages=Math.max(1,Math.ceil(total/PAGE_SIZE));ui.page=Math.min(Math.max(1,ui.page||1),pages);const start=(ui.page-1)*PAGE_SIZE;return{items:items.slice(start,start+PAGE_SIZE),start,total,pages}}
@@ -812,7 +834,7 @@
     const receiptHead=school?"<th>签收状态</th>":"";
     const receiptCell=d=>{if(!school)return "";const signed=d.receipts[db.schoolId]?.signed;const text=signed?"已签收":d.status==="已分发"?"待签收":"不可签收";return `<td><span class="tag ${signed?"green":d.status==="已分发"?"orange":"blue"}">${text}</span></td>`};
     const page=pageData(docs);
-    if(!school)return shell(`${collabFilterBar()}<div class="card"><div class="table-wrap"><table><thead><tr><th>序号</th><th>公文标题</th><th>发文字号</th><th>接收学校</th><th>已签收学校</th><th>当前状态</th><th>创建时间</th><th>操作</th></tr></thead><tbody>${docs.length?page.items.map((d,i)=>{const meta=collabListMeta(d),receiptActions=d.requireSign!==false?`<button class="btn link" data-go="/progress?id=${d.id}">签收进度</button><button class="btn link" data-go="/receipts?id=${d.id}">学校回执</button>`:"";return `<tr><td>${page.start+i+1}</td><td>${esc(d.title)}</td><td>${d.no||"-"}</td><td>${meta.targetCount}所</td><td>${collabSignedCountCell(meta)}</td><td><span class="tag ${statusClass(meta.progress)}">${meta.progress}</span></td><td>${d.created}</td><td><button class="btn link" data-go="/library/局校发文/detail?id=${d.id}">查看</button>${receiptActions}</td></tr>`}).join(""):`<tr><td colspan="8"><div class="empty">暂无符合条件的局校发文</div></td></tr>`}</tbody></table></div>${pager(docs.length)}</div>`,"局校发文库","集中查询已发布的局校发文，并查看签收进度和学校回执");
+    if(!school)return shell(`${collabFilterBar()}<div class="card"><div class="table-wrap"><table><thead><tr><th>序号</th><th>公文标题</th><th>发文字号</th><th>接收学校</th><th>已签收学校</th><th>当前状态</th><th>创建时间</th><th>操作</th></tr></thead><tbody>${docs.length?page.items.map((d,i)=>{const meta=collabListMeta(d),receiptActions=d.requireSign!==false?`<button class="btn link" data-go="/progress?id=${d.id}">签收进度</button><button class="btn link" data-go="/receipts?id=${d.id}">学校回执</button>`:"";return `<tr><td>${page.start+i+1}</td><td>${esc(d.title)}</td><td>${d.no||"-"}</td><td>${meta.targetCount}所</td><td>${collabSignedCountCell(meta)}</td><td><span class="tag ${statusClass(meta.progress)}">${meta.progress}</span></td><td>${d.created}</td><td><button class="btn link" data-go="/library/局校发文/detail?id=${d.id}">查看</button>${receiptActions}</td></tr>`}).join(""):`<tr><td colspan="8"><div class="empty">暂无符合条件的局校发文</div></td></tr>`}</tbody></table></div>${pager(docs.length)}</div>`,"局校协同发文库","集中查询已发布的局校发文，并查看签收进度和学校回执");
     const exportButton=hasPermission("collab:export")?'<button class="btn primary" data-action="export-collab-library">⇩ 导出</button>':"";
     return shell(`${school?tabs(["全部公文","待签收","已签收"],ui.tab):""}${collabFilterBar()}${exportButton?`<div style="text-align:right;margin-bottom:10px">${exportButton}</div>`:""}<div class="card"><div class="table-wrap"><table><thead><tr><th>序号</th><th>公文标题</th><th>发文字号</th><th>发文单位</th>${receiptHead}<th>发文时间</th><th>操作</th></tr></thead><tbody>${docs.length?page.items.map((d,i)=>`<tr><td>${page.start+i+1}</td><td>${esc(d.title)}</td><td>${d.no||"-"}</td><td>新乡市教育局</td>${receiptCell(d)}<td>${d.dispatchTime||d.created}</td><td><button class="btn link" data-go="/library/局校发文/detail?id=${d.id}">查看详情</button>${school&&hasPermission("collab:receipt")&&d.receipts[db.schoolId]?.signed?`<button class="btn link" data-action="receipt-view" data-doc="${d.id}" data-school="${db.schoolId}">查看回执</button>`:""}</td></tr>`).join(""):`<tr><td colspan="7"><div class="empty">暂无符合条件的局校发文</div></td></tr>`}</tbody></table></div>${pager(docs.length)}</div>`,"局校发文库",school?"仅展示教育局发给本校的公文；签收操作按当前角色权限控制":"集中查询与查看全部已发布的局校发文");
   }
@@ -860,7 +882,7 @@
       return shell(`<div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:12px"><button class="btn" data-go="/incoming">返回</button>${actions?`<div>${actions}</div>`:""}</div><div class="card collab-edit"><div class="collab-edit-tabs">${detailTabs}</div>${content}</div>`,"教育局来文详情","查看公文稿纸、正文、附件及学校签收状态");
     }
     const bureauReceiptActions=d.requireSign!==false?`<button class="btn" data-go="/progress?id=${d.id}">签收进度</button><button class="btn" data-go="/receipts?id=${d.id}">学校回执</button>`:"";
-    return shell(`<div class="collab-detail-toolbar"><button class="btn" data-go="/library/局校发文">← 返回</button><div>${bureauReceiptActions}</div></div>${renderBureauCollabDetail(d)}`,"局校发文详情","查看公文稿纸、正文、附件及签收情况");
+    return shell(`<div class="collab-detail-toolbar"><button class="btn" data-go="/library/局校发文">← 返回</button><div>${bureauReceiptActions}</div></div>${renderBureauCollabDetail(d)}`,"局校协同发文库详情","查看公文稿纸、正文、附件及签收情况");
   }
   function templates(kind){
     const collab=kind==="局校",key=ui.filters.templateKey||"",state=ui.filters.templateStatus||"全部";let arr=db.templates.filter(t=>t.kind===kind&&(!key||t.name.includes(key))&&(state==="全部"||t.status===state));
@@ -900,12 +922,12 @@
   }
   function collabListMeta(d){
     const targetIds=d.targets||[],signedIds=targetIds.filter(id=>d.receipts?.[id]?.signed),signedNames=signedIds.map(id=>db.schools.find(s=>s.id===id)?.name).filter(Boolean);
-    return{targetCount:targetIds.length,signedCount:signedIds.length,signedTip:signedNames.length?`已签收：${signedNames.join("、")}`:"暂无学校签收",progress:d.status==="草稿"?"草稿":targetIds.length>0&&signedIds.length===targetIds.length?"已完成":"已发布"};
+    return{targetCount:targetIds.length,signedCount:signedIds.length,signedTip:signedNames.length?`已签收：${signedNames.join("、")}`:"暂无学校签收",progress:targetIds.length>0&&signedIds.length===targetIds.length?"已完成":"已发布"};
   }
   function collabSignedCountCell(meta){return `<span class="signed-school-count" title="${esc(meta.signedTip)}" aria-label="${esc(meta.signedTip)}">${meta.signedCount}</span>`}
   function collabList(){
-    const docs=applyCollabFilters(db.collab),page=pageData(docs);
-    return shell(`${collabFilterBar()}<div class="card"><div class="table-wrap"><table><thead><tr><th>序号</th><th>公文标题</th><th>发文字号</th><th>接收学校</th><th>已签收学校</th><th>当前状态</th><th>创建时间</th><th>操作</th></tr></thead><tbody>${docs.length?page.items.map((d,i)=>{const meta=collabListMeta(d);return `<tr><td>${page.start+i+1}</td><td>${esc(d.title)}</td><td>${d.no||"-"}</td><td>${meta.targetCount}所</td><td>${collabSignedCountCell(meta)}</td><td><span class="tag ${statusClass(meta.progress)}">${meta.progress}</span></td><td>${d.created}</td><td><button class="btn link" data-go="/collab/detail?id=${d.id}">查看</button>${d.status==="草稿"?`<button class="btn link" data-go="/collab/edit?id=${d.id}">编辑</button><button class="btn link danger" data-action="delete-collab-draft" data-id="${d.id}">删除</button>`:""}${["已分发","已撤回"].includes(d.status)&&d.requireSign!==false?`<button class="btn link" data-go="/progress?id=${d.id}">签收进度</button><button class="btn link" data-go="/receipts?id=${d.id}">学校回执</button>`:""}</td></tr>`}).join(""):`<tr><td colspan="8"><div class="empty">暂无符合条件的局校发文</div></td></tr>`}</tbody></table></div>${pager(docs.length)}</div>`,"局校发文","选择学校发布公文，并查看签收进度和学校回执");
+    const docs=applyCollabFilters(db.collab,true),page=pageData(docs);
+    return shell(`${collabFilterBar(true)}<div class="card"><div class="table-wrap"><table><thead><tr><th>序号</th><th>公文标题</th><th>发文字号</th><th>接收学校</th><th>已签收学校</th><th>当前状态</th><th>创建时间</th><th>操作</th></tr></thead><tbody>${docs.length?page.items.map((d,i)=>{const meta=collabListMeta(d);return `<tr><td>${page.start+i+1}</td><td>${esc(d.title)}</td><td>${d.no||"-"}</td><td>${meta.targetCount}所</td><td>${collabSignedCountCell(meta)}</td><td><span class="tag ${statusClass(meta.progress)}">${meta.progress}</span></td><td>${d.created}</td><td><button class="btn link" data-go="/collab/detail?id=${d.id}">查看</button>${["已分发","已撤回"].includes(d.status)&&d.requireSign!==false?`<button class="btn link" data-go="/progress?id=${d.id}">签收进度</button><button class="btn link" data-go="/receipts?id=${d.id}">学校回执</button>`:""}</td></tr>`}).join(""):`<tr><td colspan="8"><div class="empty">暂无符合条件的局校发文</div></td></tr>`}</tbody></table></div>${pager(docs.length)}</div>`,"局校协同发文管理","选择学校发布公文，并查看签收进度和学校回执");
   }
   function queryParam(k){return new URLSearchParams(location.hash.split("?")[1]||"").get(k)}
   function captureCollabDraft(){
@@ -930,15 +952,15 @@
   }
   function collabEdit(){
     const id=queryParam("id"),templateId=queryParam("template"),enabled=db.templates.filter(t=>t.kind==="局校"&&t.status==="启用");
-    if(id&&!db.collab.some(x=>x.id===id))return notFound();
+    if(id)return notFound();
     if(!id&&!templateId){
       const cards=enabled.map(t=>`<button type="button" class="collab-template-card" data-go="/collab/edit?template=${encodeURIComponent(t.id)}"><i class="collab-template-icon">▤</i><span><b>${esc(t.name)}</b><span>${esc(t.description||"局校协同发文标准模板")}</span></span></button>`).join("");
       return shell(`<div class="card collab-template-panel"><div class="card-title">请选择局校协同模板</div>${cards?`<div class="collab-template-grid">${cards}</div>`:`<div class="empty"><div class="empty-icon">□</div>暂无已启用的局校协同模板<br><button class="btn primary" style="margin-top:16px" data-go="/templates/局校">前往模板管理</button></div>`}</div>`,"局校协同发文");
     }
-    const d=db.collab.find(x=>x.id===id)||{id:"",title:"",no:"",summary:"",type:"工作通知",issuer:"新乡市教育局办公室",date:now().split(" ")[0],secret:"普通",urgent:"平件",customText:"",targets:[],bodyFile:null,attachments:[]};
-    const picked=id?(enabled.find(t=>t.id===d.templateId)||enabled[0]):enabled.find(t=>t.id===templateId);
+    const d={id:"",title:"",no:"",summary:"",type:"工作通知",issuer:"新乡市教育局办公室",date:now().split(" ")[0],secret:"普通",urgent:"平件",customText:"",targets:[],bodyFile:null,attachments:[]};
+    const picked=enabled.find(t=>t.id===templateId);
     if(!picked)return shell(`<div class="card"><div class="empty"><div class="empty-icon">□</div>暂无已启用的局校协同模板<br><button class="btn primary" style="margin-top:16px" data-go="/templates/局校">前往模板管理</button></div></div>`,"局校协同发文");
-    const selected=picked.id,filesKey=id||`new:${selected}`;
+    const selected=picked.id,filesKey=`new:${selected}`;
     const layout=picked.layout||DEFAULT_COLLAB_LAYOUT,hasField=field=>layout.some(x=>x.field===field);
     if(ui.collabFilesKey!==filesKey){ui.collabFilesKey=filesKey;ui.collabEditTab="稿纸信息";ui.collabDraft={id:d.id,title:hasField("title")?(d.title||""):"",no:hasField("no")?(d.no||""):"",summary:hasField("summary")?(d.summary||""):"",type:hasField("type")?(d.type||"工作通知"):"",issuer:hasField("unit")?(d.issuer||"新乡市教育局办公室"):"",date:hasField("date")?(d.date||now().split(" ")[0]):"",secret:hasField("secret")?(d.secret||"普通"):"",urgent:hasField("urgent")?(d.urgent||"平件"):"",customText:hasField("customText")?(d.customText||""):"",templateId:picked.id};ui.selectedSchools=[...d.targets];ui.collabBodyFile=d.bodyFile?deep(d.bodyFile):null;ui.collabAttachments=deep(d.attachments||[])}
     const draft=ui.collabDraft,tabsHtml=["稿纸信息","正文","附件"].map(x=>`<button type="button" class="${ui.collabEditTab===x?"active":""}" data-collab-tab="${x}">${x}</button>`).join("");
@@ -947,13 +969,13 @@
     const rows=ui.collabAttachments.map((a,i)=>`<tr><td>${i+1}</td><td>${esc(a.name)}</td><td>${a.size}</td><td>${a.created||"刚刚"}</td><td><button type="button" class="btn link" data-action="download">下载</button><button type="button" class="btn link danger" data-action="remove-collab-attachment" data-index="${i}">删除</button></td></tr>`).join("");
     const attachments=`<div class="collab-edit-panel"><div class="collab-attachment-head"><span>支持 DOCX、DOC、XLSX、XLS、PPTX、PPT、PDF、JPG、PNG、ZIP、RAR、TXT、WPS、OFD、ET 格式文件，最多10个，单个不超过30MB。</span><button type="button" class="btn" data-action="upload-collab-attachment">新增附件</button></div><div class="table-wrap collab-attachment-table"><table><thead><tr><th style="width:64px">序号</th><th>附件名称</th><th>大小</th><th>创建时间</th><th style="width:150px">操作</th></tr></thead><tbody>${rows||`<tr><td colspan="5"><div class="empty"><div><div class="empty-icon">□</div>暂无数据</div></div></td></tr>`}</tbody></table></div></div>`;
     const content=ui.collabEditTab==="稿纸信息"?paper:ui.collabEditTab==="正文"?body:attachments;
-    return shell(`${!enabled.length?'<div class="card" style="border-color:#ffd7d9;background:#fff8f8"><b style="color:#dc3d43">暂无可用的局校协同模板</b><p>可以保存草稿，发文前请先在模板管理中启用模板。</p></div>':""}<form id="collab-form" class="card collab-edit"><input type="hidden" id="collab-id" value="${d.id}"><div class="collab-edit-tabs">${tabsHtml}</div>${content}<div class="collab-edit-actions"><button type="button" class="btn" data-go="/collab/edit">取消</button> <button type="button" class="btn" data-action="save-collab">保存草稿</button> <button type="button" class="btn primary" data-action="submit-collab">发文</button></div></form>`,"局校协同发文");
+    return shell(`<form id="collab-form" class="card collab-edit"><input type="hidden" id="collab-id" value=""><div class="collab-edit-tabs">${tabsHtml}</div>${content}<div class="collab-edit-actions"><button type="button" class="btn" data-go="/collab/edit">取消</button> <button type="button" class="btn primary" data-action="submit-collab">发文</button></div></form>`,"局校协同发文");
   }
   function collabDetail(){
     const id=queryParam("id"),d=db.collab.find(x=>x.id===id);if(!d)return notFound();
     const canViewReceipts=["已分发","已撤回"].includes(d.status);
-    const actions=canViewReceipts?`<button class="btn" data-go="/progress?id=${d.id}">签收进度</button><button class="btn" data-go="/receipts?id=${d.id}">学校回执</button>`:d.status==="草稿"?`<button class="btn primary" data-go="/collab/edit?id=${d.id}">编辑</button>`:`<span class="tag ${statusClass(d.status)}">${d.status}</span>`;
-    return shell(`<div class="collab-detail-toolbar"><button class="btn" data-go="/collab">← 返回</button><div>${actions}</div></div>${renderBureauCollabDetail(d)}`,"局校发文详情","查看公文稿纸、正文与附件");
+    const actions=canViewReceipts?`<button class="btn" data-go="/progress?id=${d.id}">签收进度</button><button class="btn" data-go="/receipts?id=${d.id}">学校回执</button>`:`<span class="tag ${statusClass(d.status)}">${d.status}</span>`;
+    return shell(`<div class="collab-detail-toolbar"><button class="btn" data-go="/collab">← 返回</button><div>${actions}</div></div>${renderBureauCollabDetail(d)}`,"局校协同发文详情","查看公文稿纸、正文与附件");
   }
   function progress(){
     const id=queryParam("id"),d=db.collab.find(x=>x.id===id);
@@ -1022,27 +1044,26 @@
       }
     };
   }
-  function saveCollab(submit=false){
-    captureCollabDraft();const draft=ui.collabDraft||{},id=draft.id||"",title=(draft.title||"").trim(),no=(draft.no||"").trim(),summary=(draft.summary||"").trim(),type=(draft.type||"").trim(),issuer=(draft.issuer||"").trim(),date=draft.date||"",secret=draft.secret||"",urgent=draft.urgent||"",customText=(draft.customText||"").trim(),requireSign=true,templateId=draft.templateId||"",template=db.templates.find(t=>t.id===templateId&&t.kind==="局校"&&t.status==="启用");
+  function saveCollab(){
+    captureCollabDraft();const draft=ui.collabDraft||{},title=(draft.title||"").trim(),no=(draft.no||"").trim(),summary=(draft.summary||"").trim(),type=(draft.type||"").trim(),issuer=(draft.issuer||"").trim(),date=draft.date||"",secret=draft.secret||"",urgent=draft.urgent||"",customText=(draft.customText||"").trim(),requireSign=true,templateId=draft.templateId||"",template=db.templates.find(t=>t.id===templateId&&t.kind==="局校"&&t.status==="启用");
     if(!template){ui.collabEditTab="稿纸信息";render();toast("当前没有可用的局校协同模板","error");return}
     const layout=template.layout||DEFAULT_COLLAB_LAYOUT,missing=[];
     if(layout.some(x=>x.field==="title")&&!title)missing.push("标题");
     if(layout.some(x=>x.field==="no")&&!no)missing.push("发文字号");
     if(layout.some(x=>x.field==="type")&&!type)missing.push("文件类型");
     if(missing.length){ui.collabEditTab="稿纸信息";render();toast(`请填写${missing.join("、")}`,"error");return}
-    if(submit&&!ui.selectedSchools.length){ui.collabEditTab="稿纸信息";render();toast("请选择至少一所接收学校","error");return}
+    if(!ui.selectedSchools.length){ui.collabEditTab="稿纸信息";render();toast("请选择至少一所接收学校","error");return}
     const apply=()=>{
-      let d=db.collab.find(x=>x.id===id);
-      if(!d){d={id:uid("c"),created:now(),author:"李明",bodyFile:null,attachments:[],receipts:{},logs:[]};db.collab.unshift(d)}
+      const d={id:uid("c"),created:now(),author:"李明",bodyFile:null,attachments:[],receipts:{},logs:[]};db.collab.unshift(d);
       Object.assign(d,{title,no,summary,type,docType:type,issuer,date,secret,urgent,customText,requireSign,mode:"直接发文",templateId,targets:[...ui.selectedSchools],bodyFile:ui.collabBodyFile?deep(ui.collabBodyFile):null,attachments:deep(ui.collabAttachments)});delete d.signDeadline;
-      if(submit){d.templateSnapshot={name:template.name,layout:deep(template.layout)};d.status="已分发";d.dispatchTime=now();d.logs.push(`${now()} 李明直接发文至${d.targets.length}所学校，要求学校签收`);d.receipts={};d.targets.forEach(s=>d.receipts[s]={signed:false,signer:"",signTime:"",signOpinion:"",remindCount:0,lastRemindTime:""})}else{d.status="草稿";d.logs.push(`${now()} 保存草稿`)}
-      db.logs.unshift({time:now(),user:"李明",action:submit?"直接发文":"保存草稿",object:title||"-"});save();ui.selectedSchools=[];ui.collabFilesKey=null;toast(submit?"公文已成功发至所选学校":"草稿已保存");go("/collab");
+      d.templateSnapshot={name:template.name,layout:deep(template.layout)};d.status="已分发";d.dispatchTime=now();d.logs.push(`${now()} 李明直接发文至${d.targets.length}所学校，要求学校签收`);d.targets.forEach(s=>d.receipts[s]={signed:false,signer:"",signTime:"",signOpinion:"",remindCount:0,lastRemindTime:""});
+      db.logs.unshift({time:now(),user:"李明",action:"直接发文",object:title||"-"});save();ui.selectedSchools=[];ui.collabFilesKey=null;toast("公文已成功发至所选学校");go("/collab");
     };
-    if(submit&&!ui.collabBodyFile){
+    if(!ui.collabBodyFile){
       confirmBox("操作提醒",`<span style="display:inline-grid;place-items:center;width:24px;height:24px;margin-right:9px;border:2px solid #ff3b30;border-radius:50%;color:#ff3b30;font-size:16px;line-height:1">!</span>当前公文没有上传正文，确认要提交吗?`,apply);
-    }else if(submit){
+    }else{
       confirmBox("确认发文",`确定使用“${esc(template.name)}”将《${esc(title||"-")}》直接发至 ${ui.selectedSchools.length} 所学校吗？`,apply);
-    }else apply();
+    }
   }
   function receiptModal(docId,schoolId){
     const d=db.collab.find(x=>x.id===docId);
@@ -1077,7 +1098,10 @@
     else if(a==="show-page-prd")showPagePrdV2()
     else if(a==="show-modal-prd")showModalPrdV2(t.dataset.modalTitle||"业务操作",t.dataset.prdKey||"")
     else if(a==="dashboard-quick"){trackDashboardEvent("bureau_dashboard_quick_create_click",{document_type:t.dataset.docType,target_route:t.dataset.route});go(t.dataset.route)}
+    else if(a==="dashboard-latest-tab"){const type=t.dataset.docType;if(type===ui.dashboardLatestType)return;ui.dashboardLatestType=type;trackDashboardEvent("bureau_dashboard_latest_tab_click",{document_type:type,result_count:dashboardLatestRecords(type).length});render()}
     else if(a==="dashboard-latest"){const type=t.dataset.docType;trackDashboardEvent("bureau_dashboard_latest_click",{document_id:t.dataset.id,document_type:type,document_status:t.dataset.status});go(type==="协同发文"?`/collab/detail?id=${t.dataset.id}`:`/internal/detail?id=${t.dataset.id}`)}
+    else if(a==="school-latest-type"){const type=t.dataset.docType;if(type===ui.schoolLatestType)return;ui.schoolLatestType=type;trackDashboardEvent("school_dashboard_latest_type_click",{document_type:type});render()}
+    else if(a==="school-latest"){const type=t.dataset.docType;trackDashboardEvent("school_dashboard_latest_click",{document_id:t.dataset.id,document_type:type});go(type==="教育局来文"?`/incoming/detail?id=${t.dataset.id}`:`/internal/detail?id=${t.dataset.id}`)}
     else if(a==="dashboard-retry"){trackDashboardEvent("bureau_dashboard_retry",{failed_module:"dashboard_aggregation",result:"retry"});render()}
     else if(a==="login"){db.logged=true;save();go("/dashboard")}
     else if(a==="reset")confirmBox("恢复初始演示数据","此操作将清除当前浏览器中保存的所有演示操作，是否继续？",()=>{db=migrate(deep(seed));db.logged=true;save();go("/dashboard");render();toast("演示数据已恢复")});
@@ -1087,8 +1111,8 @@
     else if(a==="internal-detail")go("/internal/detail?id="+t.dataset.id)
     else if(a==="filter"){ui.page=1;ui.filters.key=document.querySelector("#filter-key")?.value||"";render();toast("查询条件已生效")}
     else if(a==="clear-filter"){ui.page=1;ui.filters={};render()}
-    else if(a==="collab-filter"){const start=document.querySelector("#collab-filter-start")?.value||"",end=document.querySelector("#collab-filter-end")?.value||"";if(start&&end&&start>end){toast("发文开始时间不能晚于结束时间","error");return}ui.page=1;ui.filters.collabKey=document.querySelector("#collab-filter-key")?.value.trim()||"";ui.filters.collabStart=start;ui.filters.collabEnd=end;render();toast("局校发文查询条件已生效")}
-    else if(a==="collab-filter-reset"){ui.page=1;delete ui.filters.collabKey;delete ui.filters.collabStart;delete ui.filters.collabEnd;render()}
+    else if(a==="collab-filter"){const start=document.querySelector("#collab-filter-start")?.value||"",end=document.querySelector("#collab-filter-end")?.value||"";if(start&&end&&start>end){toast("发文开始时间不能晚于结束时间","error");return}ui.page=1;ui.filters.collabKey=document.querySelector("#collab-filter-key")?.value.trim()||"";ui.filters.collabStart=start;ui.filters.collabEnd=end;ui.filters.collabStatus=document.querySelector("#collab-filter-status")?.value||"";render();toast("局校发文查询条件已生效")}
+    else if(a==="collab-filter-reset"){ui.page=1;delete ui.filters.collabKey;delete ui.filters.collabStart;delete ui.filters.collabEnd;delete ui.filters.collabStatus;render()}
     else if(a==="incoming-filter"){const start=document.querySelector("#incoming-start")?.value||"",end=document.querySelector("#incoming-end")?.value||"";if(start&&end&&start>end){toast("发布时间开始日期不能晚于结束日期","error");return}ui.page=1;ui.incomingFilters={title:document.querySelector("#incoming-title")?.value.trim()||"",status:document.querySelector("#incoming-status")?.value||"",start,end};render();toast("来文查询条件已生效")}
     else if(a==="incoming-reset"){ui.page=1;ui.incomingFilters={};render()}
     else if(a==="category-filter"){ui.page=1;ui.filters.categoryKey=document.querySelector("#category-key")?.value.trim()||"";render()}
@@ -1100,7 +1124,7 @@
       if(db.portal==="school"&&!hasPermission("collab:export")){toast("当前用户无导出权限","error");return}
       const docs=collabLibraryDocs();
       if(db.portal==="school")exportCSV([["公文标题","发文字号","发文单位","签收状态","发文时间"],...docs.map(x=>[x.title,x.no||"-","新乡市教育局",x.receipts[db.schoolId]?.signed?"已签收":x.status==="已分发"?"待签收":"不可签收",x.dispatchTime||x.created])],"局校发文库.csv");
-      else exportCSV([["公文标题","发文字号","发文单位","接收学校数","公文状态","发文时间"],...docs.map(x=>[x.title,x.no||"-","新乡市教育局",x.targets.length,x.status,x.dispatchTime||x.created])],"局校发文库.csv");
+      else exportCSV([["公文标题","发文字号","发文单位","接收学校数","公文状态","发文时间"],...docs.map(x=>[x.title,x.no||"-","新乡市教育局",x.targets.length,x.status,x.dispatchTime||x.created])],"局校协同发文库.csv");
     }
     else if(a==="upload-collab-body"){captureCollabDraft();ui.collabBodyFile={name:"公文正文.docx",size:"285 KB"};render();toast("正文上传成功（本地模拟）")}
     else if(a==="remove-collab-body"){ui.collabBodyFile=null;render();toast("正文已删除")}
@@ -1125,13 +1149,7 @@
     else if(a==="category-toggle"){const x=db.settings.categories.find(x=>x.id===t.dataset.id);if(!x)return;const next=x.status==="启用"?"禁用":"启用";confirmBox(`${next}分类`,`确定${next}“${esc(x.name)}”吗？`,()=>{x.status=next;save();render();toast(`分类已${next}`)})}
     else if(a==="category-delete"){const x=db.settings.categories.find(x=>x.id===t.dataset.id);if(!x)return;confirmBox("删除分类",`确定删除“${esc(x.name)}”吗？`,()=>{db.settings.categories=db.settings.categories.filter(item=>item.id!==x.id);save();render();toast("分类已删除")})}
     else if(a==="school-picker")schoolPicker()
-    else if(a==="save-collab")saveCollab(false)
-    else if(a==="submit-collab")saveCollab(true)
-    else if(a==="delete-collab-draft"){
-      const d=db.collab.find(x=>x.id===t.dataset.id);
-      if(!d||d.status!=="草稿"){toast("仅草稿支持删除","error");render();return}
-      confirmBox("删除草稿",COLLAB_DRAFT_DELETE_PROMPT,()=>{const current=db.collab.find(x=>x.id===t.dataset.id);if(!current||current.status!=="草稿"){render();toast("仅草稿支持删除","error");return}db.collab=db.collab.filter(x=>x.id!==current.id);save();render();toast("删除成功")})
-    }
+    else if(a==="submit-collab")saveCollab()
     else if(a==="withdraw")confirmBox("撤回公文","撤回后学校将不能继续签收，确定撤回吗？",()=>{const d=db.collab.find(x=>x.id===t.dataset.id);d.status="已撤回";d.logs.push(`${now()} 公文已撤回`);save();render();toast("公文已撤回")})
     else if(a==="remind-one"){const d=db.collab.find(x=>x.id===t.dataset.doc),s=db.schools.find(x=>x.id===t.dataset.school);if(!d||d.status!=="已分发"||d.receipts[t.dataset.school]?.signed){toast("该学校当前不可催办","error");return}confirmBox("催办确认",`确定催办 ${s.name} 尽快签收当前公文吗？`,()=>{recordReminders(d,[s.id]);render();toast("催办已发送")})}
     else if(a==="batch-remind"){const d=db.collab.find(x=>x.id===t.dataset.id),ids=[...document.querySelectorAll(".progress-check:checked")].map(x=>x.value);if(!ids.length){toast("请先勾选未签收学校","error");return}confirmBox("批量催办",`确定催办已选的 ${ids.length} 所学校吗？`,()=>{const n=recordReminders(d,ids);render();toast(`已向${n}所学校发送催办`)})}
@@ -1169,7 +1187,7 @@
     if(e.target.id==="incoming-sign-opinion"){const chars=Array.from(e.target.value);if(chars.length>200)e.target.value=chars.slice(0,200).join("");const n=document.querySelector("#incoming-sign-opinion-count");if(n)n.textContent=`${Array.from(e.target.value).length} / 200`}
     if(ui.collabDraft&&e.target.id?.startsWith("collab-"))captureCollabDraft()
   });
-  window.addEventListener("hashchange",()=>{const p=route(),dp=decodeURIComponent(p);ui.page=1;ui.drafting=false;ui.draftTab="稿纸信息";if(p!=="/dashboard")ui.dashboardViewTracked=false;ui.tab=dp.startsWith("/library/局校发文")?(queryParam("tab")||"全部公文"):p==="/progress"?"全部学校":"未办理";ui.openMenu=p.startsWith("/templates/")?"templates":p.startsWith("/manage/")||p.startsWith("/incoming")||p==="/collab"?"manage":p.startsWith("/library/")||p==="/archive"?"library":"";if(p==="/collab/detail"||dp==="/library/局校发文/detail"||p==="/incoming/detail")ui.collabDetailTab="稿纸";if(p==="/collab/edit"){ui.selectedSchools=[];ui.collabFilesKey=null;ui.collabDraft=null;ui.collabEditTab="稿纸信息"}if(decodeURIComponent(p)!=="/templates/局校/edit")ui.templateDraft=null;render()});
+  window.addEventListener("hashchange",()=>{const p=route(),dp=decodeURIComponent(p);ui.page=1;ui.drafting=false;ui.draftTab="稿纸信息";if(p!=="/dashboard"){ui.dashboardViewTracked=false;ui.dashboardLatestType="发文"}ui.tab=dp.startsWith("/library/局校发文")?(queryParam("tab")||"全部公文"):p==="/progress"?"全部学校":"未办理";ui.openMenu=p.startsWith("/templates/")?"templates":p.startsWith("/manage/")||p.startsWith("/incoming")||p==="/collab"?"manage":p.startsWith("/library/")||p==="/archive"?"library":"";if(p==="/collab/detail"||dp==="/library/局校发文/detail"||p==="/incoming/detail")ui.collabDetailTab="稿纸";if(p==="/collab/edit"){ui.selectedSchools=[];ui.collabFilesKey=null;ui.collabDraft=null;ui.collabEditTab="稿纸信息"}if(decodeURIComponent(p)!=="/templates/局校/edit")ui.templateDraft=null;render()});
   window.addEventListener("popstate",()=>{syncPortalFromUrl();render()});
   window.GWPrototype={
     queryDocuments:filters=>db.internal.concat(db.collab).filter(d=>Object.entries(filters||{}).every(([k,v])=>!v||d[k]===v)),
