@@ -1,4 +1,4 @@
-import { useEffect, useMemo, useRef, useState } from "react";
+import { useEffect, useMemo, useRef, useState, type ReactNode } from "react";
 import {
   BackpackIcon,
   BarChartIcon,
@@ -38,6 +38,56 @@ type Role = "bureau" | "school";
 type Section = "home" | "manage";
 type ManageTab = "发文管理" | "收文管理" | "签报管理" | "局校协同发文管理" | "教育局来文";
 type ReminderRecord = { count: number; lastTime: string };
+type TodoType = "new-incoming" | "sign-reminder";
+type TodoStatus = "待办" | "已办" | "逾期";
+
+type DocumentTodo = {
+  id: string;
+  docId: string;
+  type: TodoType;
+  status: TodoStatus;
+  createdAt: string;
+  latestReminderAt?: string;
+  reminderCount?: number;
+};
+
+type MessagePrdTab = "页面规则" | "字段字典" | "状态流程" | "后端规则";
+
+type TodoFieldRule = {
+  name: string;
+  position: string;
+  apiField: string;
+  source: string;
+  generation: string;
+  emptyRule: string;
+  clickAction: string;
+};
+
+type TodoStateRule = {
+  from: string;
+  event: string;
+  to: string;
+  prerequisite: string;
+  conflictRule: string;
+};
+
+type TodoBackendRule = {
+  name: string;
+  producer: string;
+  fields: string;
+  uniqueKey: string;
+  result: string;
+  failureRule: string;
+};
+
+type MessagePrdSpec = {
+  audience: string;
+  scope: string;
+  pageRules: Array<{ control: string; dataRule: string; action: string; failureRule: string }>;
+  fieldRules: TodoFieldRule[];
+  stateRules: TodoStateRule[];
+  backendRules: TodoBackendRule[];
+};
 
 type CollabDoc = {
   id: string;
@@ -111,7 +161,92 @@ const initialDocs: CollabDoc[] = [
     body: "拟于8月25日召开全市中小学数字教育工作推进会，请相关负责人参会。",
     attachment: "参会回执.docx",
   },
+  {
+    id: "jx-004",
+    title: "关于开展秋季学期校园食品安全检查的通知",
+    no: "新教体卫艺〔2026〕16号",
+    type: "工作通知",
+    author: "周老师",
+    secret: "普通",
+    urgent: "急件",
+    status: "已发布",
+    created: "2026-08-20 08:30",
+    dispatchTime: "2026-08-20 09:00",
+    issuer: "新乡市教育局",
+    targetCount: 21,
+    signedCount: 5,
+    body: "各学校：请于秋季学期开学前完成校园食品安全自查，重点核查食堂环境、原料采购、从业人员健康管理及食品留样制度落实情况。",
+    attachment: "校园食品安全检查要点.pdf",
+  },
 ];
+
+const initialMessages: DocumentTodo[] = [
+  {
+    id: "todo-jx-004-school-001-user-001",
+    docId: "jx-004",
+    type: "new-incoming",
+    status: "待办",
+    createdAt: "2026-08-20 09:00",
+  },
+  {
+    id: "todo-jx-001-school-001-user-001",
+    docId: "jx-001",
+    type: "sign-reminder",
+    status: "待办",
+    createdAt: "2026-08-15 10:00",
+    latestReminderAt: "2026-08-20 08:45",
+    reminderCount: 2,
+  },
+];
+
+const messagePrdSpec: MessagePrdSpec | null = {
+  audience: "产品经理、交互设计师、前端研发、后端研发、测试及具备签收权限的学校业务评审人员。",
+  scope: "仅说明学校端独立消息通知页及其教育局来文签收消息；PRD 入口只存在于评审原型，不进入正式产品。",
+  pageRules: [
+    { control: "返回", dataRule: "不读取或修改业务数据。", action: "关闭消息通知页并返回学校端首页，保留本次原型会话中的签收结果。", failureRule: "返回动画期间禁止重复触发。" },
+    { control: "PRD", dataRule: "读取当前原型内置的 MessagePrdSpec 结构化规则。", action: "压入“消息通知 · PRD 规则”全屏说明层。", failureRule: "规则缺失时展示“当前页面规则未配置”，不得出现空白页。" },
+    { control: "新来文消息卡片／查看详情", dataRule: "展示 notification_type=new_incoming 的消息及公文发布快照；内部 todo_status 不在页面展示。", action: "携带 document_id、school_id 直接进入独立教育局来文详情。", failureRule: "无权限、非接收学校或公文不存在时阻止进入并展示明确提示。" },
+    { control: "催办消息卡片／查看详情", dataRule: "展示 notification_type=sign_reminder 的消息及最近有效催办聚合结果。", action: "进入独立公文详情；打开详情不改变内部处理状态，返回固定回消息通知页。", failureRule: "公文已签收时保留历史消息；已撤回时提示撤回。" },
+    { control: "确认签收", dataRule: "提交 document_id、school_id、signer_id 和签收意见，由公文服务生成学校级回执。", action: "签收成功后将内部 todo_status 更新为已办，消息仍保留在时间流中。", failureRule: "重复签收返回既有回执；权限不足或公文撤回时不得生成新回执。" },
+    { control: "空状态", dataRule: "当前用户可见消息查询结果为 0 时展示。", action: "只展示说明，不提供业务操作。", failureRule: "接口失败不得伪装为空状态，必须展示加载失败反馈。" },
+  ],
+  fieldRules: [
+    { name: "卡片时间", position: "卡片上方居中", apiField: "updated_at", source: "待办服务", generation: "新来文取待办创建时间；催办取 latest_reminder_at；列表按该值倒序。", emptyRule: "服务端必填；缺失时显示“时间异常”并记录数据告警。", clickAction: "不可单独点击，随卡片整体进入详情。" },
+    { name: "模块名称", position: "卡片头部", apiField: "notification_type", source: "待办服务", generation: "new_incoming 映射“公文签收”；sign_reminder 映射“签收催办”。", emptyRule: "未知枚举显示“公文消息”，同时上报枚举异常。", clickAction: "不可单独点击。" },
+    { name: "图标", position: "卡片头部左侧", apiField: "notification_type", source: "移动端映射", generation: "new_incoming 使用绿色文件图标；sign_reminder 使用橙色提醒图标。", emptyRule: "未知枚举使用通用公文图标。", clickAction: "不可单独点击。" },
+    { name: "内部处理状态", position: "隐藏兼容字段，消息页不展示", apiField: "todo_status", source: "待办服务", generation: "签收回执优先判定已办；未签收且超过截止时间为逾期；其余为待办。", emptyRule: "缺失时按异常待办处理并触发刷新，不影响消息时间流展示。", clickAction: "不提供页面筛选；仅用于详情签收能力和后端处理。" },
+    { name: "主标题", position: "卡片正文首行", apiField: "notification_type", source: "移动端模板映射", generation: "new_incoming 映射“您有一份新的教育局来文待签收”；sign_reminder 映射“教育局提醒您尽快签收公文”。", emptyRule: "未知枚举显示“您有一条公文签收消息”。", clickAction: "随卡片整体进入独立详情。" },
+    { name: "查看详情", position: "卡片底部右侧", apiField: "document_id、school_id", source: "公文服务／接收学校快照", generation: "所有可访问消息固定展示绿色文字和右箭头。", emptyRule: "任一跳转键缺失时隐藏入口并提示关联公文不存在。", clickAction: "压入 message-detail FlowScreen，返回固定回消息通知页。" },
+    { name: "公文标题", position: "两类卡片正文", apiField: "document_title", source: "公文发布快照", generation: "公文正式发布时固化标题快照，待办只读展示。", emptyRule: "发布前服务端必填；异常缺失显示“未命名公文”并禁止静默丢弃待办。", clickAction: "随卡片进入 document_id 对应详情。" },
+    { name: "发文单位", position: "新来文卡片正文", apiField: "issuer_name", source: "公文发布快照／组织服务", generation: "发布时按 issuer_id 固化单位名称，历史名称不随组织改名回写。", emptyRule: "显示“发文单位未提供”，详情接口继续按 issuer_id 查询。", clickAction: "不可单独点击。" },
+    { name: "发布时间", position: "新来文卡片正文", apiField: "published_at", source: "公文服务", generation: "取公文正式发布成功的服务端时间，按 Asia/Shanghai 格式化。", emptyRule: "无发布时间的草稿不得生成待办。", clickAction: "不可单独点击。" },
+    { name: "最近催办时间", position: "催办卡片正文", apiField: "latest_reminder_at", source: "催办服务／待办聚合", generation: "取同一 document_id、school_id 最近一次有效催办成功时间。", emptyRule: "催办类型下必填；缺失时回退待办 updated_at 并记录聚合异常。", clickAction: "不可单独点击。" },
+    { name: "累计催办次数", position: "催办卡片正文", apiField: "reminder_count", source: "待办服务", generation: "同一公文、学校的有效催办事件累计；重复 event_id、无效催办和签收后催办不计数。", emptyRule: "按 0 处理但催办类型不得展示 0 次，需触发数据校正。", clickAction: "不可单独点击。" },
+    { name: "待办ID", position: "隐藏业务字段", apiField: "todo_id", source: "待办服务", generation: "创建待办时生成不可变唯一 ID。", emptyRule: "缺失时该记录视为非法，不进入列表。", clickAction: "用于曝光、点击、处理结果埋点，不拼入用户可见 URL。" },
+    { name: "公文ID", position: "隐藏跳转字段", apiField: "document_id", source: "公文服务", generation: "随发布、催办和签收事件透传，不允许前端自行生成。", emptyRule: "缺失时禁止点击并展示“关联公文不存在”。", clickAction: "作为教育局来文详情的主查询键。" },
+    { name: "学校ID", position: "隐藏权限字段", apiField: "school_id", source: "接收学校快照", generation: "发布时从接收学校 ID 快照写入，学校改名不影响关联。", emptyRule: "缺失时不得创建待办。", clickAction: "与 document_id 共同执行详情和签收权限校验。" },
+    { name: "用户ID", position: "隐藏收件人字段", apiField: "user_id", source: "统一用户与权限服务", generation: "发布或催办时按当前有效签收权限用户计算。", emptyRule: "缺失时不得创建用户待办并进入告警队列。", clickAction: "用于用户级待办查询与鉴权，不在界面展示。" },
+    { name: "通知类型", position: "隐藏模板字段", apiField: "notification_type", source: "待办服务", generation: "首次发布为 new_incoming；发生有效催办后更新为 sign_reminder。", emptyRule: "使用通用消息模板兜底并上报异常。", clickAction: "决定卡片模板、图标、文案和埋点属性。" },
+  ],
+  stateRules: [
+    { from: "未生成", event: "collab_document_published", to: "待办", prerequisite: "公文正式发布、学校在接收快照中、用户有效且具备查看与签收权限。", conflictRule: "相同业务唯一键已存在时幂等返回。" },
+    { from: "待办／逾期", event: "collab_sign_reminded", to: "原状态", prerequisite: "公文未撤回且学校尚未签收。", conflictRule: "更新为催办模板并累计次数；重复 event_id 不累计。" },
+    { from: "待办", event: "签收截止时间到达", to: "逾期", prerequisite: "本校不存在有效签收回执且公文未撤回。", conflictRule: "没有截止时间时不产生逾期状态。" },
+    { from: "待办／逾期", event: "collab_school_signed", to: "已办", prerequisite: "公文服务已生成本校唯一有效签收回执。", conflictRule: "同校全部用户待办批量关闭；已办优先级最高。" },
+    { from: "待办／逾期", event: "collab_document_withdrawn", to: "关闭", prerequisite: "教育局成功撤回公文。", conflictRule: "历史记录保留关闭原因，点击时提示公文已撤回。" },
+    { from: "任意可见状态", event: "权限或所属学校失效", to: "隐藏", prerequisite: "账号停用、调离学校或失去查看／签收权限。", conflictRule: "仅改变可见性，不删除审计记录。" },
+  ],
+  backendRules: [
+    { name: "公文发布事件", producer: "公文服务", fields: "event_id、document_id、bureau_id、school_ids、published_at", uniqueKey: "event_id；待办唯一键为 document_id+school_id+user_id", result: "按学校和签收权限用户创建 new_incoming 待办。", failureRule: "写入重试队列，不回滚公文发布。" },
+    { name: "签收催办事件", producer: "催办服务", fields: "event_id、document_id、school_id、operator_id、reminded_at", uniqueKey: "event_id", result: "更新已有待办模板、latest_reminder_at 和 reminder_count；新增有权限但无待办的用户记录。", failureRule: "已签收学校拒绝更新；重复事件幂等返回。" },
+    { name: "学校签收事件", producer: "公文服务", fields: "event_id、document_id、school_id、signer_id、signed_at", uniqueKey: "event_id；签收幂等键为 document_id+school_id", result: "将该校全部待办或逾期记录更新为已办。", failureRule: "关闭失败进入重试；不得回滚签收回执。" },
+    { name: "公文撤回事件", producer: "公文服务", fields: "event_id、document_id、withdrawn_at", uniqueKey: "event_id", result: "关闭全部未完成待办并记录 withdrawn。", failureRule: "迟到事件不得覆盖已办状态，仅补充撤回审计。" },
+    { name: "收件人计算", producer: "统一用户、组织与权限服务", fields: "school_id、user_id、account_status、permission_codes", uniqueKey: "school_id+user_id", result: "仅保留账号有效、所属学校匹配、同时具备查看和签收权限的用户。", failureRule: "查询失败不创建不完整待办，记录学校级告警并重试。" },
+    { name: "【假设】消息列表查询契约", producer: "待办服务", fields: "biz_type、page、page_size；返回兼容待办字段及公文快照，不传 todo_status 筛选", uniqueKey: "todo_id", result: "按 updated_at 倒序返回当前用户全部可见公文签收消息。", failureRule: "接口地址由后端联调文档确定；失败时前端保留原消息列表。" },
+    { name: "【假设】详情查询契约", producer: "公文服务", fields: "document_id、school_id", uniqueKey: "document_id+school_id", result: "鉴权通过后返回教育局来文稿纸、正文、附件和本校签收状态。", failureRule: "无权限、非接收学校、撤回或不存在时返回明确业务错误码。" },
+    { name: "埋点与审计", producer: "移动端／待办服务", fields: "todo_id、notification_type、document_id、school_id、todo_status、reminder_count、result、error_code", uniqueKey: "trace_id+event_name", result: "记录列表曝光、卡片点击、详情结果、创建、催办、关闭和重试。", failureRule: "埋点失败不得阻断业务，规则层不得采集真实生产数据或正文。" },
+  ],
+};
 
 const internalCards = [
   { title: "关于开展师德师风专题学习的通知", no: "F260815006", type: "内部通知", author: "张老师", status: "传阅中", time: "2026-08-15 09:32" },
@@ -128,16 +263,16 @@ const schools = [
   ["新乡市铁路高级中学", false, "-", "-"],
 ] as const;
 
-function Header({ title, onBack, onRole }: { title: string; onBack?: () => void; onRole?: () => void }) {
+function Header({ title, onBack, onRole, rightAction }: { title: string; onBack?: () => void; onRole?: () => void; rightAction?: ReactNode }) {
   return (
     <div className="app-header">
       <button className="icon-button" onClick={onBack} aria-label={onBack ? "返回" : "占位"} disabled={!onBack}>
         {onBack ? <ChevronLeftIcon /> : null}
       </button>
       <strong>{title}</strong>
-      <button className="icon-button" onClick={onRole} aria-label={onRole ? "切换评审角色" : "占位"} disabled={!onRole}>
+      {rightAction ?? <button className="icon-button" onClick={onRole} aria-label={onRole ? "切换评审角色" : "占位"} disabled={!onRole}>
         {onRole ? <PersonIcon /> : null}
-      </button>
+      </button>}
     </div>
   );
 }
@@ -210,7 +345,7 @@ function UrgencyChart() {
   return <canvas ref={ref} aria-label="公文紧急程度占比图" />;
 }
 
-function HomePage({ role, docs, signedIds, onCreate }: { role: Role; docs: CollabDoc[]; signedIds: Set<string>; onCreate: () => void }) {
+function HomePage({ role, docs, signedIds, onCreate, onOpenMessages }: { role: Role; docs: CollabDoc[]; signedIds: Set<string>; onCreate: () => void; onOpenMessages: () => void }) {
   const incomingCount = docs.filter((d) => d.status !== "草稿").length;
   const bureauQuick = [
     ["发文拟稿", <FileTextIcon />, "orange"],
@@ -225,7 +360,8 @@ function HomePage({ role, docs, signedIds, onCreate }: { role: Role; docs: Colla
   const quick = role === "bureau" ? bureauQuick : schoolQuick;
   return (
     <div className="home-page page-pad">
-      <section className={`white-card quick-grid ${quick.length === 3 ? "cols-3" : ""}`}>
+      <section className={`white-card quick-grid ${quick.length === 3 ? "cols-3" : ""} ${role === "school" ? "has-example-entry" : ""}`}>
+        {role === "school" ? <button className="message-example-entry" onClick={onOpenMessages}><BellIcon />消息通知实例</button> : null}
         {quick.map(([label, icon, tone]) => (
           <button key={label} className="quick-item" onClick={label === "局校协同发文" ? onCreate : undefined}>
             <span className={`round-icon ${tone}`}>{icon}{label === "局校协同发文" ? <PlusIcon className="mini-plus" /> : null}</span>
@@ -335,9 +471,10 @@ function RootHub({ flow }: { flow: FlowControls }) {
   const handlePublished = (doc: CollabDoc) => { setDocs((current) => [doc, ...current]); setSection("manage"); };
   const changeSection = (nextSection: Section) => { (document.activeElement as HTMLElement | null)?.blur(); keyboard.hide(); setSection(nextSection); };
   const openTemplate = () => { (document.activeElement as HTMLElement | null)?.blur(); keyboard.hide(); flow.push(makeTemplateScreen(handlePublished)); };
+  const openMessages = () => { (document.activeElement as HTMLElement | null)?.blur(); keyboard.hide(); flow.push(makeMessageScreen(docs, signedIds, handleSign, handleRemind)); };
   return <div className="root-shell">
     {section === "home" ? <Header title="公文管理" onRole={() => setRoleOpen(true)} /> : <div className="manage-role-bar"><button onClick={() => setRoleOpen(true)}><PersonIcon />{role === "bureau" ? "教育局端" : "学校端"}<CaretRightIcon /></button></div>}
-    <div className="root-content">{section === "home" ? <MobileScroll className="root-scroll"><HomePage role={role} docs={docs} signedIds={signedIds} onCreate={openTemplate} /></MobileScroll> : <ManagePage role={role} docs={docs} signedIds={signedIds} flow={flow} onSign={handleSign} onRemind={handleRemind} />}</div>
+    <div className="root-content">{section === "home" ? <MobileScroll className="root-scroll"><HomePage role={role} docs={docs} signedIds={signedIds} onCreate={openTemplate} onOpenMessages={openMessages} /></MobileScroll> : <ManagePage role={role} docs={docs} signedIds={signedIds} flow={flow} onSign={handleSign} onRemind={handleRemind} />}</div>
     <BottomNav section={section} onChange={changeSection} />
     <BottomSheet open={roleOpen} onOpenChange={setRoleOpen} title="切换评审角色" description="该入口仅用于原型评审，不属于正式产品功能">
       <div className="role-options"><button className={role === "bureau" ? "selected" : ""} onClick={() => { setRole("bureau"); setSection("home"); setRoleOpen(false); }}><span className="role-icon bureau"><BackpackIcon /></span><span><strong>教育局端</strong><small>创建局校发文、查看签收进度与回执</small></span><CheckCircledIcon /></button><button className={role === "school" ? "selected" : ""} onClick={() => { setRole("school"); setSection("home"); setRoleOpen(false); }}><span className="role-icon school"><HomeIcon /></span><span><strong>学校端</strong><small>查看教育局来文并完成签收</small></span><CheckCircledIcon /></button></div>
@@ -346,6 +483,93 @@ function RootHub({ flow }: { flow: FlowControls }) {
 }
 
 function ScreenHeader({ flow, title }: { flow: FlowControls; title: string }) { const keyboard = useKeyboard(); return <Header title={title} onBack={() => { (document.activeElement as HTMLElement | null)?.blur(); keyboard.hide(); flow.pop(); }} />; }
+
+function MessageHeader({ flow }: { flow: FlowControls }) {
+  const keyboard = useKeyboard();
+  const close = () => { (document.activeElement as HTMLElement | null)?.blur(); keyboard.hide(); flow.pop(); };
+  const openPrd = () => { (document.activeElement as HTMLElement | null)?.blur(); keyboard.hide(); flow.push(makeMessagePrdScreen()); };
+  return <Header title="消息通知" onBack={close} rightAction={<button className="message-prd-entry" onClick={openPrd} aria-label="查看消息通知 PRD 规则">PRD</button>} />;
+}
+
+function makeMessageScreen(docs: CollabDoc[], signedIds: Set<string>, onSign: (id: string) => void, onRemind: (docId: string, schoolNames: string[], time: string) => void): FlowScreen {
+  return { id: "message-notifications", headerHeight: 50, header: (flow) => <MessageHeader flow={flow} />, render: (flow) => <MessageNotificationsPage flow={flow} docs={docs} signedIds={signedIds} onSign={onSign} onRemind={onRemind} /> };
+}
+
+function MessageNotificationsPage({ flow, docs, signedIds, onSign, onRemind }: { flow: FlowControls; docs: CollabDoc[]; signedIds: Set<string>; onSign: (id: string) => void; onRemind: (docId: string, schoolNames: string[], time: string) => void }) {
+  const [localSignedIds, setLocalSignedIds] = useState<Set<string>>(() => new Set(signedIds));
+  const visibleMessages = [...initialMessages].sort((left, right) => {
+    const leftUpdatedAt = left.latestReminderAt ?? left.createdAt;
+    const rightUpdatedAt = right.latestReminderAt ?? right.createdAt;
+    return rightUpdatedAt.localeCompare(leftUpdatedAt) || right.id.localeCompare(left.id);
+  });
+  const openMessage = (message: DocumentTodo) => {
+    const doc = docs.find((item) => item.id === message.docId);
+    if (!doc) return;
+    const handleMessageSign = (id: string) => {
+      onSign(id);
+      setLocalSignedIds((current) => new Set([...current, id]));
+    };
+    flow.push(makeMessageDetailScreen(doc, localSignedIds.has(doc.id), handleMessageSign, onRemind));
+  };
+  return <div className="message-page">
+    <MobileScroll className="message-scroll"><main className="message-content">
+      {visibleMessages.length ? visibleMessages.map((message) => {
+        const doc = docs.find((item) => item.id === message.docId);
+        if (!doc) return null;
+        const isReminder = message.type === "sign-reminder";
+        return <section className="message-group" key={message.id}>
+          <time>{isReminder ? message.latestReminderAt : message.createdAt}</time>
+          <button className={`message-card ${isReminder ? "reminder" : "incoming"}`} onClick={() => openMessage(message)}>
+            <span className="message-card-heading"><i>{isReminder ? <BellIcon /> : <FileTextIcon />}</i><strong>{isReminder ? "签收催办" : "公文签收"}</strong></span>
+            <span className="message-divider" />
+            <span className="message-card-title">{isReminder ? "教育局提醒您尽快签收公文" : "您有一份新的教育局来文待签收"}</span>
+            <span className="message-meta"><b>公文标题：</b>{doc.title}</span>
+            {isReminder ? <><span className="message-meta"><b>最近催办时间：</b>{message.latestReminderAt}</span><span className="message-meta"><b>累计催办次数：</b>{message.reminderCount} 次</span></> : <><span className="message-meta"><b>发文单位：</b>{doc.issuer}</span><span className="message-meta"><b>发布时间：</b>{doc.dispatchTime}</span></>}
+            <span className="message-card-action">查看详情<CaretRightIcon /></span>
+          </button>
+        </section>;
+      }) : <div className="message-empty"><BellIcon /><strong>暂无消息通知</strong><span>教育局发布或催办公文后，消息将在此展示</span></div>}
+    </main></MobileScroll>
+  </div>;
+}
+
+function makeMessagePrdScreen(): FlowScreen {
+  return { id: "message-prd-rules", headerHeight: 50, header: (flow) => <ScreenHeader flow={flow} title="消息通知 · PRD 规则" />, render: () => <MessagePrdRulesPage /> };
+}
+
+function PrdDefinitionList({ rows }: { rows: Array<[string, string]> }) {
+  return <dl className="prd-definition-list">{rows.map(([label, value]) => <div key={label}><dt>{label}</dt><dd>{value}</dd></div>)}</dl>;
+}
+
+function MessagePrdRulesPage() {
+  const [activeTab, setActiveTab] = useState<MessagePrdTab>("页面规则");
+  const spec = messagePrdSpec;
+  if (!spec) return <div className="prd-config-empty"><FileIcon /><strong>当前页面规则未配置</strong><span>请联系产品经理补充消息通知页规则。</span></div>;
+  return <div className="todo-prd-page">
+    <div className="todo-prd-tabs" role="tablist" aria-label="消息通知 PRD 规则分类">
+      {(["页面规则", "字段字典", "状态流程", "后端规则"] as const).map((tab) => <button key={tab} className={activeTab === tab ? "active" : ""} onClick={() => setActiveTab(tab)} onPointerUp={() => setActiveTab(tab)}>{tab}</button>)}
+    </div>
+    <MobileScroll className="todo-prd-scroll"><main className="todo-prd-content">
+      {activeTab === "页面规则" ? <>
+        <section className="prd-overview-card"><span>适用对象</span><p>{spec.audience}</p><span>适用范围</span><p>{spec.scope}</p></section>
+        <h2 className="prd-section-title">控件与操作规则</h2>
+        <div className="prd-rule-list">{spec.pageRules.map((rule) => <article className="prd-rule-card" key={rule.control}><header><strong>{rule.control}</strong><em>P0</em></header><PrdDefinitionList rows={[["数据规则", rule.dataRule], ["点击处理", rule.action], ["异常处理", rule.failureRule]]} /></article>)}</div>
+      </> : null}
+      {activeTab === "字段字典" ? <>
+        <section className="prd-note-card"><strong>字段追溯规则</strong><p>每个页面字段必须能够追溯到接口字段、来源服务和生成规则；示例仅展示字段定义，不读取生产用户或学校数据。</p></section>
+        <div className="prd-rule-list">{spec.fieldRules.map((rule) => <article className="prd-rule-card field" key={`${rule.apiField}-${rule.name}`}><header><strong>{rule.name}</strong><code>{rule.apiField}</code></header><PrdDefinitionList rows={[["页面位置", rule.position], ["来源服务", rule.source], ["生成／转换", rule.generation], ["空值／异常", rule.emptyRule], ["点击关联", rule.clickAction]]} /></article>)}</div>
+      </> : null}
+      {activeTab === "状态流程" ? <>
+        <section className="prd-note-card"><strong>状态优先级</strong><p>有效签收回执对应“已办”，优先级高于逾期、催办和迟到事件；已办状态不得回退。</p></section>
+        <div className="prd-state-list">{spec.stateRules.map((rule, index) => <article className="prd-state-card" key={`${rule.event}-${index}`}><div className="prd-state-route"><span>{rule.from}</span><i>→</i><strong>{rule.to}</strong></div><h3>{rule.event}</h3><PrdDefinitionList rows={[["前置条件", rule.prerequisite], ["冲突处理", rule.conflictRule]]} /></article>)}</div>
+      </> : null}
+      {activeTab === "后端规则" ? <>
+        <section className="prd-note-card assumption"><strong>【假设】接口契约</strong><p>列表与详情的接口字段为研发联调建议，不固定 URL；最终地址和错误码以服务端接口文档为准。</p></section>
+        <div className="prd-rule-list">{spec.backendRules.map((rule) => <article className="prd-rule-card backend" key={rule.name}><header><strong>{rule.name}</strong><span>{rule.producer}</span></header><PrdDefinitionList rows={[["关键字段", rule.fields], ["幂等／唯一键", rule.uniqueKey], ["处理结果", rule.result], ["失败处理", rule.failureRule]]} /></article>)}</div>
+      </> : null}
+    </main></MobileScroll>
+  </div>;
+}
 
 function makeTemplateScreen(onPublished: (doc: CollabDoc) => void): FlowScreen {
   return { id: "template", headerHeight: 50, header: (flow) => <ScreenHeader flow={flow} title="选择协同模板" />, render: (flow) => <TemplateScreen flow={flow} onPublished={onPublished} /> };
@@ -377,6 +601,10 @@ function ComposeScreen({ flow, templateName, onPublished }: { flow: FlowControls
     {step === 3 ? <section className="form-card"><div className="section-title"><h3>接收学校</h3><span>已选 {selectedSchools.length} 所</span></div>{schools.slice(0, 5).map(([name]) => { const selected = selectedSchools.includes(name); return <button className={`school-select ${selected ? "selected" : ""}`} key={name} onClick={() => setSelectedSchools((current) => selected ? current.filter((x) => x !== name) : [...current, name])}><span><HomeIcon />{name}</span><CheckCircledIcon /></button>; })}</section> : null}
     {toast ? <div className="inline-error">{toast}</div> : null}
   </main></MobileScroll><div className="compose-actions" style={{ bottom: bottomInset }}><button onClick={() => { setToast("草稿已保存"); }}>保存草稿</button>{step > 0 ? <button onClick={() => changeStep(step - 1)}>上一步</button> : null}<button className="primary" onClick={step === 3 ? publish : next}>{step === 3 ? "发布" : "下一步"}</button></div></div>;
+}
+
+function makeMessageDetailScreen(doc: CollabDoc, signed: boolean, onSign: (id: string) => void, onRemind: (docId: string, schoolNames: string[], time: string) => void): FlowScreen {
+  return { id: `message-detail-${doc.id}`, headerHeight: 50, header: (flow) => <ScreenHeader flow={flow} title="教育局来文详情" />, render: (flow) => <DetailPage flow={flow} doc={doc} role="school" initialSigned={signed} onSign={onSign} onRemind={onRemind} /> };
 }
 
 function makeDetailScreen(doc: CollabDoc, role: Role, signed: boolean, onSign: (id: string) => void, onRemind: (docId: string, schoolNames: string[], time: string) => void): FlowScreen {

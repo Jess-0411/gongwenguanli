@@ -44,3 +44,71 @@
 .remind-sheet-actions{width:100%;display:grid;grid-template-columns:1fr 1fr;gap:9px;margin-top:8px}
 .remind-sheet-actions button{min-height:42px}
 .remind-sheet-actions .secondary-button{border-color:#dfe2e5;color:#666b72}
+
+/* School-side prototype entry and independent document message stream. */
+.quick-grid.has-example-entry{position:relative;padding-top:54px}
+.message-example-entry{position:absolute;top:12px;right:14px;height:30px;border:1px solid #8fdcbe;border-radius:16px;background:#f2fbf7;color:var(--green-dark);padding:0 11px;display:flex;align-items:center;gap:5px;font-size:11px;font-weight:700}
+.message-example-entry svg{width:14px;height:14px}
+.message-page{position:absolute;inset:0;background:#eef1f4;overflow:hidden}
+.message-scroll{position:absolute!important;inset:0}
+.message-content{padding:14px 15px calc(var(--mobile-safe-area-height) + 28px)}
+.message-group{display:grid;gap:9px;margin-bottom:18px}
+.message-group>time{text-align:center;color:#a7abb0;font-size:12px}
+.message-card{width:100%;border:0;border-radius:12px;background:#fff;padding:16px;text-align:left;display:flex;flex-direction:column;color:#3f444a;box-shadow:0 1px 0 rgba(30,40,50,.02)}
+.message-card-heading{display:grid;grid-template-columns:34px 1fr;align-items:center;gap:9px}
+.message-card-heading i{width:34px;height:34px;border-radius:10px;display:grid;place-items:center;background:#e4f8ef;color:var(--green-dark);font-style:normal}
+.message-card.reminder .message-card-heading i{background:#fff0dd;color:#f19a22}
+.message-card-heading i svg{width:19px;height:19px}
+.message-card-heading strong{font-size:17px;color:#2e3338}
+.message-divider{height:1px;background:#e6e8ea;margin:13px 0}
+.message-card-title{font-size:17px;font-weight:800;color:#2f3338;line-height:1.45;margin-bottom:9px}
+.message-meta{font-size:12px;color:#656a70;line-height:1.65}
+.message-meta b{color:#50555b;font-weight:500}
+.message-card-action{align-self:flex-end;margin-top:11px;display:flex;align-items:center;gap:2px;color:var(--green-dark);font-size:13px;font-weight:700}
+.message-card-action svg{width:16px;height:16px}
+.message-empty{min-height:420px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:8px;color:#9da2a8;text-align:center}
+.message-empty svg{width:44px;height:44px;color:#c7ccd0}
+.message-empty strong{font-size:15px;color:#737980}
+.message-empty span{font-size:11px}
+
+/* Prototype-only PRD rules for the school document message page. */
+.message-prd-entry{width:38px;height:26px;border:1px solid #087c57;border-radius:14px;background:rgba(255,255,255,.48);color:#075f45;padding:0;font-size:10px;font-weight:800;letter-spacing:.2px}
+.todo-prd-page{position:absolute;inset:0;background:#f2f4f5;overflow:hidden}
+.todo-prd-tabs{position:absolute;z-index:4;top:0;right:0;left:0;height:52px;padding:0 8px;background:#fff;display:grid;grid-template-columns:repeat(4,1fr);border-bottom:1px solid #e5e8ea}
+.todo-prd-tabs button{position:relative;border:0;background:#fff;color:#7f858b;font-size:12px;white-space:nowrap}
+.todo-prd-tabs button.active{color:var(--green-dark);font-weight:800}
+.todo-prd-tabs button.active:after{content:"";position:absolute;right:13px;bottom:3px;left:13px;height:3px;border-radius:3px;background:var(--green)}
+.todo-prd-scroll{top:52px!important}
+.todo-prd-content{padding:12px 13px calc(var(--mobile-safe-area-height) + 28px)}
+.prd-overview-card,.prd-note-card,.prd-rule-card,.prd-state-card{background:#fff;border-radius:11px;box-shadow:0 1px 0 rgba(20,35,45,.03)}
+.prd-overview-card{padding:14px;display:grid;gap:5px}
+.prd-overview-card span{color:var(--green-dark);font-size:11px;font-weight:800}
+.prd-overview-card p{margin:0 0 8px;color:#5c6268;font-size:12px;line-height:1.65}
+.prd-overview-card p:last-child{margin-bottom:0}
+.prd-section-title{margin:16px 2px 9px;color:#33383d;font-size:15px}
+.prd-rule-list,.prd-state-list{display:grid;gap:10px}
+.prd-rule-card,.prd-state-card{padding:13px;min-width:0}
+.prd-rule-card header{display:flex;align-items:flex-start;justify-content:space-between;gap:9px;padding-bottom:9px;border-bottom:1px solid #eceeef}
+.prd-rule-card header strong{min-width:0;color:#30353a;font-size:14px;line-height:1.45;overflow-wrap:anywhere}
+.prd-rule-card header em{flex:0 0 auto;border-radius:12px;background:#e5f8f0;color:var(--green-dark);padding:3px 7px;font-size:9px;font-style:normal}
+.prd-rule-card header code{max-width:56%;border-radius:6px;background:#eef2f4;color:#54616a;padding:4px 6px;font-family:Consolas,monospace;font-size:9px;overflow-wrap:anywhere;word-break:break-word;text-align:right}
+.prd-rule-card header span{flex:0 0 auto;border-radius:10px;background:#eef4ff;color:#4774c8;padding:4px 7px;font-size:9px}
+.prd-definition-list{margin:3px 0 0;display:grid}
+.prd-definition-list>div{display:grid;grid-template-columns:76px minmax(0,1fr);gap:7px;padding:8px 0;border-bottom:1px dashed #edf0f1}
+.prd-definition-list>div:last-child{border-bottom:0;padding-bottom:0}
+.prd-definition-list dt{color:#8a9096;font-size:10px;line-height:1.55}
+.prd-definition-list dd{margin:0;color:#50565c;font-size:11px;line-height:1.65;overflow-wrap:anywhere;word-break:break-word}
+.prd-note-card{margin-bottom:11px;padding:12px 13px;border-left:3px solid var(--green)}
+.prd-note-card.assumption{border-left-color:#f2a33a;background:#fffbf4}
+.prd-note-card strong{display:block;color:#33383d;font-size:13px}
+.prd-note-card p{margin:5px 0 0;color:#656c72;font-size:11px;line-height:1.65}
+.prd-state-card h3{margin:10px 0 1px;color:#4e555b;font-size:12px}
+.prd-state-route{display:grid;grid-template-columns:minmax(0,1fr) 24px minmax(0,1fr);align-items:center;gap:4px;text-align:center}
+.prd-state-route span,.prd-state-route strong{border-radius:8px;padding:7px 5px;font-size:11px;overflow-wrap:anywhere}
+.prd-state-route span{background:#fff3df;color:#c67c20}
+.prd-state-route strong{background:#e4f8f0;color:var(--green-dark)}
+.prd-state-route i{color:#a6abb0;font-style:normal}
+.prd-config-empty{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:8px;background:#f2f4f5;color:#999fa5;text-align:center}
+.prd-config-empty svg{width:44px;height:44px;color:#c4c9cd}
+.prd-config-empty strong{color:#62686e;font-size:15px}
+.prd-config-empty span{font-size:11px}
