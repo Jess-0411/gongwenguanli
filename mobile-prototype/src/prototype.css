@@ -47,7 +47,7 @@
 
 /* School-side prototype entry and independent document message stream. */
 .quick-grid.has-example-entry{position:relative;padding-top:54px}
-.message-example-entry{position:absolute;top:12px;right:14px;height:30px;border:1px solid #8fdcbe;border-radius:16px;background:#f2fbf7;color:var(--green-dark);padding:0 11px;display:flex;align-items:center;gap:5px;font-size:11px;font-weight:700}
+.message-example-entry{position:absolute;top:12px;right:14px;max-width:calc(100% - 28px);height:30px;border:1px solid #8fdcbe;border-radius:16px;background:#f2fbf7;color:var(--green-dark);padding:0 11px;display:flex;align-items:center;gap:5px;font-size:11px;font-weight:700;white-space:nowrap}
 .message-example-entry svg{width:14px;height:14px}
 .message-page{position:absolute;inset:0;background:#eef1f4;overflow:hidden}
 .message-scroll{position:absolute!important;inset:0}

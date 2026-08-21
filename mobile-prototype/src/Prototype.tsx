@@ -361,7 +361,7 @@ function HomePage({ role, docs, signedIds, onCreate, onOpenMessages }: { role: R
   return (
     <div className="home-page page-pad">
       <section className={`white-card quick-grid ${quick.length === 3 ? "cols-3" : ""} ${role === "school" ? "has-example-entry" : ""}`}>
-        {role === "school" ? <button className="message-example-entry" onClick={onOpenMessages}><BellIcon />消息通知实例</button> : null}
+        {role === "school" ? <button className="message-example-entry" onClick={onOpenMessages} aria-label="消息通知（示例）"><BellIcon />消息通知（示例）</button> : null}
         {quick.map(([label, icon, tone]) => (
           <button key={label} className="quick-item" onClick={label === "局校协同发文" ? onCreate : undefined}>
             <span className={`round-icon ${tone}`}>{icon}{label === "局校协同发文" ? <PlusIcon className="mini-plus" /> : null}</span>
