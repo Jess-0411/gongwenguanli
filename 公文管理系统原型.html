@@ -44,6 +44,9 @@
     .incoming-summary-card .mi.red{background:#fff0f0;color:#d92d20}.incoming-summary-card .mi.green{background:#eaf8f1;color:#087a4b}.incoming-summary-card .mi.orange{background:#fff3df;color:#a85a00}
     .incoming-filters{display:grid;grid-template-columns:repeat(4,minmax(190px,1fr));gap:14px}.incoming-filters .field{display:block}.incoming-filters .field.range{grid-column:span 2}.incoming-filters .field label{display:block;margin-bottom:7px}.incoming-filters .input,.incoming-filters .select{width:100%}.incoming-date-range{display:flex;align-items:center;gap:8px}.incoming-date-range .input{min-width:0}.incoming-date-range span{color:#667085;white-space:nowrap}
     .incoming-actions{display:flex;gap:4px;flex-wrap:wrap;white-space:nowrap}.signed-note{padding:10px 12px;border-radius:8px;background:#edf8f2;color:#087a4b;margin-top:10px}
+    .incoming-setting-bar{display:flex;justify-content:flex-end;margin-bottom:12px}.incoming-signer-note{padding:12px 14px;border:1px solid #ccefe1;border-radius:8px;background:#f3fbf7;color:#356552;line-height:1.7}
+    .incoming-signer-summary{margin-top:18px}.incoming-signer-summary-label{display:flex;justify-content:space-between;align-items:center;margin-bottom:8px;color:#344054;font-weight:700}.incoming-signer-summary-label span{color:#667085;font-size:13px;font-weight:400}.incoming-signer-summary-entry{width:100%;min-height:92px;padding:14px 46px 14px 14px;border:1px solid #d8dee8;border-radius:8px;background:#fff;position:relative;text-align:left;cursor:pointer}.incoming-signer-summary-entry:hover{border-color:var(--blue);background:#f8fbff}.incoming-signer-tags{display:flex;flex-wrap:wrap;gap:8px}.incoming-signer-tag{display:inline-flex;align-items:center;gap:7px;padding:6px 8px 6px 11px;border-radius:16px;background:#eaf3ff;color:#1769c2;font-weight:600}.incoming-signer-tag-remove{width:18px;height:18px;padding:0;border:0;border-radius:50%;background:#cfe3fb;color:#1769c2;display:grid;place-items:center;font-size:14px;line-height:1}.incoming-signer-tag-remove:hover{background:#f04438;color:#fff}.incoming-signer-summary-empty{display:block;padding:18px 0;color:#98a2b3;text-align:center}.incoming-signer-summary-arrow{position:absolute;right:16px;top:50%;transform:translateY(-50%);color:#98a2b3;font-size:22px}
+    .incoming-signer-picker{display:grid;grid-template-columns:230px minmax(320px,1fr) 280px;min-height:430px;border:1px solid var(--line);border-radius:8px;overflow:hidden}.incoming-org-tree,.incoming-candidate-panel,.incoming-selected-panel{min-width:0;background:#fff}.incoming-org-tree,.incoming-candidate-panel{border-right:1px solid var(--line)}.incoming-picker-title{padding:13px 15px;border-bottom:1px solid var(--line);font-weight:700;color:#344054}.incoming-tree-body,.incoming-candidate-list,.incoming-selected-list{padding:10px;max-height:380px;overflow:auto}.incoming-tree-node{width:100%;border:0;background:transparent;border-radius:6px;padding:9px 10px;text-align:left;color:#344054}.incoming-tree-node:hover,.incoming-tree-node.active{background:#eef4ff;color:var(--blue);font-weight:600}.incoming-tree-node.child{padding-left:30px}.incoming-candidate-row{display:flex;align-items:center;gap:10px;padding:10px;border-bottom:1px solid #f0f2f5}.incoming-candidate-row:hover{background:#f8fbff}.incoming-person-main{min-width:0;flex:1}.incoming-person-main b,.incoming-person-main span{display:block;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}.incoming-person-main span{margin-top:3px;color:#8a94a6;font-size:12px}.incoming-selected-card{display:flex;align-items:center;gap:9px;padding:9px 10px;margin-bottom:8px;border:1px solid #e6ebf3;border-radius:7px;background:#fafcff}.incoming-selected-card button{margin-left:auto;border:0;background:transparent;color:#98a2b3;font-size:18px}.incoming-selected-card button:hover{color:var(--danger)}.incoming-picker-empty{padding:54px 15px;text-align:center;color:#98a2b3}
     .quick{display:flex;align-items:center;gap:12px;padding:18px;border:1px solid var(--line);border-radius:8px;cursor:pointer}.quick:hover{border-color:#8db9ea;background:#f7fbff}.quick i{font-size:26px;color:var(--blue);font-style:normal}
     .school-home-top{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:14px;margin-bottom:14px}
     .school-home-panel{min-width:0;min-height:136px;padding:0 18px;background:#fff;border:1px solid #edf0f4;border-radius:9px;box-shadow:var(--shadow);display:grid;align-items:stretch}
@@ -63,8 +66,10 @@
     .form-grid{display:grid;grid-template-columns:120px 1fr 120px 1fr;border-top:1px solid #e76363;border-left:1px solid #e76363}.form-grid>div{min-height:60px;border-right:1px solid #e76363;border-bottom:1px solid #e76363;padding:12px;display:flex;align-items:center}.form-grid .label{font-weight:600;justify-content:center;background:#fffdfd}.form-grid .span3{grid-column:span 3}.form-grid .large{min-height:240px;align-items:flex-start}.paper{width:760px;max-width:100%;margin:0 auto;background:#fff;padding:45px 50px;box-shadow:var(--shadow);min-height:780px}.paper-input{border:0;width:100%;outline:0}.upload-zone{border:1px dashed #9fb9d7;border-radius:8px;min-height:180px;display:grid;place-items:center;text-align:center;color:#667085;background:#f8fbff}.upload-zone b{color:var(--blue);font-size:16px}
     .steps{display:flex;gap:0;margin-bottom:18px;overflow:auto}.step{min-width:118px;display:flex;align-items:center;gap:8px;color:#98a2b3}.step:after{content:"";height:1px;background:#d7dee8;flex:1}.step:last-child:after{display:none}.step i{width:27px;height:27px;border-radius:50%;background:#e8edf3;display:grid;place-items:center;font-style:normal}.step.active{color:var(--blue);font-weight:600}.step.active i,.step.done i{background:var(--blue);color:#fff}.step.done{color:#52708e}
     .modal-mask{position:fixed;inset:0;background:#11182775;z-index:20;display:grid;place-items:center}.modal{width:min(760px,92vw);max-height:88vh;background:#fff;border-radius:10px;box-shadow:0 25px 70px #0003;display:flex;flex-direction:column}.modal.wide{width:min(1050px,94vw)}.modal-head{padding:16px 20px;border-bottom:1px solid var(--line);display:flex;justify-content:space-between;align-items:center;font-size:17px;font-weight:700}.modal-body{padding:20px;overflow:auto}.modal-foot{padding:13px 20px;border-top:1px solid var(--line);display:flex;justify-content:flex-end;gap:10px}.close{border:0;background:transparent;font-size:22px;color:#98a2b3}
-    .modal-head-tools{display:flex;align-items:center;gap:14px}#prd-overlay .modal-mask{z-index:40;background:#1118278a}
+    .modal-head-tools{display:flex;align-items:center;gap:14px}#secondary-overlay .modal-mask{z-index:30;background:#11182785}#prd-overlay .modal-mask{z-index:40;background:#1118278a}
     .page-prd{color:#344054;line-height:1.75}.page-prd h2{margin:24px 0 10px;padding-bottom:7px;border-bottom:1px solid #e7ecf4;color:#172033;font-size:18px}.page-prd h2:first-child{margin-top:0}.page-prd h3{margin:14px 0 7px;color:#344054;font-size:15px}.page-prd p{margin:6px 0}.page-prd ul,.page-prd ol{margin:7px 0;padding-left:24px}.page-prd table{margin-top:10px}.page-prd th{background:#eef8f4;color:#245c48}.page-prd td{vertical-align:top}.page-prd .assumption{padding:10px 12px;border-left:3px solid #16b978;background:#f3fbf7;color:#476657}
+    .prd-flow{margin:16px 0;padding:14px;border:1px solid #dce8e3;border-radius:10px;background:#fbfefd}.prd-flow-title{margin-bottom:12px;font-weight:700;color:#245c48}.prd-flow-row{display:flex;align-items:stretch;justify-content:center;gap:8px;flex-wrap:wrap}.prd-flow-node{display:grid;place-items:center;min-width:130px;max-width:180px;min-height:58px;padding:9px 12px;border:1px solid #b9dfd0;border-radius:8px;background:#fff;text-align:center;line-height:1.45}.prd-flow-node.decision{border-color:#f4c36c;background:#fff9ed}.prd-flow-node.result{border-color:#8cc7ac;background:#effaf5}.prd-flow-arrow{display:grid;place-items:center;color:#16a36d;font-size:22px;font-weight:700}.prd-flow-branch{display:grid;grid-template-columns:repeat(2,minmax(220px,1fr));gap:10px;margin-top:10px}.prd-flow-branch>div{padding:10px;border:1px dashed #b9c9d8;border-radius:8px;background:#fff}.prd-flow-branch b{color:#245c48}
+    @media(max-width:900px){.incoming-signer-picker{grid-template-columns:190px minmax(280px,1fr)}.incoming-selected-panel{grid-column:1/-1;border-top:1px solid var(--line)}.prd-flow-branch{grid-template-columns:1fr}}
     .drawer-mask{position:fixed;inset:0;background:#11182766;z-index:19}.drawer{position:absolute;right:0;top:0;bottom:0;width:min(520px,90vw);background:#fff;display:flex;flex-direction:column}.drawer .modal-body{flex:1}
     .toast-wrap{position:fixed;right:22px;top:72px;z-index:50}.toast{background:#fff;border-left:4px solid var(--success);box-shadow:0 8px 28px #0002;border-radius:7px;padding:12px 18px;margin-bottom:8px;min-width:260px}.toast.error{border-left-color:var(--danger)}
     .school-picker{display:grid;grid-template-columns:1fr 1fr;min-height:390px;border:1px solid var(--line)}.school-side{padding:14px;border-right:1px solid var(--line)}.selected-side{padding:14px}.checkrow{display:flex;align-items:center;gap:8px;padding:9px;border-bottom:1px solid #f0f2f5}.checkrow:hover{background:#f5f9ff}
@@ -401,7 +406,7 @@
   </style>
 </head>
 <body>
-<div id="app"></div><div id="overlay"></div><div id="prd-overlay"></div><div class="toast-wrap" id="toasts"></div>
+<div id="app"></div><div id="overlay"></div><div id="secondary-overlay"></div><div id="prd-overlay"></div><div class="toast-wrap" id="toasts"></div>
 <script>
 (() => {
   "use strict";
@@ -418,12 +423,22 @@
     "普通办理人":["collab:view","collab:download"]
   };
   const SCHOOL_ROLE_USERS={"管理员":"侯老师","公文管理员":"黎玉婷","公文签收人员":"刘主任","学校领导":"王校长","普通办理人":"李城"};
+  const DEFAULT_SCHOOL_STAFF=[
+    {id:"su1",schoolId:"s1",name:"侯老师",account:"houlaoshi",department:"校办公室",role:"超级管理员",status:"在职",accountStatus:"有效"},
+    {id:"su2",schoolId:"s1",name:"黎玉婷",account:"liyuting",department:"校办公室",role:"管理员",status:"在职",accountStatus:"有效"},
+    {id:"su3",schoolId:"s1",name:"刘主任",account:"liuzhuren",department:"教务处",role:"公文签收人员",status:"在职",accountStatus:"有效"},
+    {id:"su4",schoolId:"s1",name:"王校长",account:"wangxiaozhang",department:"校领导",role:"学校领导",status:"在职",accountStatus:"有效"},
+    {id:"su5",schoolId:"s1",name:"李城",account:"licheng",department:"教务处",role:"普通办理人",status:"在职",accountStatus:"有效"},
+    {id:"su6",schoolId:"s1",name:"张倩",account:"zhangqian",department:"教研组",role:"教职工",status:"在职",accountStatus:"有效"},
+    {id:"su7",schoolId:"s1",name:"陈敏",account:"chenmin",department:"政教处",role:"教职工",status:"在职",accountStatus:"有效"},
+    {id:"su8",schoolId:"s1",name:"赵老师",account:"zhaolaoshi",department:"总务处",role:"教职工",status:"在职",accountStatus:"有效"}
+  ];
   const deep=v=>JSON.parse(JSON.stringify(v));
   const now=()=>new Date().toLocaleString("zh-CN",{hour12:false}).replaceAll("/","-");
   const uid=p=>p+"-"+Date.now().toString(36)+"-"+Math.random().toString(36).slice(2,6);
   const esc=s=>String(s??"").replace(/[&<>"']/g,m=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[m]));
   const seed={
-    version:12,portal:"bureau",logged:false,schoolId:"s1",userRole:"管理员",
+    version:14,portal:"bureau",logged:false,schoolId:"s1",userRole:"管理员",
     schools:[
       {id:"s1",name:"新乡市第一中学",type:"初级中学",area:"红旗区"},
       {id:"s2",name:"新乡市实验小学",type:"小学",area:"牧野区"},
@@ -435,6 +450,7 @@
       {id:"s8",name:"新乡市第十中学",type:"初级中学",area:"牧野区"}
     ],
     users:{bureau:["李明（办公室）","王静（法规科）","张伟（基础教育科）"],school:["侯老师（校办）","李城（教务处）","黎玉婷（办公室）"]},
+    schoolStaff:deep(DEFAULT_SCHOOL_STAFF),
     templates:[
       {id:"t1",kind:"发文",name:"标准发文拟稿",status:"启用",created:"2026-07-22 18:49:06"},
       {id:"t2",kind:"发文",name:"教育工作通知",status:"启用",created:"2026-03-16 10:47:00"},
@@ -466,6 +482,7 @@
       {time:"2026-07-25 14:30:00",user:"侯老师",action:"签收公文",object:"关于做好2026年秋季开学准备工作的通知"}
     ],
     settings:{
+      incomingSigners:{userIds:[],version:1,updatedBy:"系统初始化",updatedAt:"2026-08-21 00:00:00"},
       seals:[{id:"s1",name:"新乡市教育局电子印章",status:"启用"}],
       redheads:[{id:"r1",name:"新乡市教育局文件",status:"启用"}],
       categories:[
@@ -488,9 +505,9 @@
       ]
     }
   };
-  let db=load(),ui={tab:"未办理",draftTab:"稿纸信息",selectedSchools:[],filters:{},incomingFilters:{},page:1,templateDraft:null,templateEditorTab:"基本信息",openMenu:"templates",collabFilesKey:null,collabEditTab:"稿纸信息",collabDetailTab:"稿纸",collabDraft:null,collabBodyFile:null,collabAttachments:[],dashboardViewTracked:false,dashboardLatestType:"发文",schoolLatestType:"发文"};
+  let db=load(),ui={tab:"未办理",draftTab:"稿纸信息",selectedSchools:[],filters:{},incomingFilters:{},incomingSignerDraft:null,incomingSignerOriginal:null,incomingSignerNode:"全校",incomingSignerVersion:0,page:1,templateDraft:null,templateEditorTab:"基本信息",openMenu:"templates",collabFilesKey:null,collabEditTab:"稿纸信息",collabDetailTab:"稿纸",collabDraft:null,collabBodyFile:null,collabAttachments:[],dashboardViewTracked:false,dashboardLatestType:"发文",schoolLatestType:"发文"};
   function migrate(d){
-    if(!d)d=deep(seed);const oldVersion=d.version||0;d.version=12;delete d.transfers;d.templates=d.templates||[];
+    if(!d)d=deep(seed);const oldVersion=d.version||0;d.version=14;delete d.transfers;d.templates=d.templates||[];
     d.collab=d.collab||[];
     if(oldVersion<6)seed.collab.filter(x=>x.id!=="c4"&&!d.collab.some(y=>y.id===x.id)).forEach(x=>d.collab.push(deep(x)));
     d.templates=d.templates.filter(t=>t.kind!=="局校"||t.name==="市教育局标准发文稿纸");
@@ -501,6 +518,11 @@
     d.collab=(d.collab||[]).filter(x=>!["内部流程中","待分发","草稿"].includes(x.status)).map(x=>{if(["已转内部办理","已办结","已归档"].includes(x.status))x.status="已分发";x.logs=(x.logs||[]).filter(log=>!String(log).includes("公文已归档")&&!String(log).includes("保存草稿"));x.mode="直接发文";x.templateId=def?.id||"";x.bodyFile=x.bodyFile||null;x.attachments=x.attachments||[];if(!x.templateSnapshot)x.templateSnapshot={name:def?.name||"市教育局标准发文稿纸",layout:deep(def?.layout||DEFAULT_COLLAB_LAYOUT)};else if(oldVersion<10)x.templateSnapshot.name=def?.name||x.templateSnapshot.name;x.dispatchTime=x.dispatchTime||(["已分发","已撤回"].includes(x.status)?x.created:"");x.receipts=x.receipts||{};Object.values(x.receipts).forEach(r=>{r.signer=r.signer||r.by||"";r.signTime=r.signTime||r.time||"";r.remindCount=r.remindCount||0;r.lastRemindTime=r.lastRemindTime||"";delete r.by;delete r.time});return x});
     d.logs=(d.logs||[]).filter(x=>!obsolete.has(x.object)&&x.action!=="保存草稿");
     d.settings=d.settings||deep(seed.settings);
+    d.schoolStaff=Array.isArray(d.schoolStaff)&&d.schoolStaff.length?d.schoolStaff:deep(DEFAULT_SCHOOL_STAFF);
+    if(!d.settings.incomingSigners||!Array.isArray(d.settings.incomingSigners.userIds))d.settings.incomingSigners=deep(seed.settings.incomingSigners);
+    if(oldVersion<14&&d.settings.incomingSigners.updatedBy==="系统初始化"&&[...(d.settings.incomingSigners.userIds||[])].sort().join(",")==="su1,su2")d.settings.incomingSigners.userIds=[];
+    d.settings.incomingSigners.userIds=[...new Set(d.settings.incomingSigners.userIds)].filter(id=>d.schoolStaff.some(x=>x.id===id&&x.schoolId===d.schoolId));
+    d.settings.incomingSigners.version=Math.max(1,Number(d.settings.incomingSigners.version)||1);
     if(oldVersion<7||!Array.isArray(d.settings.categories)||d.settings.categories.some(x=>typeof x==="string"))d.settings.categories=deep(seed.settings.categories);
     if(oldVersion<8)seed.settings.categories.filter(x=>x.source==="局校协同发文").forEach(x=>{if(!d.settings.categories.some(y=>y.id===x.id||y.name===x.name&&y.source===x.source))d.settings.categories.push(deep(x))});
     if(!d.collab.some(x=>x.id==="c9"))d.collab.unshift(deep(seed.collab.find(x=>x.id==="c9")));
@@ -534,18 +556,25 @@
   function portalName(){return db.portal==="bureau"?"教育局端":"学校端"}
   function currentOrg(){return db.portal==="bureau"?"新乡市教育局":db.schools.find(x=>x.id===db.schoolId)?.name}
   function currentUserName(){return db.portal==="bureau"?"李明":SCHOOL_ROLE_USERS[db.userRole]||"侯老师"}
+  function currentSchoolUser(){return db.schoolStaff?.find(x=>x.schoolId===db.schoolId&&x.name===currentUserName())}
+  function activeSchoolStaff(){return (db.schoolStaff||[]).filter(x=>x.schoolId===db.schoolId&&x.status==="在职"&&x.accountStatus==="有效")}
+  function canManageIncomingSigners(){return db.portal==="school"&&["管理员","公文管理员"].includes(db.userRole)}
+  function isConfiguredIncomingSigner(){const user=currentSchoolUser();return Boolean(user&&activeSchoolStaff().some(x=>x.id===user.id)&&(db.settings?.incomingSigners?.userIds||[]).includes(user.id))}
   function hasPermission(permission){return db.portal==="bureau"||(ROLE_PERMISSIONS[db.userRole]||[]).includes(permission)}
   function publishedCollabDocs(){return db.collab.filter(d=>COLLAB_PUBLISHED_STATUSES.includes(d.status))}
   function schoolCollabDocs(){return publishedCollabDocs().filter(d=>d.targets.includes(db.schoolId))}
   function visibleCollabDocs(){return db.portal==="school"?schoolCollabDocs():publishedCollabDocs()}
   function canAccessSchoolCollab(d){return db.portal==="school"&&hasPermission("collab:view")&&COLLAB_PUBLISHED_STATUSES.includes(d?.status)&&d.targets.includes(db.schoolId)}
+  function canSignIncomingDocument(d){return canAccessSchoolCollab(d)&&hasPermission("collab:sign")&&isConfiguredIncomingSigner()&&d?.status==="已分发"&&!d.receipts?.[db.schoolId]?.signed}
   function incomingStatus(d,schoolId=db.schoolId){return d?.receipts?.[schoolId]?.signed?"已签收":"待签收"}
   function isToday(value){return String(value||"").slice(0,10)===now().slice(0,10)}
   function statusClass(s){return /已|启用|办结|签收/.test(s)?"green":/中|待|未/.test(s)?"orange":/撤|退|停|作废|禁用/.test(s)?"red":"blue"}
   function toast(msg,type="ok"){const el=document.createElement("div");el.className="toast "+(type==="error"?"error":"");el.textContent=msg;document.querySelector("#toasts").append(el);setTimeout(()=>el.remove(),2600)}
-  function modal(title,body,foot="",wide=false,options={}){options=typeof options==="boolean"?{showPrd:options}:options||{};const showPrd=options.showPrd!==false,prdKey=options.prdKey||`modal:${decodeURIComponent(route())}:${title}`;document.querySelector("#overlay").innerHTML=`<div class="modal-mask"><div class="modal ${wide?"wide":""}"><div class="modal-head"><span>${title}</span><div class="modal-head-tools">${showPrd?pagePrdDot("show-modal-prd",title,prdKey):""}<button class="close" data-close>×</button></div></div><div class="modal-body">${body}</div><div class="modal-foot">${foot||'<button class="btn" data-close>关闭</button>'}</div></div></div>`}
+  function modal(title,body,foot="",wide=false,options={}){options=typeof options==="boolean"?{showPrd:options}:options||{};const showPrd=options.showPrd!==false,prdKey=options.prdKey||`modal:${decodeURIComponent(route())}:${title}`,closeAttr=options.closeAction?`data-action="${esc(options.closeAction)}"`:"data-close";document.querySelector("#overlay").innerHTML=`<div class="modal-mask"><div class="modal ${wide?"wide":""}"><div class="modal-head"><span>${title}</span><div class="modal-head-tools">${showPrd?pagePrdDot("show-modal-prd",title,prdKey):""}<button class="close" ${closeAttr}>×</button></div></div><div class="modal-body">${body}</div><div class="modal-foot">${foot||`<button class="btn" ${closeAttr}>关闭</button>`}</div></div></div>`}
+  function secondaryModal(title,body,foot="",wide=false,options={}){const closeAction=options.closeAction||"incoming-signer-picker-close",prdKey=options.prdKey||`modal:${decodeURIComponent(route())}:${title}`;document.querySelector("#secondary-overlay").innerHTML=`<div class="modal-mask"><div class="modal ${wide?"wide":""}"><div class="modal-head"><span>${title}</span><div class="modal-head-tools">${pagePrdDot("show-modal-prd",title,prdKey)}<button class="close" data-action="${esc(closeAction)}">×</button></div></div><div class="modal-body">${body}</div><div class="modal-foot">${foot||`<button class="btn" data-action="${esc(closeAction)}">关闭</button>`}</div></div></div>`}
   function drawer(title,body,foot="",options={}){const prdKey=options.prdKey||`drawer:${decodeURIComponent(route())}:${title}`;document.querySelector("#overlay").innerHTML=`<div class="drawer-mask"><div class="drawer"><div class="modal-head"><span>${title}</span><div class="modal-head-tools">${options.showPrd===false?"":pagePrdDot("show-modal-prd",title,prdKey)}<button class="close" data-close>×</button></div></div><div class="modal-body">${body}</div><div class="modal-foot">${foot||'<button class="btn" data-close>关闭</button>'}</div></div></div>`}
   function closeOverlay(){document.querySelector("#overlay").innerHTML=""}
+  function closeSecondaryOverlay(){document.querySelector("#secondary-overlay").innerHTML=""}
   function confirmBox(title,text,onConfirm,prdKey=""){modal(title,`<p style="font-size:15px">${text}</p>`,`<button class="btn" data-close>取消</button><button class="btn primary" id="confirm-action">确定</button>`,false,{prdKey:prdKey||`confirm:${decodeURIComponent(route())}:${title}`});document.querySelector("#confirm-action").onclick=()=>{closeOverlay();onConfirm()}}
   function exportCSV(rows,name="公文数据.csv"){const csv="\ufeff"+rows.map(r=>r.map(v=>`"${String(v??"").replaceAll('"','""')}"`).join(",")).join("\n");const a=document.createElement("a");a.href=URL.createObjectURL(new Blob([csv],{type:"text/csv"}));a.download=name;a.click();URL.revokeObjectURL(a.href);toast("导出任务已完成")}
   function xlsxEscape(v){return String(v??"").replaceAll("&","&amp;").replaceAll("<","&lt;").replaceAll(">","&gt;").replaceAll('"',"&quot;")}
@@ -619,7 +648,16 @@
     if(path.startsWith("/draft/")){const name=kind==="收文"?"收文登记":`${kind}拟稿`;return{...base,name,goal:`支持学校用户创建${kind}公文并提交校内办理。`,scene:`学校拟稿人员选择模板，维护${kind}稿纸、正文和附件。`,core:`完成${kind}模板选择、稿纸填写、文件上传和提交。`,flow:"选择启用模板，填写必填字段，上传正文及附件，校验通过后提交。",edge:"无启用模板时展示空状态；必填项缺失或文件不合规时阻止提交。",data:"以学校端公文 ID 标识唯一记录，保存类型、标题、拟稿人、状态和创建时间。",dependency:"依赖学校端模板、文件上传和校内办理流程。",acceptance:"模板、标签、校验与提交结果准确，提交后进入正确管理列表。"};}
     if(path.startsWith("/manage/"))return{...base,name:`${kind}管理`,goal:`集中查询和办理学校${kind}公文。`,scene:`学校用户按办理状态和关键字定位${kind}记录。`,core:`展示${kind}列表、状态标签、筛选、分页和详情入口。`,flow:"加载权限范围记录，设置条件查询，打开详情查看或办理。",edge:"无权限记录不得出现；无结果时展示空状态。",data:"列表按学校端公文 ID 去重，状态取当前流程节点。",dependency:"依赖学校数据权限、内部公文和办理状态。",acceptance:"标签、筛选、分页、列表字段和详情跳转准确。"};
     if(path==="/internal/detail")return{...base,name:"内部公文详情",goal:"展示学校内部公文的稿纸、正文、附件和办理日志。",scene:"学校用户从管理页或首页进入详情查看并办理公文。",core:"按四个标签展示材料，并按权限提供办理操作。",flow:"根据公文 ID 加载详情，切换标签，执行当前节点操作。",edge:"ID 无效时展示页面不存在；无附件时展示空状态。",data:"详情以学校端公文 ID 查询，日志按操作顺序展示。",dependency:"依赖公文记录、附件、流程节点和当前用户权限。",acceptance:"详情数据一致，办理按钮与权限匹配，操作反馈明确。"};
-    if(path==="/incoming")return{...base,name:"教育局来文",goal:"集中查询教育局发送至本校的公文并识别待签收任务。",scene:"学校公文管理员或签收人员查看来文统计并按标题、签收状态和发布时间查询。",core:"展示全量只读统计、条件查询、来文列表、分页和详情入口。",flow:"加载全量统计和默认列表，用户设置条件查询并进入详情完成签收。",edge:"统计卡不可点击；日期起始值晚于结束值时阻止查询；权限外来文不得展示。",data:"全部、待签收、已签收和今日来文均按本校权限范围内公文 ID 去重，列表查询不改变顶部统计。",dependency:"依赖局校发文、接收学校、签收状态和发布时间。",acceptance:"统计卡只读，查询口径、日期校验、列表和签收状态准确。"};
+    if(path==="/incoming")return{...base,name:"教育局来文",goal:"由学校统一设置教育局来文签收人员，并以当前有效配置控制历史及新来文的签收资格和通知收件人。",scene:"学校超级管理员或管理员维护签收人；签收人员查看和签收教育局来文。",core:"展示来文统计、查询、列表和签收设置；按学校级签收人配置实时控制签收操作。",flow:"管理员维护签收名单并保存；配置即时影响历史和新来文签收；新来文与催收事件按各自处理时点重新计算通知收件人。",edge:"签收名单至少一人；失效人员不得保存；被移除人员提交签收时按最新配置拒绝。",data:"配置按学校 ID 保存用户 ID 集合及版本；新来文和催收分别读取事件处理时最新有效名单，新增权限不补发历史新来文通知。",dependency:"依赖学校组织、用户状态、学校级签收配置、来文状态及通知事件服务。",acceptance:"配置回显和保存准确，新增人员可签历史来文但不补历史通知，后续催收通知当前有效人员。",
+      inScope:["学校端教育局来文新增签收设置入口、人员选择和配置保存。","当前配置实时控制历史及新来文签收资格。","新来文与教育局催收按事件处理时最新有效签收人员计算收件人。"],
+      outScope:["不修改教育局端 PC 页面、权限、催收和发文操作。","不在原型中实际生成移动端通知。","不调整来文统计、查询、分页和学校级签收回执规则。"],
+      requirements:[["签收设置展示弹窗","正式配置回显与删除","第一层展示当前正式签收人员和已选人数；姓名右侧提供×，点击后直接删除并更新正式配置。","P0","至少保留1名签收人员"],["人员选择弹窗","人员选择与保存","第二层按组织树和关键字多选本校有效在职员工，确定后直接保存正式配置；不展示签收规则提示。","P0","至少选择1人"],["双弹窗状态","分层保持","第二层叠加于第一层之上；取消丢弃草稿，保存成功返回第一层并刷新回显。","P0","第一层不持有选择草稿"],["签收权限","实时鉴权","签收时同时校验原角色权限、当前配置、学校范围和公文状态。","P0","服务端校验口径"],["历史来文","权限新增","新增人员可签收配置生效前的历史待签收来文，不补发历史新来文通知。","P0","保存成功后即时生效"],["催收通知","当前人员","有效催收按催收事件处理时最新有效签收名单发送通知。","P0","已移除人员不接收"]],
+      flows:["超级管理员或管理员打开第一层签收设置，系统读取并回显正式配置。","点击姓名右侧×直接删除该人员并刷新第一层；删除最后一人时阻止操作。","用户点击人员列表区域，第二层选择签收人员弹窗按正式配置初始化独立草稿。","第二层确定后校验并直接保存；保存成功关闭第二层，第一层保持打开并刷新。","第二层取消仅丢弃草稿；第一层取消或确定均只关闭且不回滚已保存结果。","新来文和催收事件分别读取处理时最新有效名单生成通知；权限新增不补发历史新来文通知。"],
+      edges:["默认签收配置为空；第二层保存空名单、跨校人员或失效人员时拒绝整次保存。","第一层直接删除最后一名签收人员时阻止操作并提示至少保留1人。","第二层有未保存修改时取消或关闭须二次确认，保存失败时保留当前草稿。","第一层不持有选择草稿，不得回滚第二层已经保存的结果。","配置变更后，已打开详情的签收提交仍按最新名单鉴权。","已签收或已撤回公文不得因新增人员恢复签收。"],
+      dataItems:["配置主体为学校 ID，人员使用稳定用户 ID 去重保存，并记录版本、修改人和修改时间。","第一层删除成功后递增配置版本并写入审计日志。","新来文通知收件人取新来文事件处理时有效名单；催收通知收件人取催收事件处理时有效名单。","权限新增产生的历史新来文通知补发数量固定为0。"],
+      risks:["依赖学校组织和用户状态准确，失效人员必须即时失去签收及后续通知资格。","配置与业务事件并发时，以事件处理时已成功保存的最新配置版本为准。","原型不执行真实跨端消息发送，通知结果以PRD规则为研发实现依据。"],
+      acceptanceItems:["管理员打开第一层时看到正式配置标签、人数和修改入口，默认配置为空，且不展示进入第二层的提示字段。","人员姓名右侧展示×，点击后即时删除并更新正式配置；最后一人不可删除。","点击人员区域打开独立第二层，第一层保持挂载且不展示组织树或搜索框；第二层不展示签收规则提示。","第二层取消不保存；第二层确定直接保存并返回第一层刷新；第一层取消不回滚。","至少选择1名有效人员，保存后配置即时生效。","新增人员可签历史待签收来文，不收到历史新来文通知。","后续有效催收时，新增人员收到催收通知，被移除人员不接收。","列表、详情和最终提交均使用同一最新配置鉴权。"],
+      flowcharts:incomingSignerPrdFlows()};
     if(path==="/incoming/detail")return{...base,name:"教育局来文详情",goal:"展示教育局来文内容并支持本校完成确认签收和查看回执。",scene:"具备权限的学校签收人员核对稿纸、正文、附件后签收。",core:"展示三类公文材料、签收状态以及确认签收或查看回执入口。",flow:"加载来文，核对材料，填写可选意见并确认签收，生成回执。",edge:"非接收学校、无签收权限、已撤回或记录无效时禁止签收。",data:"以局校公文 ID 和学校 ID 关联唯一当前签收回执。",dependency:"依赖局校发文状态、接收范围、角色权限和回执数据。",acceptance:"材料、状态和操作入口准确，签收后统计与回执同步更新。"};
     if(path==="/library/局校发文")return{...base,name:"局校发文库",goal:"查询教育局发送至本校的已发布公文及签收状态。",scene:"学校用户按全部、待签收、已签收视图查看历史来文。",core:"展示视图切换、条件查询、列表、导出、详情和回执入口。",flow:"加载本校可见公文，切换视图或查询，进入详情或查看回执。",edge:"非本校接收公文不得展示；无签收权限时隐藏签收操作。",data:"仅纳入已发布且接收学校包含本校的公文，签收状态按本校回执判断。",dependency:"依赖局校公文、接收学校、回执和角色权限。",acceptance:"三个视图、字段、导出范围和操作权限准确。"};
     if(path==="/library/局校发文/detail")return{...base,name:"局校发文详情",goal:"只读展示局校发文库中的稿纸、正文、附件及本校签收状态。",scene:"学校用户从局校发文库进入详情核对文件。",core:"展示三个内容标签以及签收或回执入口。",flow:"按公文 ID 加载详情，切换标签，按当前状态执行签收或查看回执。",edge:"记录无效、非本校接收或非发布状态时拒绝访问。",data:"详情以公文 ID 查询，本校状态以学校 ID 对应回执为准。",dependency:"依赖发文快照、文件、接收范围和签收回执。",acceptance:"内容与所选公文一致，权限和签收入口准确。"};
@@ -638,14 +676,14 @@
     const terminal=portal==="bureau"?"教育局端":"学校端";
     const fallback=x.name==="当前页面";
     return{...x,audience,terminal,path,fallback,
-      inScope:[x.core,`在${terminal}当前页面右上角提供绿色 PRD 规则入口。`,`规则弹窗展示与“${x.name}”对应的完整 PRD-V1 内容。`],
-      outScope:["不修改当前页面既有业务状态流转和权限边界。","不在 PRD 规则弹窗内提供编辑、审批或发布能力。","登录页不纳入页面 PRD 入口覆盖范围。"],
-      requirements:[[x.name,"页面核心能力",x.core,"P0",`当前路由：${path}`],[x.name,"数据与权限",x.data,"P0",`适用端：${terminal}`],[x.name,"异常反馈",x.edge,"P0","异常状态不得泄露权限外数据"],["PRD 规则入口","绿色圆点",`${terminal}页面右上角展示绿色圆点，点击后打开当前页面规则。`,"P0","提供悬停提示和无障碍名称"],["PRD 规则弹窗","规则展示","完整展示九个一级标题及固定五列功能需求表。","P0","遵循 PRD-V1"]],
-      flows:[x.flow,"用户点击页面右上角绿色圆点。",`系统按端类型与路由打开“${x.name} · PRD 规则”。`,"用户关闭规则后停留在原页面，页面状态保持不变。"],
-      edges:[x.edge,"重复点击入口时不叠加多个规则弹窗。",fallback?`【假设】路由“${path}”未配置专属规则，当前展示兜底规则。`:"页面端类型、路由参数或权限状态变化后，重新解析对应规则。"],
-      dataItems:[x.data,"【假设】记录 page_prd_entry_click，包含 portal、page_path、page_name。","【假设】关闭规则记录 page_prd_modal_close，不采集 PRD 正文内容。"],
-      risks:[x.dependency||"依赖当前用户权限、业务数据状态和本地持久化数据。","新增路由或调整页面名称时必须同步维护页面 PRD 配置。","规则入口只用于原型需求查阅，不替代正式评审和版本留痕。"],
-      acceptanceItems:[x.acceptance,`${terminal}当前页面右上角展示绿色入口，标题与内容均对应当前页面。`,"规则包含 PRD-V1 九个一级标题和固定五列需求表。","关闭规则后路由、筛选、分页、标签和表单数据保持不变。"]};
+      inScope:x.inScope||[x.core,`在${terminal}当前页面右上角提供绿色 PRD 规则入口。`,`规则弹窗展示与“${x.name}”对应的完整 PRD-V1 内容。`],
+      outScope:x.outScope||["不修改当前页面既有业务状态流转和权限边界。","不在 PRD 规则弹窗内提供编辑、审批或发布能力。","登录页不纳入页面 PRD 入口覆盖范围。"],
+      requirements:x.requirements||[[x.name,"页面核心能力",x.core,"P0",`当前路由：${path}`],[x.name,"数据与权限",x.data,"P0",`适用端：${terminal}`],[x.name,"异常反馈",x.edge,"P0","异常状态不得泄露权限外数据"],["PRD 规则入口","绿色圆点",`${terminal}页面右上角展示绿色圆点，点击后打开当前页面规则。`,"P0","提供悬停提示和无障碍名称"],["PRD 规则弹窗","规则展示","完整展示九个一级标题及固定五列功能需求表。","P0","遵循 PRD-V1"]],
+      flows:x.flows||[x.flow,"用户点击页面右上角绿色圆点。",`系统按端类型与路由打开“${x.name} · PRD 规则”。`,"用户关闭规则后停留在原页面，页面状态保持不变。"],
+      edges:x.edges||[x.edge,"重复点击入口时不叠加多个规则弹窗。",fallback?`【假设】路由“${path}”未配置专属规则，当前展示兜底规则。`:"页面端类型、路由参数或权限状态变化后，重新解析对应规则。"],
+      dataItems:x.dataItems||[x.data,"【假设】记录 page_prd_entry_click，包含 portal、page_path、page_name。","【假设】关闭规则记录 page_prd_modal_close，不采集 PRD 正文内容。"],
+      risks:x.risks||[x.dependency||"依赖当前用户权限、业务数据状态和本地持久化数据。","新增路由或调整页面名称时必须同步维护页面 PRD 配置。","规则入口只用于原型需求查阅，不替代正式评审和版本留痕。"],
+      acceptanceItems:x.acceptanceItems||[x.acceptance,`${terminal}当前页面右上角展示绿色入口，标题与内容均对应当前页面。`,"规则包含 PRD-V1 九个一级标题和固定五列需求表。","关闭规则后路由、筛选、分页、标签和表单数据保持不变。"]};
   }
   function modalPrdSpec(title,key=""){
     const page=pagePrdSpecV2(),value=`${key} ${title}`;let core="展示与触发动作一致的业务内容、操作按钮和关闭入口。",flow="用户触发弹窗，核对或填写内容，确认执行或取消返回。",edge="取消、关闭或校验失败时不得修改业务数据。",data="弹窗读取当前页面上下文，不单独创建重复业务记录。",acceptance="标题、内容、按钮和操作结果与触发动作一致。",assumption=false;
@@ -654,6 +692,8 @@
     else if(/签收回执/.test(value)){core="只读展示公文、签收单位、签收人、意见、时间和回执状态。";flow="用户打开回执，核对内容后关闭返回原页面。";edge="回执不存在或无权限时不得展示签收信息。";data="回执按公文 ID 与学校 ID 联合定位。";acceptance="回执字段与当前签收记录一致，关闭后原页面状态不变。"}
     else if(/文件预览/.test(value)){core="在弹窗中展示正文或附件的预览区域。";flow="用户点击查看文件，系统加载预览，用户关闭返回详情。";edge="文件缺失、格式不支持或加载失败时展示明确错误，不影响原记录。";data="预览对象以当前公文 ID 和文件标识定位。";acceptance="可预览文件正确展示，异常文件反馈明确。"}
     else if(/会签操作|办理操作|选择转交人员/.test(value)){core="收集当前办理节点所需的结果、意见、下一节点或转交人员。";flow="用户选择办理参数并确认，系统更新流程节点和办理日志。";edge="未选择必填项、目标人员无效或节点已变化时阻止提交。";data="办理日志记录公文 ID、操作人、动作、意见和操作时间。";acceptance="可选项与权限匹配，确认后流程和日志同步更新，取消不变更数据。"}
+    else if(/选择签收人员/.test(value)){core="在独立第二层按组织和关键字维护签收人员草稿，确定后直接保存正式配置；不展示签收规则提示。";flow="按正式配置初始化草稿，选择人员并校验非空、人员有效性和版本，保存成功后返回第一层刷新。";edge="取消或关闭丢弃草稿；有修改时二次确认；保存失败或版本冲突时保留第二层状态。";data="草稿仅存在第二层，正式配置按学校 ID 保存用户 ID 集合及版本。";acceptance="第二层默认勾选正式人员，取消不保存，确定直接保存且第一层即时刷新。"}
+    else if(/签收设置/.test(value)){core="第一层回显当前正式签收人员、人数、规则说明及人员选择入口，人员姓名右侧支持×删除。";flow="读取正式配置并展示；点击×直接删除人员，点击列表区域打开第二层；取消、确定或关闭均只关闭第一层。";edge="默认配置为空时展示明确空状态；删除最后一人时阻止操作；第一层不创建选择草稿。";data="第一层读取正式配置；删除成功后直接更新人员集合、配置版本及审计信息。";acceptance="第一层不展示进入第二层的提示字段，人员可通过×删除，且不展示组织树、搜索或候选列表。"}
     else if(/模板|分类|印章|套红|新增|编辑/.test(value)){core="维护当前配置对象的必填信息、状态和业务属性。";flow="用户填写或调整配置，系统校验后保存并刷新列表。";edge="必填项为空、同范围重名或记录受引用限制时阻止保存。";data="配置以唯一 ID 标识，名称在相同配置类型内校验。";acceptance="新增、编辑或状态操作结果准确，失败时保留输入并给出提示。"}
     else if(/催办/.test(value)){core="确认对单个、已选或全部未签收学校发送催办。";flow="用户核对催办范围并确认，系统记录催办次数和时间。";edge="已签收学校、已撤回公文或空选择不得执行催办。";data="催办按公文 ID 与学校 ID 记录次数和最后催办时间。";acceptance="催办范围准确，明细和日志同步更新。"}
     else if(/发文|提交|恢复|删除|撤回|启用|禁用|停用/.test(value)){core="对当前业务对象执行具有状态影响的确认操作。";flow="用户核对提示并确认，系统校验最新状态后执行并反馈结果。";edge="对象不存在、状态已变化或权限不足时拒绝执行；取消不修改数据。";data="按当前业务主键更新记录，并按既有规则记录操作日志。";acceptance="确认操作仅执行一次，取消不变更数据，成功后页面状态正确刷新。"}
@@ -661,11 +701,16 @@
     const name=`${title}弹窗`;
     return{page,name,key,core,flow,edge,data,acceptance,assumption};
   }
+  function incomingSignerPrdFlows(){return[
+    {title:"流程一：双弹窗设置与权限生效",html:`<div class="prd-flow-row"><div class="prd-flow-node">打开第一层<br>回显正式配置</div><div class="prd-flow-arrow">→</div><div class="prd-flow-node">点击人员区域<br>打开第二层</div><div class="prd-flow-arrow">→</div><div class="prd-flow-node">选择本校有效<br>在职员工</div><div class="prd-flow-arrow">→</div><div class="prd-flow-node decision">名单非空且<br>版本一致？</div><div class="prd-flow-arrow">→</div><div class="prd-flow-node result">第二层直接保存<br>返回第一层刷新</div></div><div class="prd-flow-branch"><div><b>第一层快速删除</b><br>点击姓名右侧×直接删除并递增版本；最后一名有效人员不可删除。</div><div><b>关闭语义</b><br>第二层取消丢弃草稿；第一层取消或确定仅关闭，不回滚已保存结果。</div><div><b>权限生效</b><br>新增人员可签历史待签收来文且不补历史通知；移除人员立即失权。</div></div>`},
+    {title:"流程二：新来文与催收通知数据处理",html:`<div class="prd-flow-row"><div class="prd-flow-node">业务事件进入<br>消息服务</div><div class="prd-flow-arrow">→</div><div class="prd-flow-node decision">事件类型</div></div><div class="prd-flow-branch"><div><b>新来文事件</b><br>读取事件处理时最新有效签收名单 → 逐人生成新来文通知；后续新增人员不补发。</div><div><b>有效催收事件</b><br>重新读取催收处理时最新有效签收名单 → 当前人员均收到催收通知，包括后新增人员。</div></div>`}
+  ]}
   function renderPrdBody(spec,isModal=false){
     const req=spec.requirements||[[spec.name,"弹窗展示",spec.core,"P0",`所属页面：${spec.page.name}`],[spec.name,"业务操作",spec.flow,"P0",`适用端：${spec.page.terminal}`],[spec.name,"异常保护",spec.edge,"P0","关闭或取消不修改业务数据"],["PRD 规则入口","绿色圆点","业务弹窗右上角展示绿色入口，点击后显示当前弹窗规则。","P0","规则弹窗自身不递归展示"],["PRD 规则弹窗","状态保持","关闭规则后原业务弹窗及其输入状态保持不变。","P0","使用独立覆盖层"]];
     const page=spec.page||spec,scopeIn=spec.inScope||[spec.core,"弹窗右上角展示绿色 PRD 规则入口。",`规则内容仅对应“${spec.name}”。`],scopeOut=spec.outScope||["不修改所属页面既有业务流程。","不在规则弹窗内执行实际业务操作。","PRD 规则弹窗自身不重复展示绿色入口。"],flows=spec.flows||[spec.flow,"用户点击弹窗右上角绿色圆点查看当前弹窗规则。","关闭规则后返回原业务弹窗。"],edges=spec.edges||[spec.edge,"重复点击规则入口时仅保留一个规则弹窗。",spec.assumption?`【假设】弹窗标识“${spec.key}”未配置专属规则，当前展示兜底规则。`:"原业务弹窗被关闭时同步关闭其规则弹窗。"],dataItems=spec.dataItems||[spec.data,"【假设】记录 modal_prd_entry_click，包含 portal、page_path、modal_key、modal_name。","规则查看事件不采集输入值或 PRD 正文。"],risks=spec.risks||["依赖所属页面权限、业务状态和弹窗操作处理函数。","弹窗标题或操作范围调整时必须同步维护弹窗 PRD 配置。","第二层规则弹窗不得清空或重建原业务弹窗 DOM。"],acceptance=spec.acceptanceItems||[spec.acceptance,"业务弹窗右上角展示绿色入口，规则标题与当前弹窗一致。","规则完整包含九个一级标题及固定五列需求表。","关闭规则后原弹窗仍显示，已填写内容和已选状态保持不变。","PRD 规则弹窗自身不展示绿色入口。"];
     const list=items=>`<ul>${items.map(x=>`<li>${esc(x)}</li>`).join("")}</ul>`;
-    return `<div class="page-prd"><h2>1. 背景与目标</h2><p>${esc(spec.goal||`规范“${spec.name}”的内容、操作和反馈，保证与所属“${page.name}”页面一致。`)}</p><h2>2. 用户与使用场景</h2><p>目标用户：${esc(spec.audience||page.audience)}</p><p>${esc(spec.scene||`用户在“${page.name}”页面触发“${spec.name}”，查看信息、填写内容或确认操作。`)}</p><h2>3. 需求范围</h2><h3>In Scope</h3>${list(scopeIn)}<h3>Out of Scope</h3>${list(scopeOut)}<h2>4. 功能需求列表</h2><div class="table-wrap"><table><thead><tr><th>功能模块</th><th>功能点</th><th>需求描述</th><th>优先级（P0 / P1 / P2）</th><th>备注说明</th></tr></thead><tbody>${req.map(r=>`<tr>${r.map(x=>`<td>${esc(x)}</td>`).join("")}</tr>`).join("")}</tbody></table></div><h2>5. 核心流程与交互说明</h2><ol>${flows.map(x=>`<li>${esc(x)}</li>`).join("")}</ol><h2>6. 异常场景与边界条件</h2>${list(edges)}<h2>7. 数据口径与埋点需求</h2>${list(dataItems)}<h2>8. 风险、依赖与限制</h2>${list(risks)}<h2>9. 验收标准</h2><ol>${acceptance.map(x=>`<li>${esc(x)}</li>`).join("")}</ol></div>`;
+    const flowchartHtml=(spec.flowcharts||[]).map(x=>`<div class="prd-flow"><div class="prd-flow-title">${esc(x.title)}</div>${x.html}</div>`).join("");
+    return `<div class="page-prd"><h2>1. 背景与目标</h2><p>${esc(spec.goal||`规范“${spec.name}”的内容、操作和反馈，保证与所属“${page.name}”页面一致。`)}</p><h2>2. 用户与使用场景</h2><p>目标用户：${esc(spec.audience||page.audience)}</p><p>${esc(spec.scene||`用户在“${page.name}”页面触发“${spec.name}”，查看信息、填写内容或确认操作。`)}</p><h2>3. 需求范围</h2><h3>In Scope</h3>${list(scopeIn)}<h3>Out of Scope</h3>${list(scopeOut)}<h2>4. 功能需求列表</h2><div class="table-wrap"><table><thead><tr><th>功能模块</th><th>功能点</th><th>需求描述</th><th>优先级（P0 / P1 / P2）</th><th>备注说明</th></tr></thead><tbody>${req.map(r=>`<tr>${r.map(x=>`<td>${esc(x)}</td>`).join("")}</tr>`).join("")}</tbody></table></div><h2>5. 核心流程与交互说明</h2><ol>${flows.map(x=>`<li>${esc(x)}</li>`).join("")}</ol>${flowchartHtml}<h2>6. 异常场景与边界条件</h2>${list(edges)}<h2>7. 数据口径与埋点需求</h2>${list(dataItems)}<h2>8. 风险、依赖与限制</h2>${list(risks)}<h2>9. 验收标准</h2><ol>${acceptance.map(x=>`<li>${esc(x)}</li>`).join("")}</ol></div>`;
   }
   function showPagePrdV2(){const spec=pagePrdSpecV2();modal(`${spec.name} · PRD 规则`,renderPrdBody(spec),'<button class="btn primary" data-close>关闭</button>',true,{showPrd:false})}
   function showModalPrdV2(title,key=""){const spec=modalPrdSpec(title,key);document.querySelector("#prd-overlay").innerHTML=`<div class="modal-mask"><div class="modal wide"><div class="modal-head"><span>${esc(spec.name)} · PRD 规则</span><button class="close" data-prd-close>×</button></div><div class="modal-body">${renderPrdBody(spec,true)}</div><div class="modal-foot"><button class="btn primary" data-prd-close>关闭</button></div></div></div>`}
@@ -817,14 +862,62 @@
     });
     return docs.sort((a,b)=>String(b.dispatchTime||b.created).localeCompare(String(a.dispatchTime||a.created))).map(d=>d.title?d:{...d,title:"-"});
   }
+  function incomingSignerDraftChanged(){const a=[...(ui.incomingSignerDraft||[])].sort(),b=[...(ui.incomingSignerOriginal||[])].sort();return a.join(",")!==b.join(",")}
+  function closeIncomingSignerSettings(){closeOverlay()}
+  function closeIncomingSignerPicker(){if(incomingSignerDraftChanged()&&!window.confirm("当前修改尚未保存，确认关闭吗？"))return;ui.incomingSignerDraft=null;ui.incomingSignerOriginal=null;closeSecondaryOverlay()}
+  function refreshIncomingSignerSelection(){
+    const selected=activeSchoolStaff().filter(x=>(ui.incomingSignerDraft||[]).includes(x.id)),count=document.querySelector("#incoming-signer-count"),list=document.querySelector("#incoming-selected-list");
+    if(count)count.textContent=selected.length;
+    if(list)list.innerHTML=selected.length?selected.map(x=>`<div class="incoming-selected-card"><div class="avatar">${esc(x.name.slice(0,1))}</div><div class="incoming-person-main"><b>${esc(x.name)}</b><span>${esc(x.department)} · ${esc(x.role)}</span></div><button type="button" data-action="incoming-signer-remove" data-id="${x.id}" aria-label="移除${esc(x.name)}">×</button></div>`).join(""):'<div class="incoming-picker-empty">暂未选择签收人员</div>';
+    document.querySelectorAll(".incoming-signer-check").forEach(input=>input.checked=(ui.incomingSignerDraft||[]).includes(input.value));
+  }
+  function renderIncomingSignerPicker(){
+    const staff=activeSchoolStaff(),departments=[...new Set(staff.map(x=>x.department))],node=ui.incomingSignerNode||"全校",candidates=node==="全校"?staff:staff.filter(x=>x.department===node),school=currentOrg();
+    const tree=`<div class="incoming-picker-title">教职工</div><div class="incoming-tree-body"><button type="button" class="incoming-tree-node ${node==="全校"?"active":""}" data-action="incoming-signer-node" data-node="全校">▾ 全校</button><button type="button" class="incoming-tree-node child ${node==="全校"?"active":""}" data-action="incoming-signer-node" data-node="全校">▾ ${esc(school)}</button>${departments.map(x=>`<button type="button" class="incoming-tree-node child ${node===x?"active":""}" data-action="incoming-signer-node" data-node="${esc(x)}">${node===x?"▾":"▸"} ${esc(x)}</button>`).join("")}</div>`;
+    const rows=candidates.map(x=>`<label class="incoming-candidate-row" data-name="${esc(x.name)}" data-account="${esc(x.account)}"><input class="incoming-signer-check" type="checkbox" value="${x.id}" ${(ui.incomingSignerDraft||[]).includes(x.id)?"checked":""}><div class="avatar">${esc(x.name.slice(0,1))}</div><div class="incoming-person-main"><b>${esc(x.name)}</b><span>${esc(x.department)} · ${esc(x.role)} · ${esc(x.account)}</span></div></label>`).join("")||'<div class="incoming-picker-empty">当前组织暂无有效人员</div>';
+    const body=`<div class="toolbar" style="margin-bottom:14px"><input class="input" id="incoming-signer-search" style="flex:1" placeholder="请输入姓名或账号关键字"><button class="btn primary" type="button" data-action="incoming-signer-search">⌕ 搜索</button></div><div class="incoming-signer-picker"><section class="incoming-org-tree">${tree}</section><section class="incoming-candidate-panel"><div class="incoming-picker-title">可选人员</div><div class="incoming-candidate-list" id="incoming-candidate-list">${rows}</div></section><section class="incoming-selected-panel"><div class="incoming-picker-title">已选 <span id="incoming-signer-count">0</span> 人</div><div class="incoming-selected-list" id="incoming-selected-list"></div></section></div>`;
+    secondaryModal("选择签收人员",body,'<button class="btn" data-action="incoming-signer-picker-close">取消</button><button class="btn primary" data-action="incoming-signer-save">确定</button>',true,{prdKey:"modal:incoming-signer-picker",closeAction:"incoming-signer-picker-close"});
+    refreshIncomingSignerSelection();
+  }
+  function renderIncomingSignerSettings(){
+    const configuredIds=db.settings.incomingSigners.userIds||[],selected=activeSchoolStaff().filter(x=>configuredIds.includes(x.id));
+    const tags=selected.length?`<div class="incoming-signer-tags">${selected.map(x=>`<span class="incoming-signer-tag">${esc(x.name)}<button type="button" class="incoming-signer-tag-remove" data-action="incoming-signer-summary-remove" data-id="${x.id}" aria-label="删除${esc(x.name)}">×</button></span>`).join("")}</div>`:'<span class="incoming-signer-summary-empty">当前暂无有效签收人员，点击选择人员</span>';
+    const body=`<div class="incoming-signer-note">签收人员可签收本校全部教育局来文，并接收后续新来文及催收通知。新增人员可签收历史来文，但不会补收历史新来文通知；教育局再次催收时会收到催收通知。</div><div class="incoming-signer-summary"><div class="incoming-signer-summary-label">签收人员 <span>已选 ${selected.length} 人</span></div><div class="incoming-signer-summary-entry" data-action="incoming-signer-picker-open" role="button" tabindex="0">${tags}<span class="incoming-signer-summary-arrow">›</span></div></div>`;
+    modal("签收设置",body,'<button class="btn" data-action="incoming-signer-close">取消</button><button class="btn primary" data-action="incoming-signer-close">确定</button>',false,{prdKey:"modal:incoming-signer-settings",closeAction:"incoming-signer-close"});
+  }
+  function openIncomingSignerSettings(){
+    if(!canManageIncomingSigners()){toast("当前用户无签收设置权限","error");return}
+    renderIncomingSignerSettings()
+  }
+  function openIncomingSignerPicker(){
+    if(!canManageIncomingSigners()){toast("当前用户无签收设置权限","error");return}
+    const config=db.settings.incomingSigners;ui.incomingSignerDraft=[...config.userIds];ui.incomingSignerOriginal=[...config.userIds];ui.incomingSignerVersion=config.version;ui.incomingSignerNode="全校";renderIncomingSignerPicker()
+  }
+  function removeIncomingSignerFromSummary(id){
+    if(!canManageIncomingSigners()){toast("当前用户无签收设置权限","error");return}
+    const config=db.settings.incomingSigners,before=[...config.userIds];
+    if(!before.includes(id))return;
+    const remaining=before.filter(x=>x!==id);
+    if(!remaining.some(userId=>activeSchoolStaff().some(x=>x.id===userId))){toast("请至少保留1名签收人员","error");return}
+    config.userIds=remaining;config.version+=1;config.updatedBy=currentUserName();config.updatedAt=now();db.logs.unshift({time:config.updatedAt,user:currentUserName(),action:"修改教育局来文签收设置",object:"移除1人"});save();renderIncomingSignerSettings();toast("签收人员已删除")
+  }
+  function filterIncomingSignerCandidates(){const keyword=(document.querySelector("#incoming-signer-search")?.value||"").trim();document.querySelectorAll(".incoming-candidate-row").forEach(row=>row.style.display=!keyword||row.dataset.name.includes(keyword)||row.dataset.account.includes(keyword)?"flex":"none")}
+  function saveIncomingSignerSettings(){
+    if(!canManageIncomingSigners()){toast("当前用户无签收设置权限","error");return}
+    const config=db.settings.incomingSigners,validIds=[...new Set(ui.incomingSignerDraft||[])].filter(id=>activeSchoolStaff().some(x=>x.id===id));
+    if(!validIds.length){toast("请至少选择1名签收人员","error");return}
+    if(config.version!==ui.incomingSignerVersion){toast("签收设置已被其他管理员修改，请刷新后重试","error");return}
+    const before=[...config.userIds];config.userIds=validIds;config.version+=1;config.updatedBy=currentUserName();config.updatedAt=now();db.logs.unshift({time:config.updatedAt,user:currentUserName(),action:"修改教育局来文签收设置",object:`新增${validIds.filter(x=>!before.includes(x)).length}人，移除${before.filter(x=>!validIds.includes(x)).length}人`});save();ui.incomingSignerDraft=null;ui.incomingSignerOriginal=null;closeSecondaryOverlay();renderIncomingSignerSettings();toast("签收设置保存成功")
+  }
   function incomingPage(){
     if(!hasPermission("collab:view"))return noPermission();
     const all=schoolCollabDocs(),stats={"全部来文":all.length,"待签收":all.filter(d=>incomingStatus(d)==="待签收").length,"已签收":all.filter(d=>incomingStatus(d)==="已签收").length,"今日来文":all.filter(d=>isToday(d.dispatchTime||d.created)).length},icons={"全部来文":"▣","待签收":"◷","已签收":"✓","今日来文":"今"};
     const metricCards=Object.entries(stats).map(([name,value])=>`<div class="metric incoming-summary-card"><div class="mi ${name==="已签收"?"green":name==="待签收"?"orange":""}">${icons[name]}</div><div><strong>${value}</strong><span>${name}</span></div></div>`).join("");
     const f=ui.incomingFilters||{},docs=incomingFilteredDocs(),page=pageData(docs);
     const filters=`<div class="card"><div class="incoming-filters"><div class="field"><label>公文标题</label><input class="input" id="incoming-title" value="${esc(f.title||"")}" placeholder="请输入公文标题"></div><div class="field"><label>签收状态</label><select class="select" id="incoming-status"><option value="">全部</option>${["待签收","已签收"].map(x=>`<option ${f.status===x?"selected":""}>${x}</option>`).join("")}</select></div><div class="field range"><label>发布时间</label><div class="incoming-date-range"><input class="input" id="incoming-start" type="date" value="${esc(f.start||"")}"><span>至</span><input class="input" id="incoming-end" type="date" value="${esc(f.end||"")}"></div></div></div><div style="text-align:right;margin-top:14px"><button class="btn primary" data-action="incoming-filter">查询</button> <button class="btn" data-action="incoming-reset">重置</button></div></div>`;
-    const rows=page.items.map(d=>{const r=d.receipts[db.schoolId]||{},status=incomingStatus(d),canSign=hasPermission("collab:sign")&&status!=="已签收"&&d.status==="已分发",statusCls=status==="已签收"?"green":"orange";return `<tr><td>${esc(d.title)}</td><td>${esc(d.no||"-")}</td><td>${esc(d.issuer||"新乡市教育局")}</td><td>${d.dispatchTime||d.created}</td><td><span class="tag ${statusCls}">${status}</span></td><td>${r.signer||"-"}</td><td>${r.signTime||"-"}</td><td><div class="incoming-actions"><button class="btn link" data-go="/incoming/detail?id=${d.id}">查看</button>${canSign?`<button class="btn link" data-action="sign" data-id="${d.id}">签收</button>`:status==="已签收"&&hasPermission("collab:receipt")?`<button class="btn link" data-action="receipt-view" data-doc="${d.id}" data-school="${db.schoolId}">签收记录</button>`:""}</div></td></tr>`}).join("");
-    return shell(`<div class="grid" style="grid-template-columns:repeat(4,minmax(0,1fr));margin-bottom:16px">${metricCards}</div>${filters}<div class="card"><div class="table-wrap"><table><thead><tr><th>公文标题</th><th>文号</th><th>发文单位</th><th>发布时间</th><th>签收状态</th><th>签收人</th><th>签收时间</th><th>操作</th></tr></thead><tbody>${rows||'<tr><td colspan="8"><div class="empty">暂无符合条件的教育局来文</div></td></tr>'}</tbody></table></div>${pager(docs.length)}</div>`,"教育局来文","学校级业务入口：查看、签收教育局发送至本校的公文");
+    const rows=page.items.map(d=>{const r=d.receipts[db.schoolId]||{},status=incomingStatus(d),canSign=canSignIncomingDocument(d),statusCls=status==="已签收"?"green":"orange";return `<tr><td>${esc(d.title)}</td><td>${esc(d.no||"-")}</td><td>${esc(d.issuer||"新乡市教育局")}</td><td>${d.dispatchTime||d.created}</td><td><span class="tag ${statusCls}">${status}</span></td><td>${r.signer||"-"}</td><td>${r.signTime||"-"}</td><td><div class="incoming-actions"><button class="btn link" data-go="/incoming/detail?id=${d.id}">查看</button>${canSign?`<button class="btn link" data-action="sign" data-id="${d.id}">签收</button>`:status==="已签收"&&hasPermission("collab:receipt")?`<button class="btn link" data-action="receipt-view" data-doc="${d.id}" data-school="${db.schoolId}">签收记录</button>`:""}</div></td></tr>`}).join("");
+    const settingBar=canManageIncomingSigners()?'<div class="incoming-setting-bar"><button class="btn primary" data-action="incoming-signer-settings">签收设置</button></div>':"";
+    return shell(`${settingBar}<div class="grid" style="grid-template-columns:repeat(4,minmax(0,1fr));margin-bottom:16px">${metricCards}</div>${filters}<div class="card"><div class="table-wrap"><table><thead><tr><th>公文标题</th><th>文号</th><th>发文单位</th><th>发布时间</th><th>签收状态</th><th>签收人</th><th>签收时间</th><th>操作</th></tr></thead><tbody>${rows||'<tr><td colspan="8"><div class="empty">暂无符合条件的教育局来文</div></td></tr>'}</tbody></table></div>${pager(docs.length)}</div>`,"教育局来文","学校级业务入口：查看、签收教育局发送至本校的公文");
   }
   function collabLibrary(){
     const school=db.portal==="school";
@@ -861,8 +954,8 @@
     if(!d)return notFound();
     if(db.portal==="school"&&!canAccessSchoolCollab(d))return noPermission();
     const fromLibrary=!incomingMode,r=db.portal==="school"?d.receipts[db.schoolId]:null,status=db.portal==="school"?incomingStatus(d):d.status;
-    const canSign=db.portal==="school"&&hasPermission("collab:sign")&&d.status==="已分发"&&!r?.signed;
-    const actions=db.portal==="school"?(canSign?`<button class="btn primary" data-action="sign" data-id="${d.id}">确认签收</button>`:r?.signed?`<span class="tag green">已由${esc(r.signer)}于${r.signTime}签收</span> <button class="btn" data-action="receipt-view" data-doc="${d.id}" data-school="${db.schoolId}">查看签收记录</button>`:!hasPermission("collab:sign")?'<span class="tag blue">当前角色仅可查看，无签收权限</span>':`<span class="tag orange">${status}</span>`):"";
+    const canSign=db.portal==="school"&&canSignIncomingDocument(d);
+    const actions=db.portal==="school"?(canSign?`<button class="btn primary" data-action="sign" data-id="${d.id}">确认签收</button>`:r?.signed?`<span class="tag green">已由${esc(r.signer)}于${r.signTime}签收</span> <button class="btn" data-action="receipt-view" data-doc="${d.id}" data-school="${db.schoolId}">查看签收记录</button>`:!hasPermission("collab:sign")?'<span class="tag blue">当前角色仅可查看，无签收权限</span>':!isConfiguredIncomingSigner()?'<span class="tag blue">当前用户未被设置为签收人员</span>':`<span class="tag orange">${status}</span>`):"";
     if(db.portal==="school"&&!incomingMode){
       const detailTabs=["稿纸","正文","附件"].map(x=>`<button type="button" class="${ui.collabDetailTab===x?"active":""}" data-collab-detail-tab="${x}">${x}</button>`).join("");
       const paper=`<div class="collab-edit-panel">${renderCollabPaper(d)}</div>`;
@@ -1072,7 +1165,7 @@
     modal("公文签收回执",`<div class="paper" style="min-height:430px;padding:35px"><h2 style="text-align:center">公文签收回执</h2><div class="form-grid" style="margin-top:30px"><div class="label">公文标题</div><div class="span3">${esc(d.title)}</div><div class="label">发文单位</div><div>${esc(d.issuer||"新乡市教育局")}</div><div class="label">发文字号</div><div>${d.no||"-"}</div><div class="label">签收单位</div><div>${s.name}</div><div class="label">签收人员</div><div>${r.signer}</div><div class="label large">签收意见</div><div class="span3 large">${esc(r.signOpinion?.trim()||"无")}</div><div class="label">签收时间</div><div>${r.signTime}</div><div class="label">回执状态</div><div><span class="tag green">签收成功</span></div></div></div>`,`<button class="btn primary" data-close>关闭</button>`,false,{prdKey:"modal:receipt-view"});
   }
   function incomingSignModal(d){
-    if(!d||!hasPermission("collab:sign")||!canAccessSchoolCollab(d)){toast("当前用户无签收权限","error");return}
+    if(!d||!canSignIncomingDocument(d)){toast("您当前无该公文的签收权限","error");return}
     if(d.receipts[db.schoolId]?.signed){toast("该公文已完成学校签收，请勿重复操作","error");return}
     modal("确认签收",`<div class="form-grid"><div class="label">公文标题</div><div class="span3">${esc(d.title)}</div><div class="label">公文文号</div><div>${esc(d.no||"-")}</div><div class="label">发文单位</div><div>${esc(d.issuer||"新乡市教育局")}</div><div class="label">接收学校</div><div>${esc(currentOrg())}</div><div class="label">当前签收人</div><div>${esc(currentUserName())}</div><div class="label large">签收意见</div><div class="span3 large"><textarea class="textarea" id="incoming-sign-opinion" maxlength="200" style="width:100%" placeholder="选填，最多200字"></textarea><div style="margin-top:6px;text-align:right;color:#8a94a6"><span id="incoming-sign-opinion-count">0 / 200</span></div></div></div>`,`<button class="btn" data-close>取消</button><button class="btn primary" data-action="confirm-incoming-sign" data-id="${d.id}">确认签收</button>`,true);
   }
@@ -1115,6 +1208,15 @@
     else if(a==="collab-filter-reset"){ui.page=1;delete ui.filters.collabKey;delete ui.filters.collabStart;delete ui.filters.collabEnd;delete ui.filters.collabStatus;render()}
     else if(a==="incoming-filter"){const start=document.querySelector("#incoming-start")?.value||"",end=document.querySelector("#incoming-end")?.value||"";if(start&&end&&start>end){toast("发布时间开始日期不能晚于结束日期","error");return}ui.page=1;ui.incomingFilters={title:document.querySelector("#incoming-title")?.value.trim()||"",status:document.querySelector("#incoming-status")?.value||"",start,end};render();toast("来文查询条件已生效")}
     else if(a==="incoming-reset"){ui.page=1;ui.incomingFilters={};render()}
+    else if(a==="incoming-signer-settings")openIncomingSignerSettings()
+    else if(a==="incoming-signer-picker-open")openIncomingSignerPicker()
+    else if(a==="incoming-signer-summary-remove")removeIncomingSignerFromSummary(t.dataset.id)
+    else if(a==="incoming-signer-node"){ui.incomingSignerNode=t.dataset.node||"全校";renderIncomingSignerPicker()}
+    else if(a==="incoming-signer-search")filterIncomingSignerCandidates()
+    else if(a==="incoming-signer-remove"){ui.incomingSignerDraft=(ui.incomingSignerDraft||[]).filter(id=>id!==t.dataset.id);refreshIncomingSignerSelection()}
+    else if(a==="incoming-signer-close")closeIncomingSignerSettings()
+    else if(a==="incoming-signer-picker-close")closeIncomingSignerPicker()
+    else if(a==="incoming-signer-save")saveIncomingSignerSettings()
     else if(a==="category-filter"){ui.page=1;ui.filters.categoryKey=document.querySelector("#category-key")?.value.trim()||"";render()}
     else if(a==="category-reset"){ui.page=1;delete ui.filters.categoryKey;render()}
     else if(a==="template-filter"){ui.page=1;ui.filters.templateKey=document.querySelector("#template-key")?.value.trim()||"";ui.filters.templateStatus=document.querySelector("#template-status")?.value||"";render();toast("模板筛选条件已生效")}
@@ -1164,20 +1266,21 @@
     else if(a==="export-receipts"){const docs=db.collab.filter(d=>d.id===t.dataset.doc);exportCSV([["公文","学校","签收人","签收时间"],...docs.flatMap(d=>Object.entries(d.receipts||{}).filter(([,r])=>r.signed).map(([id,r])=>[d.title,db.schools.find(s=>s.id===id)?.name,r.signer,r.signTime]))],"签收回执.csv")}
     else if(a==="sign"){
       const d=db.collab.find(x=>x.id===t.dataset.id);
-      if(db.portal!=="school"||!hasPermission("collab:sign")||!canAccessSchoolCollab(d)){toast("当前用户无签收权限","error");return}
+      if(db.portal!=="school"||!canSignIncomingDocument(d)){toast("您当前无该公文的签收权限","error");return}
       if(d.status!=="已分发"){toast("该公文当前不可签收","error");return}
       if(d.receipts[db.schoolId]?.signed){toast("该公文已签收，请勿重复操作","error");return}
       incomingSignModal(d)
     }
     else if(a==="confirm-incoming-sign"){
       const d=db.collab.find(x=>x.id===t.dataset.id);
-      if(db.portal!=="school"||!hasPermission("collab:sign")||!canAccessSchoolCollab(d)||d.receipts[db.schoolId]?.signed){closeOverlay();toast("该公文当前不可签收","error");return}
+      if(db.portal!=="school"||!canSignIncomingDocument(d)){closeOverlay();toast("您当前无该公文的签收权限","error");return}
       const old=d.receipts[db.schoolId]||{},signer=currentUserName(),signTime=now(),signOpinion=Array.from(document.querySelector("#incoming-sign-opinion")?.value.trim()||"").slice(0,200).join("");
       d.receipts[db.schoolId]={signed:true,signer,signTime,signOpinion,remindCount:old.remindCount||0,lastRemindTime:old.lastRemindTime||""};d.logs.push(`${signTime} ${currentOrg()}由${signer}完成签收`);db.logs.unshift({time:signTime,user:signer,action:"签收教育局来文",object:d.title});save();closeOverlay();go("/incoming");render();toast("签收成功，教育局端已同步更新")
     }
   });
   document.addEventListener("change",e=>{
     if(e.target.id==="role-switch"){db.userRole=e.target.value;save();render();toast("角色权限已切换")}
+    if(e.target.classList.contains("incoming-signer-check")){const id=e.target.value,draft=new Set(ui.incomingSignerDraft||[]);e.target.checked?draft.add(id):draft.delete(id);ui.incomingSignerDraft=[...draft];refreshIncomingSignerSelection()}
     if(e.target.id==="check-all-school")document.querySelectorAll(".progress-check:not(:disabled)").forEach(x=>x.checked=e.target.checked)
     if(e.target.id==="category-check-all")document.querySelectorAll(".category-check").forEach(x=>x.checked=e.target.checked)
   });
@@ -1185,6 +1288,7 @@
     if(e.target.id==="ct-name"){ui.templateDraft.name=e.target.value;const n=document.querySelector("#ct-name-count");if(n)n.textContent=`${e.target.value.length} / 50`}
     if(e.target.id==="ct-desc"){ui.templateDraft.description=e.target.value;const n=document.querySelector("#ct-desc-count");if(n)n.textContent=`${e.target.value.length} / 200`}
     if(e.target.id==="incoming-sign-opinion"){const chars=Array.from(e.target.value);if(chars.length>200)e.target.value=chars.slice(0,200).join("");const n=document.querySelector("#incoming-sign-opinion-count");if(n)n.textContent=`${Array.from(e.target.value).length} / 200`}
+    if(e.target.id==="incoming-signer-search")filterIncomingSignerCandidates()
     if(ui.collabDraft&&e.target.id?.startsWith("collab-"))captureCollabDraft()
   });
   window.addEventListener("hashchange",()=>{const p=route(),dp=decodeURIComponent(p);ui.page=1;ui.drafting=false;ui.draftTab="稿纸信息";if(p!=="/dashboard"){ui.dashboardViewTracked=false;ui.dashboardLatestType="发文"}ui.tab=dp.startsWith("/library/局校发文")?(queryParam("tab")||"全部公文"):p==="/progress"?"全部学校":"未办理";ui.openMenu=p.startsWith("/templates/")?"templates":p.startsWith("/manage/")||p.startsWith("/incoming")||p==="/collab"?"manage":p.startsWith("/library/")||p==="/archive"?"library":"";if(p==="/collab/detail"||dp==="/library/局校发文/detail"||p==="/incoming/detail")ui.collabDetailTab="稿纸";if(p==="/collab/edit"){ui.selectedSchools=[];ui.collabFilesKey=null;ui.collabDraft=null;ui.collabEditTab="稿纸信息"}if(decodeURIComponent(p)!=="/templates/局校/edit")ui.templateDraft=null;render()});
@@ -1194,7 +1298,7 @@
     saveDocument:d=>{db.internal.push(d);save()},
     submitDocument:id=>{const d=db.internal.find(x=>x.id===id);if(d)d.status="审核中";save()},
     dispatchDocument:id=>{const d=db.collab.find(x=>x.id===id);if(d&&d.templateSnapshot){d.status="已分发";d.dispatchTime=now();d.targets.forEach(s=>d.receipts[s]={signed:false,signer:"",signTime:"",remindCount:0,lastRemindTime:""})}save()},
-    signDocument:(id,sid)=>{const d=db.collab.find(x=>x.id===id);if(d&&d.status==="已分发"&&d.targets.includes(sid)&&!d.receipts[sid]?.signed)d.receipts[sid]={signed:true,signer:"当前用户",signTime:now(),remindCount:d.receipts[sid]?.remindCount||0,lastRemindTime:d.receipts[sid]?.lastRemindTime||""};save()},
+    signDocument:(id,sid)=>{const d=db.collab.find(x=>x.id===id),allowed=db.portal!=="school"||sid!==db.schoolId||canSignIncomingDocument(d);if(d&&allowed&&d.status==="已分发"&&d.targets.includes(sid)&&!d.receipts[sid]?.signed)d.receipts[sid]={signed:true,signer:"当前用户",signTime:now(),remindCount:d.receipts[sid]?.remindCount||0,lastRemindTime:d.receipts[sid]?.lastRemindTime||""};save()},
     remindSchools:(id,ids)=>{const d=db.collab.find(x=>x.id===id);return d?recordReminders(d,ids):0},
     withdrawDocument:id=>{const d=db.collab.find(x=>x.id===id);if(d)d.status="已撤回";save()},
     exportData:exportCSV
