@@ -23,7 +23,8 @@ for (const file of textAssets) {
   const source = await readFile(file, "utf8");
   const portableSource = source
     .replaceAll(/(?<!\.)\/assets\//g, "./assets/")
-    .replace('<script type="module"', "<script defer");
+    .replace('<script type="module"', "<script defer")
+    .replaceAll(" crossorigin", "");
   if (portableSource !== source) await writeFile(file, portableSource);
 }
 

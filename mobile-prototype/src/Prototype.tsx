@@ -454,6 +454,47 @@ function ManagePage({ role, docs, signedIds, flow, onSign, onRemind }: { role: R
   </div>;
 }
 
+function DocumentWidgetMobilePage({ role }: { role: Role }) {
+  const bureau = role === "bureau";
+  const [prdOpen, setPrdOpen] = useState(false);
+  const metrics = bureau
+    ? [[64, "发文总数"], [35, "收文总数"], [20, "签报总数"], [8, "局校协同发文总数"]]
+    : [[52, "发文总数"], [31, "收文总数"], [18, "签报总数"], [7, "教育局来文总数"]];
+  const requirements = [
+    ["统计概览", "发文、收文、签报", "读取当前端口内部公文，按 kind=发文、收文、签报分别计数。", "P0", "三个类型独立统计"],
+    ["统计概览", bureau ? "局校协同发文" : "教育局来文", bureau ? "读取教育局可见的局校协同发文并按公文ID计数。" : "仅统计已发布且接收学校包含当前学校的教育局来文。", "P0", "第四项按端口切换"],
+    ["组件交互", "只读展示", "四项统计及其所在区域不绑定点击、跳转或按压反馈。", "P0", "PRD与页面返回除外"],
+    ["规则说明", "PRD入口", "点击PRD打开九段规则说明，关闭后仍停留在当前组件页。", "P0", "规则入口保留交互"],
+  ];
+  return <><main className="document-widget-mobile-page">
+    <section className="document-widget-mobile-card">
+      <header className="document-widget-mobile-head"><strong>公文管理</strong><div className="document-widget-mobile-head-actions"><button className="document-widget-mobile-prd" onClick={() => setPrdOpen(true)}>PRD</button></div></header>
+      <div className="document-widget-mobile-stats" aria-label="四类公文统计">{metrics.map(([value, label]) => <div key={label}><strong>{value}</strong><span>{label}</span></div>)}</div>
+    </section>
+  </main><BottomSheet open={prdOpen} onOpenChange={setPrdOpen} title="公文管理首页组件 · PRD" description="数据来源与统计口径">
+    <article className="document-widget-mobile-prd-body">
+      <h3>1. 背景与目标</h3><p>移动端首页组件使用一个统计区域分别展示四类公文数量，降低页面信息密度并保持类型可辨识。</p>
+      <h3>2. 用户与使用场景</h3><p>{bureau ? "教育局管理员、公文管理员" : "学校管理员、公文管理员及公文签收人员"}在移动端快速查看当前端口权限范围内四类公文数量。</p>
+      <h3>3. 需求范围</h3><h4>In Scope</h4><p>一个2×2统计区域、四类独立数量、只读展示、PRD规则入口。</p><h4>Out of Scope</h4><p>不展示最新公文、状态、时间、查看更多或业务跳转。</p>
+      <h3>4. 功能需求列表</h3><div className="document-widget-mobile-prd-table"><table><thead><tr><th>功能模块</th><th>功能点</th><th>需求描述</th><th>优先级（P0 / P1 / P2）</th><th>备注说明</th></tr></thead><tbody>{requirements.map((row) => <tr key={row[1]}>{row.map((cell) => <td key={cell}>{cell}</td>)}</tr>)}</tbody></table></div>
+      <h3>5. 核心流程与交互说明</h3><p>读取当前端口权限范围数据 → 按公文类型分别过滤 → 各类型按公文ID去重计数 → 在同一统计区域只读渲染四项数量。</p>
+      <h3>6. 异常场景与边界条件</h3><p>任一类型无可见公文时该项显示0；接口失败时不展示旧值并进入统一加载失败状态；权限外数据不参与计算。</p>
+      <h3>7. 数据口径与埋点需求</h3><p>{bureau ? "教育局端分别统计教育局内部发文、收文、签报和局校协同发文。" : "学校端分别统计学校内部发文、收文、签报；教育局来文仅包含已发布且接收范围包含当前学校的记录。"}</p><p>每个类型按公文ID独立去重。正式移动端与PC端复用同一数据源；当前原型数值为演示数据。记录组件曝光和PRD点击，不记录四项统计点击事件。</p>
+      <h3>8. 风险、依赖与限制</h3><p>依赖当前端口、公文类型、学校范围、发布状态和公文ID准确；正式环境必须由服务端完成权限过滤与分类统计。</p>
+      <h3>9. 验收标准</h3><p>组件仅有一个统计区域且恰好展示四个类型数量；无最新公文和查看更多；四项统计不可点击；关闭PRD后仍停留在组件页。</p>
+    </article>
+  </BottomSheet></>;
+}
+
+function makeDocumentWidgetScreen(role: Role): FlowScreen {
+  return {
+    id: `document-widget-${role}`,
+    headerHeight: 50,
+    header: (flow) => <ScreenHeader flow={flow} title="首页组件" />,
+    render: () => <MobileScroll className="standalone-scroll"><DocumentWidgetMobilePage role={role} /></MobileScroll>,
+  };
+}
+
 function RootHub({ flow }: { flow: FlowControls }) {
   const keyboard = useKeyboard();
   const [role, setRole] = useState<Role>(() => new URLSearchParams(window.location.search).get("role") === "school" ? "school" : "bureau");
@@ -472,9 +513,11 @@ function RootHub({ flow }: { flow: FlowControls }) {
   const changeSection = (nextSection: Section) => { (document.activeElement as HTMLElement | null)?.blur(); keyboard.hide(); setSection(nextSection); };
   const openTemplate = () => { (document.activeElement as HTMLElement | null)?.blur(); keyboard.hide(); flow.push(makeTemplateScreen(handlePublished)); };
   const openMessages = () => { (document.activeElement as HTMLElement | null)?.blur(); keyboard.hide(); flow.push(makeMessageScreen(docs, signedIds, handleSign, handleRemind)); };
+  const openDocumentWidget = () => { (document.activeElement as HTMLElement | null)?.blur(); keyboard.hide(); flow.push(makeDocumentWidgetScreen(role)); };
   return <div className="root-shell">
     {section === "home" ? <Header title="公文管理" onRole={() => setRoleOpen(true)} /> : <div className="manage-role-bar"><button onClick={() => setRoleOpen(true)}><PersonIcon />{role === "bureau" ? "教育局端" : "学校端"}<CaretRightIcon /></button></div>}
     <div className="root-content">{section === "home" ? <MobileScroll className="root-scroll"><HomePage role={role} docs={docs} signedIds={signedIds} onCreate={openTemplate} onOpenMessages={openMessages} /></MobileScroll> : <ManagePage role={role} docs={docs} signedIds={signedIds} flow={flow} onSign={handleSign} onRemind={handleRemind} />}</div>
+    {section === "home" ? <button className="document-widget-entry" onClick={openDocumentWidget}><span>▦</span>首页组件</button> : null}
     <BottomNav section={section} onChange={changeSection} />
     <BottomSheet open={roleOpen} onOpenChange={setRoleOpen} title="切换评审角色" description="该入口仅用于原型评审，不属于正式产品功能">
       <div className="role-options"><button className={role === "bureau" ? "selected" : ""} onClick={() => { setRole("bureau"); setSection("home"); setRoleOpen(false); }}><span className="role-icon bureau"><BackpackIcon /></span><span><strong>教育局端</strong><small>创建局校发文、查看签收进度与回执</small></span><CheckCircledIcon /></button><button className={role === "school" ? "selected" : ""} onClick={() => { setRole("school"); setSection("home"); setRoleOpen(false); }}><span className="role-icon school"><HomeIcon /></span><span><strong>学校端</strong><small>查看教育局来文并完成签收</small></span><CheckCircledIcon /></button></div>
@@ -677,5 +720,6 @@ function ReceiptDetail({ doc, school, signer, time, opinion }: { doc: CollabDoc;
 
 export default function Prototype() {
   const initial = useMemo<FlowScreen>(() => ({ id: "root", render: (flow) => <RootHub flow={flow} /> }), []);
+  useEffect(() => { window.parent?.postMessage({ type: "gw-mobile-ready" }, "*"); }, []);
   return <FlowStack initial={initial} />;
 }
